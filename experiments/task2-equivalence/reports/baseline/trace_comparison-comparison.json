@@ -1,0 +1,72 @@
+[
+  {
+    "case": 0,
+    "cycle": 435,
+    "edges": 436,
+    "rtl_trace": {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/build/hardware/baseline/controls/case-0-rtl.csv",
+      "sha256": "9bbaef47e87ab0945edf65ad563b73c0ad0930d0e4a29f58a9e622615f1c304b"
+    },
+    "word": 0
+  },
+  {
+    "case": 1,
+    "cycle": 435,
+    "edges": 436,
+    "rtl_trace": {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/build/hardware/baseline/controls/case-1-rtl.csv",
+      "sha256": "ef7f2a9f9d2efcc03909dc6070c3b5c4785d29329f91e5d5b0dc663eec40b073"
+    },
+    "word": 4294967290
+  },
+  {
+    "case": 2,
+    "cycle": 435,
+    "edges": 436,
+    "rtl_trace": {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/build/hardware/baseline/controls/case-2-rtl.csv",
+      "sha256": "4c6a9ae0e3dfc665e70646bdeb196858306cfef01e5c072a2ed0a0a4d72c21a8"
+    },
+    "word": 2147483648
+  },
+  {
+    "case": 3,
+    "cycle": 435,
+    "edges": 436,
+    "rtl_trace": {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/build/hardware/baseline/controls/case-3-rtl.csv",
+      "sha256": "9ebeb5445f7f171489d939078708ed2818925478948eaa03c68c39874d92181e"
+    },
+    "word": 4294967294
+  },
+  {
+    "case": 4,
+    "cycle": 435,
+    "edges": 436,
+    "rtl_trace": {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/build/hardware/baseline/controls/case-4-rtl.csv",
+      "sha256": "a89d39e749d2ee2a1a4d8901d54efb90403626a6905f86492a2fdb4f26cb04bc"
+    },
+    "word": 2147483648
+  },
+  {
+    "case": 5,
+    "cycle": 435,
+    "edges": 436,
+    "rtl_trace": {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/build/hardware/baseline/controls/case-5-rtl.csv",
+      "sha256": "04be06a4a765dbf16cf5f8f11594227146d2fa147cc080d47f5660a240404a68"
+    },
+    "word": 0
+  },
+  {
+    "case": 6,
+    "cycle": 435,
+    "edges": 436,
+    "rtl_trace": {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/build/hardware/baseline/controls/case-6-rtl.csv",
+      "sha256": "0cdcf28259fee8da8a12bc11ae72471e8009562d0f13bb399af1da003f942459"
+    },
+    "word": 816
+  }
+]

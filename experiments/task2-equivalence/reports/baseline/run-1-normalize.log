@@ -1,0 +1,23 @@
+
+-- Executing script file `/home/roland/moonshot1/experiments/task2-equivalence/build/hardware/baseline/normalize.ys' --
+
+1. Executing RTLIL frontend.
+Input filename: /home/roland/moonshot1/experiments/task2-equivalence/build/hardware/baseline/canonical.il
+
+2. Executing FORMALFF pass.
+
+3. Executing MEMORY_NORDFF pass (extracting $dff cells from memories).
+
+4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \main..
+
+5. Executing SETUNDEF pass (replace undef values with defined constants).
+
+6. Executing CHECK pass (checking for obvious problems).
+Checking module main...
+Found and reported 0 problems.
+
+7. Executing JSON backend.
+
+8. Executing Functional SMT Backend.
+Processing module `\main`.

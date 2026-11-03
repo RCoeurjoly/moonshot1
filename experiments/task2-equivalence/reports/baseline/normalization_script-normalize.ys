@@ -1,0 +1,8 @@
+read_rtlil /home/roland/moonshot1/experiments/task2-equivalence/build/hardware/baseline/canonical.il
+formalff -clk2ff
+memory_nordff
+opt_clean
+setundef -undriven -anyseq
+check -assert
+write_json /home/roland/moonshot1/experiments/task2-equivalence/build/hardware/baseline/cycle.json
+write_functional_smt2 /home/roland/moonshot1/experiments/task2-equivalence/build/hardware/baseline/cycle.smt2

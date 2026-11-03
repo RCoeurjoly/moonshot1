@@ -1,0 +1,439 @@
+{
+  "artifacts": {
+    "baseline": {
+      "derivation": "/nix/store/40j1gz76j98zvi3g6wdia95vcayin2di-matmul-sv.drv",
+      "path": "/nix/store/3i2xv5f7qx512h5psdjb87y9nsc94sla-matmul-sv",
+      "sha256": "bbfc0d3f780cfa2070bfe27477dac30e20dbf510be8ed667db21d8922c6eb10c"
+    },
+    "canonical": {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/build/hardware/baseline/canonical.il",
+      "sha256": "2ecca0034a8828f64f0446bba4a59ee98058d13922639360d5f21646efd82b4e"
+    },
+    "device_adapter": {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/build/generated/Task2/Imported/BaselineAdapter.lean",
+      "sha256": "b27e90bed4324a800a1381739530f8cb2da02525d6866a1486562ca66146a650"
+    },
+    "experiment_importer": {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/scripts/import_hardware.py",
+      "sha256": "d5da4d9b807e8dde05edce1a2240660153b9e05c299e8b03f5f9eeaf2154460a"
+    },
+    "flake_lock": {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/flake.lock",
+      "sha256": "648bcdfd152a51c32bab5e2fafcd472c71f926026b2f1c551e5712e7f4e77cc9"
+    },
+    "frontend_script": {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/build/hardware/baseline/frontend.ys",
+      "sha256": "53640eeedd37536a9089284c4cf9853dfa36e60b8459236e6a59040f1bddb85f"
+    },
+    "functional_ir": {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/build/hardware/baseline/cycle-ir.json",
+      "sha256": "89575a9e83da7a2bc464f160819062128dba5bd8ffb4956d7d4f86fe7c09358e"
+    },
+    "imported_core": {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/build/generated/Task2/Imported/BaselineCore.lean",
+      "sha256": "0260866976bf0f386dba87158603549fb8d24fdf845833a8fec19308c0f89cc2"
+    },
+    "importer": {
+      "path": "/nix/store/9c94i2m5rwzsyxkxgrk4ylmfv7708fdj-source/scripts/functional_ir.py",
+      "sha256": "bcf8dc6b786d866131d375ef55372abb8f3b3ae7a889cee36839f507a14910a0"
+    },
+    "initialization_metadata": {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/build/hardware/baseline/cycle.json",
+      "sha256": "157263ce01438b5817ccf123139e0a38c13b22ee2a1ba8408e00e6a40f89ae91"
+    },
+    "lean_trace": {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/build/hardware/baseline/controls/lean-traces.json",
+      "sha256": "65a9d552805b954f029cae0964bb707ff47c1ffc1974598eed0db39a8256339d"
+    },
+    "native_smt": {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/build/hardware/baseline/cycle.smt2",
+      "sha256": "5b4f524325a10343040cc5dcb4bb55bdc6ef7cd0fa86fed252bd97671c308c8a"
+    },
+    "normalization_script": {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/build/hardware/baseline/normalize.ys",
+      "sha256": "eb502fa0ef5246e592aa202b1db9500b187219b4044721248a3d4f60ef32bdd5"
+    },
+    "testbench": {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/scripts/control_tb.sv",
+      "sha256": "1f2a32ca67a26c49f204a84bfa68398ec3174d759a85729a4a16dc5b78fea47f"
+    },
+    "tool_pins": {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/tool-pins.json",
+      "sha256": "8b941d81857c99a688042fbcce67d719b56462bbbc3e847eb08843f27b269aa7"
+    },
+    "trace_comparison": {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/build/hardware/baseline/controls/comparison.json",
+      "sha256": "85d2d96e16cb00d65a802534206de2abdba0ff9e1673549be47e1fef82a75994"
+    },
+    "trace_semantics": {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/Task2/Trace.lean",
+      "sha256": "b26897b93a1d8686ad6eb152e5cce6edb91dc14c48c07b5255d670b2c2a0bf68"
+    },
+    "word_controls": {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/build/reference/word-controls.json",
+      "sha256": "6bcc8602362fb777771c63bad7b44d5b81a7f0b104273054f83cb3a9a7ed1b87"
+    }
+  },
+  "axioms": {
+    "initial_exists": [],
+    "memoryA_preserved": [
+      "propext",
+      "Quot.sound"
+    ],
+    "memoryB_preserved": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  "claim": "imported transition, initialized-state existence, input-RAM preservation and concrete RTL/Lean correspondence",
+  "clock_check": {
+    "clock": "clock",
+    "memory_cells": 2,
+    "register_cells": 451
+  },
+  "design": "baseline",
+  "elapsed_seconds": 15.40229396900395,
+  "initialization": "Known bits from Yosys JSON; unknown bits remain caller-supplied. SMT initial assertions discarded.",
+  "nodes": 6318,
+  "runs": [
+    {
+      "command": [
+        "yosys",
+        "-Q",
+        "-T",
+        "-m",
+        "slang",
+        "-s",
+        "/home/roland/moonshot1/experiments/task2-equivalence/build/hardware/baseline/frontend.ys"
+      ],
+      "elapsed_seconds": 0.3446434020297602,
+      "log": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/build/hardware/baseline/frontend.log",
+        "sha256": "75716cf63b06622a0ab960ddea900ca95480b96464bef50e14a8154e17cb181b"
+      },
+      "memory_measurement": "Linux wait4 ru_maxrss, maximum process RSS; not simultaneous tree sum",
+      "peak_rss_kib": 74180,
+      "returncode": 0,
+      "status": "prepared"
+    },
+    {
+      "command": [
+        "yosys",
+        "-Q",
+        "-T",
+        "-s",
+        "/home/roland/moonshot1/experiments/task2-equivalence/build/hardware/baseline/normalize.ys"
+      ],
+      "elapsed_seconds": 0.1926348140113987,
+      "log": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/build/hardware/baseline/normalize.log",
+        "sha256": "ba901847b93aa290ebf928ef27db11911bcf05d80e9739a22e96074a0e41ef18"
+      },
+      "memory_measurement": "Linux wait4 ru_maxrss, maximum process RSS; not simultaneous tree sum",
+      "peak_rss_kib": 52936,
+      "returncode": 0,
+      "status": "prepared"
+    },
+    {
+      "command": [
+        "lean",
+        "-o",
+        "/home/roland/moonshot1/experiments/task2-equivalence/.lake/build/lib/lean/Task2/Trace.olean",
+        "Task2/Trace.lean"
+      ],
+      "elapsed_seconds": 0.658890639024321,
+      "log": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/build/hardware/baseline/Trace.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "memory_measurement": "Linux wait4 ru_maxrss, maximum process RSS; not simultaneous tree sum",
+      "peak_rss_kib": 1678748,
+      "returncode": 0,
+      "status": "prepared"
+    },
+    {
+      "command": [
+        "lean",
+        "--root=/home/roland/moonshot1/experiments/task2-equivalence/build/generated",
+        "-o",
+        "/home/roland/moonshot1/experiments/task2-equivalence/.lake/build/lib/lean/Task2/Imported/BaselineCore.olean",
+        "/home/roland/moonshot1/experiments/task2-equivalence/build/generated/Task2/Imported/BaselineCore.lean"
+      ],
+      "elapsed_seconds": 9.565436583012342,
+      "log": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/build/hardware/baseline/BaselineCore.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "memory_measurement": "Linux wait4 ru_maxrss, maximum process RSS; not simultaneous tree sum",
+      "peak_rss_kib": 2049472,
+      "returncode": 0,
+      "status": "prepared"
+    },
+    {
+      "command": [
+        "lean",
+        "--root=/home/roland/moonshot1/experiments/task2-equivalence/build/generated",
+        "-o",
+        "/home/roland/moonshot1/experiments/task2-equivalence/.lake/build/lib/lean/Task2/Imported/BaselineAdapter.olean",
+        "/home/roland/moonshot1/experiments/task2-equivalence/build/generated/Task2/Imported/BaselineAdapter.lean"
+      ],
+      "elapsed_seconds": 0.6931240709964186,
+      "log": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/build/hardware/baseline/BaselineAdapter.log",
+        "sha256": "7b76d86f6dfcf116b1ef0f90d86ad8684addd05d09e3dfa97cb797de82e1b1e7"
+      },
+      "memory_measurement": "Linux wait4 ru_maxrss, maximum process RSS; not simultaneous tree sum",
+      "peak_rss_kib": 1694836,
+      "returncode": 0,
+      "status": "prepared"
+    },
+    {
+      "command": [
+        "lean",
+        "--run",
+        "Task2/HardwareControls.lean",
+        "/home/roland/moonshot1/experiments/task2-equivalence/build/reference/word-controls.json",
+        "/home/roland/moonshot1/experiments/task2-equivalence/build/hardware/baseline/controls/lean-traces.json"
+      ],
+      "elapsed_seconds": 3.1892326700035483,
+      "log": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/build/hardware/baseline/controls/lean.log",
+        "sha256": "c7852730353bf153a9d091a26c43a6d463e99a57c886a5bb39de042c6f0ff6b4"
+      },
+      "memory_measurement": "Linux wait4 ru_maxrss, maximum process RSS; not simultaneous tree sum",
+      "peak_rss_kib": 1663520,
+      "returncode": 0,
+      "status": "prepared"
+    },
+    {
+      "command": [
+        "/nix/store/7mil9l34vfbvmh0cm6wvbdapwv77bz9v-verilator-5.022/bin/verilator",
+        "--binary",
+        "--timing",
+        "--language",
+        "1800-2017",
+        "-Wno-fatal",
+        "-top",
+        "tb_control",
+        "-Mdir",
+        "/home/roland/moonshot1/experiments/task2-equivalence/build/hardware/baseline/controls/obj_dir",
+        "-o",
+        "sim_control",
+        "-f",
+        "/nix/store/3i2xv5f7qx512h5psdjb87y9nsc94sla-matmul-sv/sources.f",
+        "/home/roland/moonshot1/experiments/task2-equivalence/scripts/control_tb.sv"
+      ],
+      "elapsed_seconds": 0.0940797469811514,
+      "log": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/build/hardware/baseline/controls/verilator-build.log",
+        "sha256": "90078474e31ace47d623b81c4309233478e2b994a1a322f3a76605b3df53bc65"
+      },
+      "memory_measurement": "Linux wait4 ru_maxrss, maximum process RSS; not simultaneous tree sum",
+      "peak_rss_kib": 128964,
+      "returncode": 0,
+      "status": "prepared"
+    },
+    {
+      "command": [
+        "/home/roland/moonshot1/experiments/task2-equivalence/build/hardware/baseline/controls/obj_dir/sim_control",
+        "+A=/home/roland/moonshot1/experiments/task2-equivalence/build/hardware/baseline/controls/case-0-a.hex",
+        "+B=/home/roland/moonshot1/experiments/task2-equivalence/build/hardware/baseline/controls/case-0-b.hex",
+        "+EXPECTED=00000000",
+        "+TRACE=/home/roland/moonshot1/experiments/task2-equivalence/build/hardware/baseline/controls/case-0-rtl.csv"
+      ],
+      "elapsed_seconds": 0.011149441997986287,
+      "log": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/build/hardware/baseline/controls/case-0-rtl.log",
+        "sha256": "2cb751601b6dd5e09575b9ddc96fcc4b10cd3c7336229aa31043b393aeb3764d"
+      },
+      "memory_measurement": "Linux wait4 ru_maxrss, maximum process RSS; not simultaneous tree sum",
+      "peak_rss_kib": 128964,
+      "returncode": 0,
+      "status": "prepared"
+    },
+    {
+      "command": [
+        "/home/roland/moonshot1/experiments/task2-equivalence/build/hardware/baseline/controls/obj_dir/sim_control",
+        "+A=/home/roland/moonshot1/experiments/task2-equivalence/build/hardware/baseline/controls/case-1-a.hex",
+        "+B=/home/roland/moonshot1/experiments/task2-equivalence/build/hardware/baseline/controls/case-1-b.hex",
+        "+EXPECTED=fffffffa",
+        "+TRACE=/home/roland/moonshot1/experiments/task2-equivalence/build/hardware/baseline/controls/case-1-rtl.csv"
+      ],
+      "elapsed_seconds": 0.011035414994694293,
+      "log": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/build/hardware/baseline/controls/case-1-rtl.log",
+        "sha256": "4eb53fb23edd2c1f9665b917c76e8c8cfd9cdf402e3e6d3c0078af06c15572e8"
+      },
+      "memory_measurement": "Linux wait4 ru_maxrss, maximum process RSS; not simultaneous tree sum",
+      "peak_rss_kib": 128964,
+      "returncode": 0,
+      "status": "prepared"
+    },
+    {
+      "command": [
+        "/home/roland/moonshot1/experiments/task2-equivalence/build/hardware/baseline/controls/obj_dir/sim_control",
+        "+A=/home/roland/moonshot1/experiments/task2-equivalence/build/hardware/baseline/controls/case-2-a.hex",
+        "+B=/home/roland/moonshot1/experiments/task2-equivalence/build/hardware/baseline/controls/case-2-b.hex",
+        "+EXPECTED=80000000",
+        "+TRACE=/home/roland/moonshot1/experiments/task2-equivalence/build/hardware/baseline/controls/case-2-rtl.csv"
+      ],
+      "elapsed_seconds": 0.01080337300663814,
+      "log": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/build/hardware/baseline/controls/case-2-rtl.log",
+        "sha256": "f709255e3f8e93261d45bca35e10b44692faa72a747f31243ff30f6a6148c2d2"
+      },
+      "memory_measurement": "Linux wait4 ru_maxrss, maximum process RSS; not simultaneous tree sum",
+      "peak_rss_kib": 128964,
+      "returncode": 0,
+      "status": "prepared"
+    },
+    {
+      "command": [
+        "/home/roland/moonshot1/experiments/task2-equivalence/build/hardware/baseline/controls/obj_dir/sim_control",
+        "+A=/home/roland/moonshot1/experiments/task2-equivalence/build/hardware/baseline/controls/case-3-a.hex",
+        "+B=/home/roland/moonshot1/experiments/task2-equivalence/build/hardware/baseline/controls/case-3-b.hex",
+        "+EXPECTED=fffffffe",
+        "+TRACE=/home/roland/moonshot1/experiments/task2-equivalence/build/hardware/baseline/controls/case-3-rtl.csv"
+      ],
+      "elapsed_seconds": 0.01079937897156924,
+      "log": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/build/hardware/baseline/controls/case-3-rtl.log",
+        "sha256": "9204b90bdfd1c0c28c8e5f15541ad6c6574e8b86f0be32e02e8a86d6f054022b"
+      },
+      "memory_measurement": "Linux wait4 ru_maxrss, maximum process RSS; not simultaneous tree sum",
+      "peak_rss_kib": 128964,
+      "returncode": 0,
+      "status": "prepared"
+    },
+    {
+      "command": [
+        "/home/roland/moonshot1/experiments/task2-equivalence/build/hardware/baseline/controls/obj_dir/sim_control",
+        "+A=/home/roland/moonshot1/experiments/task2-equivalence/build/hardware/baseline/controls/case-4-a.hex",
+        "+B=/home/roland/moonshot1/experiments/task2-equivalence/build/hardware/baseline/controls/case-4-b.hex",
+        "+EXPECTED=80000000",
+        "+TRACE=/home/roland/moonshot1/experiments/task2-equivalence/build/hardware/baseline/controls/case-4-rtl.csv"
+      ],
+      "elapsed_seconds": 0.010904850030783564,
+      "log": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/build/hardware/baseline/controls/case-4-rtl.log",
+        "sha256": "f709255e3f8e93261d45bca35e10b44692faa72a747f31243ff30f6a6148c2d2"
+      },
+      "memory_measurement": "Linux wait4 ru_maxrss, maximum process RSS; not simultaneous tree sum",
+      "peak_rss_kib": 128964,
+      "returncode": 0,
+      "status": "prepared"
+    },
+    {
+      "command": [
+        "/home/roland/moonshot1/experiments/task2-equivalence/build/hardware/baseline/controls/obj_dir/sim_control",
+        "+A=/home/roland/moonshot1/experiments/task2-equivalence/build/hardware/baseline/controls/case-5-a.hex",
+        "+B=/home/roland/moonshot1/experiments/task2-equivalence/build/hardware/baseline/controls/case-5-b.hex",
+        "+EXPECTED=00000000",
+        "+TRACE=/home/roland/moonshot1/experiments/task2-equivalence/build/hardware/baseline/controls/case-5-rtl.csv"
+      ],
+      "elapsed_seconds": 0.01089443196542561,
+      "log": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/build/hardware/baseline/controls/case-5-rtl.log",
+        "sha256": "2cb751601b6dd5e09575b9ddc96fcc4b10cd3c7336229aa31043b393aeb3764d"
+      },
+      "memory_measurement": "Linux wait4 ru_maxrss, maximum process RSS; not simultaneous tree sum",
+      "peak_rss_kib": 128964,
+      "returncode": 0,
+      "status": "prepared"
+    },
+    {
+      "command": [
+        "/home/roland/moonshot1/experiments/task2-equivalence/build/hardware/baseline/controls/obj_dir/sim_control",
+        "+A=/home/roland/moonshot1/experiments/task2-equivalence/build/hardware/baseline/controls/case-6-a.hex",
+        "+B=/home/roland/moonshot1/experiments/task2-equivalence/build/hardware/baseline/controls/case-6-b.hex",
+        "+EXPECTED=00000330",
+        "+TRACE=/home/roland/moonshot1/experiments/task2-equivalence/build/hardware/baseline/controls/case-6-rtl.csv"
+      ],
+      "elapsed_seconds": 0.010907393007073551,
+      "log": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/build/hardware/baseline/controls/case-6-rtl.log",
+        "sha256": "8e69cf64b54c46642fab966219fcf743d517e7fc12302e1d65affe8811441504"
+      },
+      "memory_measurement": "Linux wait4 ru_maxrss, maximum process RSS; not simultaneous tree sum",
+      "peak_rss_kib": 128964,
+      "returncode": 0,
+      "status": "prepared"
+    }
+  ],
+  "scope": "concrete controls plus universal initialization/RAM lemmas; no universal result-equivalence or completion proof yet",
+  "state_fields": 453,
+  "status": "passed_control",
+  "trace_controls": [
+    {
+      "case": 0,
+      "cycle": 435,
+      "edges": 436,
+      "rtl_trace": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/build/hardware/baseline/controls/case-0-rtl.csv",
+        "sha256": "9bbaef47e87ab0945edf65ad563b73c0ad0930d0e4a29f58a9e622615f1c304b"
+      },
+      "word": 0
+    },
+    {
+      "case": 1,
+      "cycle": 435,
+      "edges": 436,
+      "rtl_trace": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/build/hardware/baseline/controls/case-1-rtl.csv",
+        "sha256": "ef7f2a9f9d2efcc03909dc6070c3b5c4785d29329f91e5d5b0dc663eec40b073"
+      },
+      "word": 4294967290
+    },
+    {
+      "case": 2,
+      "cycle": 435,
+      "edges": 436,
+      "rtl_trace": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/build/hardware/baseline/controls/case-2-rtl.csv",
+        "sha256": "4c6a9ae0e3dfc665e70646bdeb196858306cfef01e5c072a2ed0a0a4d72c21a8"
+      },
+      "word": 2147483648
+    },
+    {
+      "case": 3,
+      "cycle": 435,
+      "edges": 436,
+      "rtl_trace": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/build/hardware/baseline/controls/case-3-rtl.csv",
+        "sha256": "9ebeb5445f7f171489d939078708ed2818925478948eaa03c68c39874d92181e"
+      },
+      "word": 4294967294
+    },
+    {
+      "case": 4,
+      "cycle": 435,
+      "edges": 436,
+      "rtl_trace": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/build/hardware/baseline/controls/case-4-rtl.csv",
+        "sha256": "a89d39e749d2ee2a1a4d8901d54efb90403626a6905f86492a2fdb4f26cb04bc"
+      },
+      "word": 2147483648
+    },
+    {
+      "case": 5,
+      "cycle": 435,
+      "edges": 436,
+      "rtl_trace": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/build/hardware/baseline/controls/case-5-rtl.csv",
+        "sha256": "04be06a4a765dbf16cf5f8f11594227146d2fa147cc080d47f5660a240404a68"
+      },
+      "word": 0
+    },
+    {
+      "case": 6,
+      "cycle": 435,
+      "edges": 436,
+      "rtl_trace": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/build/hardware/baseline/controls/case-6-rtl.csv",
+        "sha256": "0cdcf28259fee8da8a12bc11ae72471e8009562d0f13bb399af1da003f942459"
+      },
+      "word": 816
+    }
+  ],
+  "yosys_version": "Yosys 0.66 (git sha1 7f8fdfd8d7bc08c749a2a969388d3425d4f369d5, clang++ 18.1.8 -fPIC -O3)"
+}

@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "interface": {
+    "inputs": [{"shape": [16], "dtype": "int32"}, {"shape": [16], "dtype": "int32"}],
+    "output": {"shape": [], "dtype": "int32"}
+  },
+  "arithmetic": "multiply and add modulo 2^32",
+  "protocol": {
+    "transactions": 1,
+    "reset_rising_edges": 4,
+    "start": "hold in3_valid until accepted",
+    "constants": {"out0_ready": 1, "in2_st0_ready": 1, "in2_st0_done_valid": 0},
+    "observation": "first accepted in2_st0_valid payload"
+  },
+  "transformation": "opt -full",
+  "benchmark": {"warm_repeats": 3, "timeout_seconds": 600},
+  "trust_boundary": ["PyTorch capture and operator correspondence", "RTL elaboration and Yosys normalization", "source and hardware importers"]
+}

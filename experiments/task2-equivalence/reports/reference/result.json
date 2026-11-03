@@ -1,0 +1,182 @@
+{
+  "artifacts": {
+    "adapter": {
+      "path": "/nix/store/98140mkm7lga3c3d64j0lrgppr8rlh08-matmul_adapter.py",
+      "sha256": "211210375fec8a9d55bf1c7411ea89dae1a0d96938893890df53613b448d7066"
+    },
+    "baseline": {
+      "derivation": "/nix/store/40j1gz76j98zvi3g6wdia95vcayin2di-matmul-sv.drv",
+      "path": "/nix/store/3i2xv5f7qx512h5psdjb87y9nsc94sla-matmul-sv",
+      "sha256": "bbfc0d3f780cfa2070bfe27477dac30e20dbf510be8ed667db21d8922c6eb10c"
+    },
+    "capture_bridge": {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/build/reference/torchlean-adapter.py",
+      "sha256": "0b8ca3cc8d882a92de05ed1dc750ecbd6ef46d2497821aee3039aba1074d4565"
+    },
+    "capture_importer": {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/scripts/import_reference.py",
+      "sha256": "09a7d51a85e413d1711ea56ebe5e3694cbf97e33f4b4f6b237f2df071fbebb11"
+    },
+    "contract": {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/contract.json",
+      "sha256": "ed67805c4c13a3be76f4ee668ae04a77142db4ed1e2c716f801e09f2290ac2c2"
+    },
+    "derivation_graph": {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/build/existing-derivations.json",
+      "sha256": "dee537899bdbb8b8db7df92d2d50d5449f3af6b87d4258b393af7f90952a513f"
+    },
+    "imported_source": {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/build/generated/Task2/Imported/Source.lean",
+      "sha256": "70018a40484c95f8851d2e0315c5d0e59f5c010028052eb1a53eace540d16ac1"
+    },
+    "lake_manifest": {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/lake-manifest.json",
+      "sha256": "1d5aa9d52e7a4d49c7dd06a3042615510a74203b265c8074920d8b1b9d1d4da4"
+    },
+    "model": {
+      "path": "/nix/store/4y5zfb4z4cbmkym10w8wh92fj9skz6cj-matmul.py",
+      "sha256": "4b1761405f245b8bcd7d02dd31bfab5e5417c6b6f73d874b2702f9bb1b6452ca"
+    },
+    "reference_graph": {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/build/reference/reference.json",
+      "sha256": "d53ea72ee543ff09ba5c75f5b5913495914f4ca4d4196d5590fd5d3e0c7f7ad6"
+    },
+    "simulation": {
+      "derivation": "/nix/store/jbk5yj2r5577099iwc1hv8yiiqj05c39-matmul-sv-sim.json.drv",
+      "path": "/nix/store/bk0q62h1634gjrkadfha5nc928qq0791-matmul-sv-sim.json",
+      "sha256": "e39b9fb61a059eeb4385f772a2f8fc3014023a454310a285d3e838f860d3e7a8"
+    },
+    "source_semantics": {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/Task2/Source.lean",
+      "sha256": "f5db0591801471d895068597507419f5be0dc19c7a2220e1ee079cba664832d6"
+    },
+    "torch": {
+      "derivation": "/nix/store/4qrznn7yq3777k2mj55sr56lismpbzpd-matmul-torch.mlir.drv",
+      "path": "/nix/store/vvr48vzr72ypai7j5qpsmpxf4vpqjmj6-matmul-torch.mlir",
+      "sha256": "2751c02345ff5007293bf08fb2d193708a81ce43ec5f602edc24d5a6b310cdaf"
+    },
+    "word_controls": {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/build/reference/word-controls.json",
+      "sha256": "6bcc8602362fb777771c63bad7b44d5b81a7f0b104273054f83cb3a9a7ed1b87"
+    },
+    "word_semantics": {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/Task2/WordDot.lean",
+      "sha256": "d434061519bcd4a87e8ede405d03dac86b611bc7c4c577c1e1c9d684dcbbc3ce"
+    }
+  },
+  "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "claim": "Task2.source_agrees for every pair of Words",
+  "elapsed_seconds": 39.57895697600907,
+  "hardware_manifest_attached": true,
+  "lean_version": "Lean (version 4.35.0, x86_64-unknown-linux-gnu, commit eb6cafb7290e8bd5f2937522d8d804f58f02bafc, Release)",
+  "runs": [
+    {
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--run",
+        "scripts/EmitAdapter.lean",
+        "/home/roland/moonshot1/experiments/task2-equivalence/build/reference/torchlean-adapter.py"
+      ],
+      "elapsed_seconds": 4.343663429026492,
+      "log": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/build/reference/emit.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "memory_measurement": "Linux wait4 ru_maxrss, maximum process RSS; not simultaneous tree sum",
+      "peak_rss_kib": 3044692,
+      "returncode": 0,
+      "status": "prepared"
+    },
+    {
+      "command": [
+        "/nix/store/9x5b65vzxmd1bs3jf9xxwf8n6iyk1ypk-python3-3.11.14-env/bin/python3",
+        "scripts/import_reference.py",
+        "--manifest",
+        "/home/roland/moonshot1/experiments/task2-equivalence/build/manifest.json",
+        "--adapter-script",
+        "/home/roland/moonshot1/experiments/task2-equivalence/build/reference/torchlean-adapter.py",
+        "--out",
+        "/home/roland/moonshot1/experiments/task2-equivalence/build/reference"
+      ],
+      "elapsed_seconds": 2.4680490359896794,
+      "log": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/build/reference/capture.log",
+        "sha256": "a6d2f2ddda74b00905f62184bf81e33f29fffc2515dbe57770c9fec3c08b1e82"
+      },
+      "memory_measurement": "Linux wait4 ru_maxrss, maximum process RSS; not simultaneous tree sum",
+      "peak_rss_kib": 521164,
+      "returncode": 0,
+      "status": "prepared"
+    },
+    {
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--run",
+        "scripts/ProbeUpstream.lean",
+        "/home/roland/moonshot1/experiments/task2-equivalence/build/reference/reference.json",
+        "/home/roland/moonshot1/experiments/task2-equivalence/build/reference/word-controls.json"
+      ],
+      "elapsed_seconds": 4.630481086031068,
+      "log": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/build/reference/upstream.log",
+        "sha256": "399d922ff4976ea6beb722afc916a7a824b08000fd2cddaac44da2189f70f518"
+      },
+      "memory_measurement": "Linux wait4 ru_maxrss, maximum process RSS; not simultaneous tree sum",
+      "peak_rss_kib": 3859416,
+      "returncode": 1,
+      "status": "failed"
+    },
+    {
+      "command": [
+        "lake",
+        "build",
+        "Task2.Source",
+        "Task2.Hardware"
+      ],
+      "elapsed_seconds": 23.108362385013606,
+      "log": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/build/reference/proof.log",
+        "sha256": "91927cfae87ff07c6749d33b1831bf9537deeb861388615ec65d6cba99ac7b23"
+      },
+      "memory_measurement": "Linux wait4 ru_maxrss, maximum process RSS; not simultaneous tree sum",
+      "peak_rss_kib": 1852672,
+      "returncode": 0,
+      "status": "prepared"
+    },
+    {
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--run",
+        "Task2/ReferenceControls.lean",
+        "/home/roland/moonshot1/experiments/task2-equivalence/build/reference/reference.json",
+        "/home/roland/moonshot1/experiments/task2-equivalence/build/reference/word-controls.json"
+      ],
+      "elapsed_seconds": 4.9810988460085355,
+      "log": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/build/reference/controls.log",
+        "sha256": "93715589309936cbea42dd01dad58da7f67dbceba4d95daf33b9e016be5fdae2"
+      },
+      "memory_measurement": "Linux wait4 ru_maxrss, maximum process RSS; not simultaneous tree sum",
+      "peak_rss_kib": 3863084,
+      "returncode": 0,
+      "status": "prepared"
+    }
+  ],
+  "scope": "source semantics only; no RTL equivalence or completion claim",
+  "status": "proved",
+  "trust_boundary": [
+    "PyTorch capture and operator correspondence",
+    "RTL elaboration and Yosys normalization",
+    "source and hardware importers"
+  ]
+}

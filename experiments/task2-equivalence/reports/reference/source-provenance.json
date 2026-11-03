@@ -1,0 +1,18 @@
+{
+  "artifacts": {
+    "adapter": {
+      "path": "/nix/store/98140mkm7lga3c3d64j0lrgppr8rlh08-matmul_adapter.py",
+      "sha256": "211210375fec8a9d55bf1c7411ea89dae1a0d96938893890df53613b448d7066"
+    },
+    "model": {
+      "path": "/nix/store/4y5zfb4z4cbmkym10w8wh92fj9skz6cj-matmul.py",
+      "sha256": "4b1761405f245b8bcd7d02dd31bfab5e5417c6b6f73d874b2702f9bb1b6452ca"
+    },
+    "torch": {
+      "path": "/nix/store/vvr48vzr72ypai7j5qpsmpxf4vpqjmj6-matmul-torch.mlir",
+      "sha256": "2751c02345ff5007293bf08fb2d193708a81ce43ec5f602edc24d5a6b310cdaf"
+    }
+  },
+  "python_environment": "/nix/store/9x5b65vzxmd1bs3jf9xxwf8n6iyk1ypk-python3-3.11.14-env",
+  "source_build_command": "set -euo pipefail\nexport MATMUL_PY=\"/nix/store/4y5zfb4z4cbmkym10w8wh92fj9skz6cj-matmul.py\"\nexport PYTHONPATH=\"/nix/store/c8r0p6zqs6zx8v9g3r1nyqnfng9wrjkj-src:/nix/store/xdg6wamlx9sbvccg7xvd1pndpvbqz3vf-sim:/nix/store/swlkp7wlw75vv2i3l2f1dh8phnd33jqv-torch-mlir-0-unstable-2026-02-12/lib/python3.11/site-packages:/nix/store/swlkp7wlw75vv2i3l2f1dh8phnd33jqv-torch-mlir-0-unstable-2026-02-12/lib/python3.11/site-packages/torch_mlir:${PYTHONPATH:-}\"\npython /nix/store/1zrlpxc1yq8ii2i7fjz44xg5f1vjqhwp-compile-pytorch.py \\\n  --adapter /nix/store/98140mkm7lga3c3d64j0lrgppr8rlh08-matmul_adapter.py \\\n  --out \"$out\" >/dev/null\n\n"
+}

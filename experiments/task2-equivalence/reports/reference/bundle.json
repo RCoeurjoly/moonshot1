@@ -1,0 +1,30 @@
+{
+  "scope": "source semantics only; no RTL equivalence or completion claim",
+  "artifacts": {
+    "capture_bridge": {
+      "file": "capture_bridge-torchlean-adapter.py.gz",
+      "encoding": "gzip",
+      "sha256": "0b8ca3cc8d882a92de05ed1dc750ecbd6ef46d2497821aee3039aba1074d4565"
+    },
+    "derivation_graph": {
+      "file": "derivation_graph-existing-derivations.json.gz",
+      "encoding": "gzip",
+      "sha256": "dee537899bdbb8b8db7df92d2d50d5449f3af6b87d4258b393af7f90952a513f"
+    },
+    "imported_source": {
+      "file": "imported_source-Source.lean",
+      "encoding": "identity",
+      "sha256": "70018a40484c95f8851d2e0315c5d0e59f5c010028052eb1a53eace540d16ac1"
+    },
+    "reference_graph": {
+      "file": "reference_graph-reference.json",
+      "encoding": "identity",
+      "sha256": "d53ea72ee543ff09ba5c75f5b5913495914f4ca4d4196d5590fd5d3e0c7f7ad6"
+    },
+    "word_controls": {
+      "file": "word_controls-word-controls.json",
+      "encoding": "identity",
+      "sha256": "6bcc8602362fb777771c63bad7b44d5b81a7f0b104273054f83cb3a9a7ed1b87"
+    }
+  }
+}

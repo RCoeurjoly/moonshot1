@@ -1,0 +1,12 @@
+read_slang --top main --no-proc --no-synthesis-define --no-default-translate-off-format -f /nix/store/3i2xv5f7qx512h5psdjb87y9nsc94sla-matmul-sv/sources.f
+hierarchy -check -top main
+proc -noopt
+flatten
+opt_clean
+memory_collect
+memory_map t:$mem_v2 r:SIZE=1 %i
+select *
+opt_clean
+check -assert
+write_rtlil /home/roland/moonshot1/experiments/task2-equivalence/build/hardware/baseline/canonical.il
+write_json /home/roland/moonshot1/experiments/task2-equivalence/build/hardware/baseline/canonical.json

@@ -1,0 +1,24 @@
+{
+  "lean": {
+    "version": "4.35.0",
+    "archive_url": "https://github.com/leanprover/lean4/releases/download/v4.35.0/lean-4.35.0-linux.tar.zst",
+    "archive_sha256": "7289597a44543246c9227b8cae501767e095ce17f6d448b95fc4a8dc97268f6d",
+    "unpacked_nar_hash": "sha256-MPu+/p9dJgSEA0qHocgrdAv1TSMDSJ7gHPjrF9H3VlI="
+  },
+  "torchlean": {
+    "url": "https://github.com/lean-dojo/TorchLean",
+    "revision": "f37cbc5aca8e79943b0ef0e3d3499ca9719d7c2b"
+  },
+  "verification_yosys": {
+    "version": "0.66",
+    "package": "/nix/store/0j9h5572kfzlqpbds1y9dja1p159ihfk-yosys-with-plugins-0.66",
+    "derivation": "/nix/store/xv6yi2s76r2ny3akjavn7rh6dq5v0f0n-yosys-with-plugins-0.66.drv",
+    "slang_source_revision": "35de04061a71c6260f5879ae13855937baad58e1",
+    "role": "verification frontend; original Task 2 compiler/RTL unchanged",
+    "portability": "retain the existing Nix tool closure when moving hosts"
+  },
+  "hardware_importer": {
+    "url": "https://github.com/ErosSph/xiangshan2Lean",
+    "revision": "a1299b564831e571b9b80f816219ae06c91db342"
+  }
+}

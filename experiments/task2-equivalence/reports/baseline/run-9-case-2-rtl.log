@@ -1,0 +1,2 @@
+PASS control expected=80000000 got=80000000 edge=435
+- /home/roland/moonshot1/experiments/task2-equivalence/scripts/control_tb.sv:50: Verilog $finish

@@ -1,0 +1,581 @@
+#+title: Neural networks, PyTorch, Lean, and accelerator correctness: arXiv survey
+#+date: 2026-11-03
+#+startup: overview
+#+options: toc:2
+
+* Scope and principal finding
+
+This targeted survey contains 35 arXiv papers, plus separately labeled
+non-arXiv publications and software resources. The cutoff is 2026-11-03.
+The target application is the frozen quantized PyTorch model in
+/home/roland/clean-LLM2FPGA and its generated memory-backed FPGA RTL.
+
+The closest general-purpose Lean model framework found is
+[[https://arxiv.org/abs/2602.22631][TorchLean]]. The closest Lean PyTorch-to-implementation
+precedents are [[https://arxiv.org/abs/2610.24548][the TorchLean/Velvet CUDA paper]] and
+[[https://arxiv.org/abs/2611.02028][LARK]]. The latter was submitted on 2026-11-01.
+No inspected paper establishes this project's entire frozen quantized
+PyTorch-to-RTL result, including source correspondence, exact numerical
+behavior, initialized memory, protocol and eventual completion.
+
+This is a literature assessment, not a reproduction of the papers'
+builds or proofs. Priority labels and proposed applications are our
+assessment. Reported guarantees are scoped to the authors' models and
+stated assumptions; they are not independent certification of the tools.
+
+* Search and screening method
+
+Search used arXiv-focused keyword combinations, exact-title checks,
+and backward citation searches from the closest papers. Query families
+included:
+
+- Lean / Lean 4 + neural network(s) + formalization / formalisation.
+- Lean + PyTorch / ONNX + verification / equivalence.
+- TorchLean, FloatLib, FLoPS, SciLean.
+- PyTorch-to-CUDA proofs, GPU-kernel equivalence, floating-point behavior.
+- Quantized networks, proof production, certified neural proof checkers.
+- Lean-MLIR, tensor compiler verification, hardware refinement and RTL import.
+
+Generic neural theorem-prover training papers were mostly excluded:
+using a neural network to prove mathematics is different from formalizing
+the computation performed by a neural network. RLMEval is retained for
+evaluation methodology. Quantum-network and approximation-theory entries
+are low-priority breadth items.
+
+Inclusion required an identifiable arXiv record and a relevant
+contribution. High-priority entries received targeted full-text review,
+especially numerical models and trust/limitation sections. The read-scope
+field records lighter screening where applicable. References and primary
+project documentation supplied related publications absent from arXiv.
+This is a targeted survey rather than an exhaustive bibliometric census.
+
+The inspected arXiv version is recorded for each paper. Versions matter:
+TorchLean v2, Hopfield/Boltzmann v2, CktFormalizer v4 and other revisions
+have different scope or qualifications from early summaries. Dates below
+are first arXiv submissions, with the inspected revision date separately.
+
+* Recommended reading order
+
+1. [[https://arxiv.org/abs/2602.22631][TorchLean]] — reference graph and operator semantics.
+2. [[https://arxiv.org/abs/2609.19352][FloatLib]] — encoded numerical operations and refinement.
+3. [[https://arxiv.org/abs/2610.24548][Lean/VerCors kernel verification]] — concrete PyTorch/loop proof path.
+4. [[https://arxiv.org/abs/2611.02028][LARK]] — checked decomposition and certificate structure.
+5. [[https://arxiv.org/abs/2609.30651][BOLT]] — tensor indices versus accelerator loops/buffers.
+6. [[https://arxiv.org/abs/2608.05451][Wavelet]] — memory ordering, scheduling and completion assumptions.
+7. [[https://arxiv.org/abs/2407.03685][Lean-MLIR]] and [[https://arxiv.org/abs/2609.19583][Trivet]] — reusable rewrite and validation infrastructure.
+8. [[https://arxiv.org/abs/2312.12679][EQV]] and [[https://arxiv.org/abs/2012.08185][bitvector QNN verification]] — quantized operator/encoding contracts.
+9. [[https://arxiv.org/abs/2405.10611][the certified Imandra checker]] — small checker, untrusted producer.
+10. [[https://arxiv.org/abs/2607.16855][Rtl2lean]] and [[https://arxiv.org/abs/2607.27259][CircuitProver]] — frontend comparison and proof reuse.
+
+The non-arXiv bv_decide and ATL publications below belong near the top of
+an implementation reading list despite not having verified arXiv IDs here.
+
+* How the results map to the project's proof obligations
+
+| Obligation | Most useful papers | Remaining project work |
+|------------+--------------------+------------------------|
+| Frozen model -> typed graph | TorchLean; Coq converter supplement | Establish source/operator correspondence and actual graph coverage. |
+| Numerical equality or error | FloatLib; FLoPS; tensor-core behavior; Murray | Match backend arithmetic, rounding, casts, qparameters and transcendental implementations. |
+| Tensor -> loops/layout | BOLT; ATL supplement; Tenspiler | Prove concrete address/layout and accumulation invariants. |
+| Loops -> concurrent/stateful machine | Wavelet; Graphiti/lean-star supplements | Relate memory, controller, reset, accepted transactions and completion. |
+| Existing RTL -> Lean model | Rtl2lean; existing Yosys route | Close or disclose translation correctness and supported hardware semantics. |
+| Repeated proof construction | LARK; Trivet; CircuitProver | Keep statements fixed, reuse lemmas, check the exact final artifacts. |
+| Solver evidence -> trusted result | Lean-SMT; certified Imandra checker; bv_decide | Check certificates and justify the encoding, with an explicit trusted base. |
+
+These are compositional research leads, not interoperable components
+already built together.
+
+* Distinctions that materially change the claim
+
+- A robustness or safety theorem concerns a network property. An
+  equivalence theorem relates two implementations. The former does not
+  establish the latter.
+- Equality over real numbers does not establish equality of Float32
+  operations. Reassociation, rounding, fusion, overflow, saturation and
+  exceptional values must be represented in the actual contract.
+- A theorem about an imported graph or transition function needs a
+  correspondence argument to the source artifact. A deterministic
+  importer is not thereby a verified importer.
+- Source-level HDL proofs and successful synthesis do not establish
+  semantic preservation by an HDL compiler.
+- A conditional error-composition theorem needs proved local bounds over
+  its stated domain. Sampled errors and matching hashes do not supply
+  those hypotheses.
+- Trace inclusion/partial correctness must be accompanied by progress or
+  termination when the result promises eventual completion.
+- A SAT/SMT certificate checker reduces trust in the external solver,
+  but its own correctness and the problem encoding remain obligations.
+  Compiled reflective checking can also trust the Lean compiler/runtime.
+
+For this project, quantization quality relative to the original checkpoint
+remains upstream of the frozen-model-to-RTL obligation. QEBVerif can guide
+that separate error contract; its arithmetic is not a drop-in definition
+of this frozen model's PyTorch numerical execution.
+
+* Annotated arXiv bibliography
+
+** Neural-network formalization
+
+*** TorchLean: Formalizing Neural Networks in Lean
+
+- Paper: [[https://arxiv.org/abs/2602.22631][arXiv:2602.22631]]. Inspected: v2; first submitted 2026-02-26; revision 2026-05-24.
+- Priority: Read first.
+- System: Lean 4.
+- Arithmetic/model: Exact and explicit finite-precision semantics.
+- Reading scope: Full text: §§2.1–2.4, Appendix B.9, D.1, G.
+
+Defines typed tensor/graph semantics, a PyTorch-style API and import/export workflows, differentiation, and certificate checking. Strongest general-purpose reference-side match. Native runtimes and external importers remain boundaries; hardware correspondence is future work. Its finite-precision model does not establish equality to every PyTorch backend. Reuse its graph semantics and operator contracts; verify coverage against the frozen artifact.
+
+*** Developing Bug-Free Machine Learning Systems With Formal Mathematics
+
+- Paper: [[https://arxiv.org/abs/1706.08605][arXiv:1706.08605]]. Inspected: v1; first submitted 2017-06-26; revision 2017-06-26.
+- Priority: Foundational.
+- System: Historical Lean.
+- Arithmetic/model: Real-valued theorem; floating execution separate.
+- Reading scope: Full text: §4, especially §§4.7–4.8.
+
+Certigrad proves unbiased stochastic gradients and validates model preconditions in Lean. A foundational example of graph-level machine-learning correctness. Section 4.8 explicitly separates its real-number proof from floating execution and optimized Eigen tensors. Reuse the methodology of stating a precise graph contract; it supplies neither a modern PyTorch importer nor bit-exact inference-to-RTL verification.
+
+*** Formalized Hopfield Networks and Boltzmann Machines
+
+- Paper: [[https://arxiv.org/abs/2512.07766][arXiv:2512.07766]]. Inspected: v2; first submitted 2025-12-08; revision 2026-09-15.
+- Priority: Background.
+- System: Lean 4.
+- Arithmetic/model: Discrete networks and real/probabilistic mathematics.
+- Reading scope: Targeted v2 introduction/contribution table; v1 related work.
+
+Formalizes deterministic and stochastic recurrent networks, convergence, Hebbian learning, and ergodicity. The updated paper distinguishes computable network components from noncomputable probability infrastructure and makes update fairness explicit. Relevant for graph/state semantics and precise convergence assumptions. It is a mathematical network formalization rather than a PyTorch importer or implementation-equivalence framework.
+
+*** BlockCert: Certified Blockwise Extraction of Transformer Mechanisms
+
+- Paper: [[https://arxiv.org/abs/2511.17645][arXiv:2511.17645]]. Inspected: v1; first submitted 2025-11-20; revision 2025-11-20.
+- Priority: Read for composition.
+- System: Lean 4 composition theorem; Python experiments.
+- Arithmetic/model: Normed-space error bounds.
+- Reading scope: Full text: §§4.4, 5, 8.
+
+Proves a conditional Lean theorem composing local block errors into a global deviation bound and experiments on transformer surrogates. Section 4.4 explicitly identifies released certificates as replayable empirical summaries. Universal local error and Lipschitz hypotheses are not established for every input of deployed LLMs. Useful for organizing approximate-refinement contracts; hashes and sampled metrics cannot replace those local proofs.
+
+** PyTorch-to-kernel verification
+
+*** Proving LLM-Generated GPU Kernels Correct and Safe: Floating-Point Verification in Lean and VerCors
+
+- Paper: [[https://arxiv.org/abs/2610.24548][arXiv:2610.24548]]. Inspected: v1; first submitted 2026-10-17; revision 2026-10-17.
+- Priority: Read first.
+- System: Lean 4 / TorchLean / Velvet; VerCors.
+- Arithmetic/model: Float32 reasoning with opaque transcendental functions.
+- Reading scope: Targeted full text: §§3–6, Table 2 caption.
+
+Closest existing TorchLean-to-implementation workflow. Imports FX specifications and restricted CUDA, reasons about Float32, and checks safety separately. Explicitly trusts SMT results and CUDA-to-Lean translation/sequentialization. Shared opaque transcendental symbols require matching implementations. Reuse its loop-proof structure and numerical counterexamples, while closing or disclosing these boundaries for RTL.
+
+*** LARK: Lean-Assisted Reasoning for LLM-Generated GPU Kernels
+
+- Paper: [[https://arxiv.org/abs/2611.02028][arXiv:2611.02028]]. Inspected: v1; first submitted 2026-11-01; revision 2026-11-01.
+- Priority: Read first.
+- System: Lean 4.
+- Arithmetic/model: Exact real arithmetic; no quantization/rounding proof.
+- Reading scope: Targeted full text: §§3–4.3.
+
+Builds kernel semantics from operator definitions, checks segmentation, and composes segment/reference equivalence proofs. Particularly relevant to scalable proof decomposition. Arithmetic excludes rounding, overflow and quantization; reference formalization and concurrency metatheory remain trust boundaries. Its unbounded memory model does not establish host-allocation bounds safety. Adopt its certificate/decomposition discipline without inheriting exact-real assumptions for a bit-exact hardware theorem.
+
+*** The Output-Space Hypothesis: Enumerative Equivalence Checking for Tensor Programs
+
+- Paper: [[https://arxiv.org/abs/2609.19611][arXiv:2609.19611]]. Inspected: v1; first submitted 2026-09-17; revision 2026-09-17.
+- Priority: Useful comparison.
+- System: Dirigo / Z3; no Lean.
+- Arithmetic/model: Bitvector integers; real-valued floating abstraction.
+- Reading scope: Targeted full text: §§3–4.6.
+
+Combines PyTorch/CUDA traces with PTX symbolic execution and enumerates output locations for equivalence checks. Helpful for scalable bug finding and concrete counterexample replay. Default evaluation equates certain approximate activations and fast-math variants. Budgeted checking may cover only some outputs. Keep fully checked outcomes separate from partial evidence; it does not establish IEEE equivalence.
+
+*** Equivalence Checking of ML GPU Kernels
+
+- Paper: [[https://arxiv.org/abs/2511.12638][arXiv:2511.12638]]. Inspected: v3; first submitted 2025-11-16; revision 2026-08-16.
+- Priority: Useful comparison.
+- System: VOLTA / Rust; Agda lemma.
+- Arithmetic/model: Real tensor elements; conversions abstracted.
+- Reading scope: Targeted full text: §§3.2–5.
+
+Symbolically executes PTX and canonicalizes expressions for structured thread blocks; supports important neural primitives. Useful precedent for checker architecture and algebraic normalization. Floating values are mathematical reals, static address/control restrictions apply, and grid decomposition changes exceed its scope. An Agda proof covers a central lemma, not the entire Rust checker. Consult this paper directly rather than relying on other papers' descriptions of VOLTA.
+
+*** ProofWright: Towards Agentic Formal Verification of CUDA
+
+- Paper: [[https://arxiv.org/abs/2511.12294][arXiv:2511.12294]]. Inspected: v2; first submitted 2025-11-15; revision 2026-03-18.
+- Priority: Useful comparison.
+- System: Rocq / MLRocq; VerCors.
+- Arithmetic/model: Primarily integer/real models.
+- Reading scope: Targeted full text: §§5–7.
+
+Early agentic PyTorch-to-CUDA workflow separating memory/thread safety from functional correctness. Functional coverage is much narrower than safety coverage, particularly for reductions. LLM-generated semantic translations and lowering remain boundaries, with some manual validation. Useful for designing a proof workflow and reporting distinct success axes; it does not provide checked bit-exact lowering.
+
+*** RESOLVE: Language-Agnostic Validation of GPU Kernels Through Testing, Reduction, and Proof
+
+- Paper: [[https://arxiv.org/abs/2610.05683][arXiv:2610.05683]]. Inspected: v1; first submitted 2026-10-05; revision 2026-10-05.
+- Priority: Useful comparison.
+- System: Kuiper / F* / Pulse.
+- Arithmetic/model: Real final specification; bitwise intermediate tests.
+- Reading scope: Targeted full text: §§3–5, Figure 4.
+
+Tests timing nondeterminism, reduces concurrency, and proves reduced programs satisfy a common specification. Especially useful for making empirical and formal links explicit. Original-to-reduced and reduced-to-proof-language correspondence are tested rather than proved; final arithmetic is idealized, without an end-to-end numerical error bound. Use its trust diagram as a reporting model, not an unconditional binary-equivalence result.
+
+** Numerical semantics
+
+*** FloatLib: Verified Floating-Point Arithmetic in Lean
+
+- Paper: [[https://arxiv.org/abs/2609.19352][arXiv:2609.19352]]. Inspected: v1; first submitted 2026-09-16; revision 2026-09-16.
+- Priority: Read first.
+- System: Lean 4.
+- Arithmetic/model: Encoded finite precision, real-rounding refinements.
+- Reading scope: Full text: §§2–3, especially §3.7.
+
+Proves executable software arithmetic equal to encoded specifications across IEEE and other formats, with rounding/error theorems. Best numerical substrate for casts, rounding, exceptional values, and arithmetic contracts. These are equations between Lean functions; machine instructions and compiled execution remain separate obligations. Unchecked native adapters are distinct. Do not assume this alone establishes equality between FPGA transcendental approximations and PyTorch library functions.
+
+*** FLoPS: Semantics, Operations, and Properties of P3109 Floating-Point Representations in Lean
+
+- Paper: [[https://arxiv.org/abs/2602.15965][arXiv:2602.15965]]. Inspected: v3; first submitted 2026-02-17; revision 2026-05-17.
+- Priority: Useful later.
+- System: Lean.
+- Arithmetic/model: Parameterized low-precision P3109.
+- Reading scope: Targeted full text: §6, related work, abstract and framework overview.
+
+Formalizes parameterized low-precision representations and rounding, then analyzes numerical algorithms including saturation and one-bit-precision corner cases. Useful when exploring alternative accelerator formats and as an independent comparison for numerical definitions. Its target is P3109 numerical semantics, not INT8 PyTorch graph import, FPGA controller behavior, or whole-model equivalence.
+
+*** Taming Bitwise Behavior in GPU Kernels with Tensor Core: Black-Box Reconstruction, Compiler Enforcement, and Static Verification
+
+- Paper: [[https://arxiv.org/abs/2609.11356][arXiv:2609.11356]]. Inspected: v1; first submitted 2026-09-10; revision 2026-09-10.
+- Priority: Read for numerical contract.
+- System: Static assembly checking; no Lean.
+- Arithmetic/model: Bitwise behavior: reduction order, precision and fusion.
+- Reading scope: Targeted full text: §§3.2.1, 6, 8.
+
+Makes reduction order, partial-sum precision, fusion, and rounding placement explicit. Useful for defining a reproducible numerical contract before comparing PyTorch with FPGA arithmetic. Tensor-core semantics are supported experimentally; static checking is relative to assembly models, with downstream PTX-to-machine-code behavior outside the checked chain. Black-box reconstruction is evidence about a library, not a formal implementation theorem.
+
+*** Lipschitz-Based Robustness Certification Under Floating-Point Execution
+
+- Paper: [[https://arxiv.org/abs/2603.13334][arXiv:2603.13334]]. Inspected: v6; first submitted 2026-03-06; revision 2026-07-19.
+- Priority: Read for approximate refinement.
+- System: Rocq / LAProof.
+- Arithmetic/model: Compositional floating-point rounding-error model.
+- Reading scope: Targeted full text v6: trust boundary, overflow and Appendix D.
+
+Mechanizes real-versus-floating-point deviation bounds, overflow-exclusion conditions, and degraded robustness margins for feedforward ReLU networks. Useful if the hardware claim permits a quantified error bound. Spectral-norm properties are axiomatic; the evaluated Python certifier is separately unverified, and the flush-to-zero extension is not mechanized. RTL arithmetic must still be shown to satisfy the assumed error model.
+
+** Quantized neural verification
+
+*** QEBVerif: Quantization Error Bound Verification of Neural Networks
+
+- Paper: [[https://arxiv.org/abs/2212.02781][arXiv:2212.02781]]. Inspected: v2; first submitted 2022-12-06; revision 2023-05-23.
+- Priority: Read for quantization error contracts.
+- System: Python / abstract interpretation / Gurobi.
+- Arithmetic/model: Real reference and integer quantized model.
+- Reading scope: Targeted full text: numerical semantics and implementation.
+
+Bounds output differences between a real-valued reference and a network with quantized weights and activations, including rounding and saturation. Useful for stating an upstream quantization-quality or approximate-refinement obligation. Analysis, numerical implementation and solver are trusted rather than proof-assistant-checked. Its real-valued reference is not bit-exact PyTorch execution. In the current project this precedes the frozen quantized-model-to-RTL boundary.
+
+*** Scalable Verification of Quantized Neural Networks (Technical Report)
+
+- Paper: [[https://arxiv.org/abs/2012.08185][arXiv:2012.08185]]. Inspected: v2; first submitted 2020-12-15; revision 2022-04-05.
+- Priority: Read for bitvector encoding.
+- System: Boolector / SAT.
+- Arithmetic/model: Bit-exact bounded fixed-point inference.
+- Reading scope: Targeted full text: encoding and optimizations.
+
+Encodes fixed-point inference as bitvector constraints and reduces solver cost through range analysis, bit allocation, and simplification. Especially useful when defining a model-versus-RTL miter that preserves shifts, rounding and saturation. Encoding and preprocessing implementations remain trusted, without a checked proof-assistant frontend. Its arithmetic recipe must be matched to the frozen graph rather than assumed equivalent to dynamic INT8 PyTorch quantization.
+
+*** Towards Efficient Verification of Quantized Neural Networks
+
+- Paper: [[https://arxiv.org/abs/2312.12679][arXiv:2312.12679]]. Inspected: v2; first submitted 2023-12-20; revision 2023-12-27.
+- Priority: Read for PyTorch quantized semantics.
+- System: EQV / Gurobi / Marabou.
+- Arithmetic/model: Integer quantization: scales, zero points, rounding, clipping.
+- Reading scope: Targeted full text: static-quantization semantics and encoding.
+
+Models PyTorch static quantization, including per-channel weights and fused layers, and verifies quantized-network properties using ILP and bound propagation. More directly PyTorch-specific than generic fixed-point encodings. It does not provide a Lean-certified importer or bit-exact implementation-equivalence theorem. Static quantization semantics must be adapted and justified for this project's runtime activation quantization.
+
+** Compiler and hardware verification
+
+*** Verifying Peephole Rewriting In SSA Compiler IRs
+
+- Paper: [[https://arxiv.org/abs/2407.03685][arXiv:2407.03685]]. Inspected: v1; first submitted 2024-07-04; revision 2024-07-04.
+- Priority: Read first.
+- System: Lean / Lean-MLIR.
+- Arithmetic/model: Dialect-defined; bitvectors, bounded loops, algebra.
+- Reading scope: Targeted full text: calculus, rewriting and limitations.
+
+Proves that verified local rewrites preserve surrounding SSA-program semantics and verifies DCE/CSE. Useful infrastructure for reusable arithmetic and graph transformations. Examples include bitvectors and bounded structured control. Complex memory effects, nontermination, and cross-IR correspondence require additional semantics; the paper does not supply a tensor-to-MemRef-to-Calyx proof.
+
+*** Let it Flow: A Formally Verified Compilation Framework for Asynchronous Dataflow
+
+- Paper: [[https://arxiv.org/abs/2608.05451][arXiv:2608.05451]]. Inspected: v1; first submitted 2026-08-05; revision 2026-08-05.
+- Priority: Read first.
+- System: Lean / Wavelet.
+- Arithmetic/model: Dataflow/control semantics with memory permissions.
+- Reading scope: Targeted full text: §§3, 5.5, 6.1.
+
+Verifies control-flow conversion and linking, with permissions/fences for memory dependencies and conditional termination/determinacy results. Useful for scheduled memory-backed computation and completion reasoning. Frontend validation, final optimization/selection rewrites, lowering to CIRCT handshake, and downstream RTL generation remain outside the proved core. Its completion results assume a terminating guarded source execution.
+
+*** Verification of Compiler-to-Accelerator Mappings for Machine Learning Accelerators
+
+- Paper: [[https://arxiv.org/abs/2609.30651][arXiv:2609.30651]]. Inspected: v1; first submitted 2026-09-25; revision 2026-09-25.
+- Priority: Read first.
+- System: BOLT / product programs / Z3.
+- Arithmetic/model: Software and hardware word/layout semantics.
+- Reading scope: Targeted full text: methodology, Hex semantics, evaluation.
+
+Aligns software loops with accelerator behavior and relates tensor layouts to hardware buffers using sync-skeletons, layout sketches, and invariants. Closest method-level precedent for the tensor-to-controller/memory gap. Verification uses concrete parameters, with some experiments at reduced sizes. Hardware is represented through formal accelerator semantics, not a Lean-certified connection to arbitrary RTL. Reuse its relational invariants and loop-alignment templates.
+
+*** Tenspiler: A Verified Lifting-Based Compiler for Tensor Operations (Extended Version)
+
+- Paper: [[https://arxiv.org/abs/2404.18249][arXiv:2404.18249]]. Inspected: v3; first submitted 2024-04-28; revision 2024-12-14.
+- Priority: Useful comparison.
+- System: Rosette / CVC5.
+- Arithmetic/model: Integer/real abstractions; tensor axioms.
+- Reading scope: Targeted full text: §§4.2–4.3.
+
+Uses bounded synthesis to find summaries and invariants, then checks unbounded verification conditions. Useful example of untrusted search followed by independent checking. Arithmetic is abstracted to integers/reals and auxiliary tensor axioms aid SMT; final backend generation is not verified against RTL. Do not confuse its bounded search stage with the stronger unbounded check, or with actual floating-point hardware verification.
+
+*** LLVM Translation Validation Automated with Large Language Models and Lean
+
+- Paper: [[https://arxiv.org/abs/2609.19583][arXiv:2609.19583]]. Inspected: v1; first submitted 2026-09-17; revision 2026-09-17.
+- Priority: Read for proof workflow.
+- System: Lean / Trivet.
+- Arithmetic/model: Integer LLVM fragment; restricted loops.
+- Reading scope: Targeted full text: §3.4 and proof workflow.
+
+Creates deterministic scaffolds and asks LLMs to prove transformation-specific refinement goals or provide refutations. Protects source, target and theorem statements and audits axioms. Strong workflow precedent for validating individual compiled artifacts. The supported scope excludes memory operations and floating point and restricts loops; this paper does not solve tensor-memory lowering or RTL semantics.
+
+*** Rtl2lean: Automated RTL-to-Lean Translation with Hierarchical Theorem Generation and Lemma Reuse
+
+- Paper: [[https://arxiv.org/abs/2607.16855][arXiv:2607.16855]]. Inspected: v1; first submitted 2026-07-18; revision 2026-07-18.
+- Priority: Read for RTL frontend comparison.
+- System: Lean 4 / PySlang frontend.
+- Arithmetic/model: RTL word/state model.
+- Reading scope: Targeted full text: §III and evaluation.
+
+Translates SystemVerilog into state transitions and builds combinational, update, cycle, and reachability lemmas. Relevant comparison for existing Yosys-based import and for proof reuse. Its experiments check theorems about generated models; the paper does not provide a mechanized semantic-preservation theorem for the RTL translator. Small-design success does not establish coverage of the accelerator's memory and numerical subset.
+
+*** CircuitProver: Agentic Lean 4 Theorem Proving with Reusable Circuit Proof Library for Hardware Verification
+
+- Paper: [[https://arxiv.org/abs/2607.27259][arXiv:2607.27259]]. Inspected: v1; first submitted 2026-07-29; revision 2026-07-29.
+- Priority: Read for proof reuse.
+- System: Lean 4 / Chisel translator.
+- Arithmetic/model: Parameterized bitvectors and state transitions.
+- Reading scope: Targeted full text: Phase I–III and benchmark.
+
+Builds and reuses proofs for parameterized circuits. Useful evidence for organizing lemma libraries and measuring reusable proof knowledge. Its Chisel-to-Lean translation and agent-formalized specifications are checked by exhaustive small-width co-simulation, not by a general source-correspondence theorem. The Lean proofs concern those models. Preserve this distinction when using its reported success rates.
+
+*** CktFormalizer: Autoformalization of Natural Language into Circuit Representations
+
+- Paper: [[https://arxiv.org/abs/2605.07782][arXiv:2605.07782]]. Inspected: v4; first submitted 2026-05-08; revision 2026-10-04.
+- Priority: Useful generation alternative.
+- System: Lean 4 / CktLean.
+- Arithmetic/model: Typed circuit and state semantics.
+- Reading scope: Targeted full text: §4.1 and Appendix E.
+
+Combines a Lean-embedded HDL, generated SystemVerilog, proof-state feedback, simulation and physical-design measurements. Useful alternative for generating small verified design families. Version 4 explicitly separates structural, functional and formal evidence. Source-level proofs do not establish correctness of the HDL-to-SystemVerilog compiler or natural-language formalization. Use separate backend checking rather than assuming a verified hardware compiler.
+
+*** A Compiler Infrastructure for Accelerator Generators
+
+- Paper: [[https://arxiv.org/abs/2102.09713][arXiv:2102.09713]]. Inspected: v1; first submitted 2021-02-19; revision 2021-02-19.
+- Priority: Existing-pipeline foundation.
+- System: Calyx; no Lean proof.
+- Arithmetic/model: Structural hardware and explicit control IR.
+- Reading scope: Paper scope and official semantics documentation.
+
+Foundational description of Calyx's structural/control representation and accelerator compilation. Relevant because this project's hardware passes through Calyx; groups, scheduling, and go/done provide useful contract boundaries. It is compiler infrastructure rather than an end-to-end verified compiler. Define the supported interface and memory semantics explicitly when using it as an untrusted generator behind a checker.
+
+** Neural verification certificates
+
+*** Neural Network Verification with Proof Production
+
+- Paper: [[https://arxiv.org/abs/2206.00512][arXiv:2206.00512]]. Inspected: v2; first submitted 2022-06-01; revision 2022-08-27.
+- Priority: Useful certificate architecture.
+- System: Marabou / C++ checker / cvc5.
+- Arithmetic/model: Real constraints; numerical solver implementation.
+- Reading scope: Targeted full text: proof format and §VII.
+
+Produces UNSAT proof trees, contradiction vectors, and bound-tightening evidence for neural verification. Useful producer/checker architecture. The original C++ checker is trusted; preprocessing precedes proof production and is outside supported certificates, and cvc5 repairs some numerical leaf failures. A model/RTL equivalence miter would still need a justified encoding and a checker soundness theorem.
+
+*** A Certified Proof Checker for Deep Neural Network Verification in Imandra
+
+- Paper: [[https://arxiv.org/abs/2405.10611][arXiv:2405.10611]]. Inspected: v2; first submitted 2024-05-17; revision 2025-06-24.
+- Priority: Read for checker design.
+- System: Imandra.
+- Arithmetic/model: Exact real constraint arithmetic.
+- Reading scope: Targeted full text: checker soundness and §7.2.
+
+Proves soundness of supported contradiction-leaf and split-tree checks. Strong blueprint for proving a small checker once while leaving search to an external solver. The certified theorem concerns constraint-system UNSAT; lifting it to original neural queries and specification compilation remains future work. Soundness of implemented dynamic ReLU bound-tightening lemmas is not fully certified. It does not verify IEEE execution.
+
+*** A Formally Verified Robustness Certifier for Neural Networks (Extended Version)
+
+- Paper: [[https://arxiv.org/abs/2505.06958][arXiv:2505.06958]]. Inspected: v1; first submitted 2025-05-11; revision 2025-05-11.
+- Priority: Useful numerical-checker example.
+- System: Dafny.
+- Arithmetic/model: Exact rationals implementing real-number specifications.
+- Reading scope: Targeted full text: formal specifications and §9.
+
+Verifies an executable Lipschitz/operator-norm-based robustness certifier, including careful treatment of approximate norm computation. Useful example of reusable checked numerical code. Matrix-norm properties include axioms; supported networks are restricted, and floating-point inference is outside the real-valued guarantee. The paper explicitly identifies that remaining deployment gap.
+
+*** Compositional Neural-Cyber-Physical System Verification in the Interactive Theorem Prover of Your Choice
+
+- Paper: [[https://arxiv.org/abs/2605.02790][arXiv:2605.02790]]. Inspected: v4; first submitted 2026-05-04; revision 2026-07-17.
+- Priority: Useful downstream contract interface.
+- System: Vehicle / Rocq / Isabelle / Agda / Imandra.
+- Arithmetic/model: Real-valued tensor specifications.
+- Reading scope: Targeted full text: §2 and §5.2.3.
+
+Integrates externally verified neural properties into compositional system proofs through a specification language. Useful interface design for a neural component with a proved contract and artifact identity. Exported neural functions are opaque and their externally established properties become axioms; Vehicle's compiler is in the trusted base. This is property integration rather than verified neural implementation or RTL equivalence.
+
+** Additional neural-network formalization
+
+*** Formalizing Piecewise Affine Activation Functions of Neural Networks in Coq
+
+- Paper: [[https://arxiv.org/abs/2301.12893][arXiv:2301.12893]]. Inspected: v1; first submitted 2023-01-30; revision 2023-01-30.
+- Priority: Useful semantic-translation example.
+- System: Coq / Coquelicot.
+- Arithmetic/model: Mathematical reals.
+- Reading scope: Targeted full text: composition, network conversion and import discussion.
+
+Formalizes ReLU and piecewise-affine semantics and proves composition/concatenation and conversion of a sequential network into a piecewise-affine function. Useful precedent for checked changes of model representation. IEEE execution is absent. The paper describes ONNX conversion as ongoing work and distinguishes an earlier unverified PyTorch-to-Coq script; it should not be cited as completed certified PyTorch import.
+
+** Proof automation
+
+*** Lean-SMT: An SMT tactic for discharging proof goals in Lean
+
+- Paper: [[https://arxiv.org/abs/2505.15796][arXiv:2505.15796]]. Inspected: v1; first submitted 2025-05-21; revision 2025-05-21.
+- Priority: Useful infrastructure.
+- System: Lean / cvc5 proof reconstruction.
+- Arithmetic/model: Supported UF and linear/difference arithmetic fragments.
+- Reading scope: Targeted full text: reconstruction and supported fragments.
+
+Reconstructs external SMT evidence as Lean proofs; unsupported steps become remaining proof goals. Useful for arithmetic/index obligations and for replacing trusted solver verdicts with checked artifacts. The evaluated fragments are not a general ready-made array/bitvector solver for the accelerator. Reflection configurations have their own execution trust; combine with explicit memory semantics and appropriate bitvector tools.
+
+** Proof-automation evaluation
+
+*** RLMEval: Evaluating Research-Level Neural Theorem Proving
+
+- Paper: [[https://arxiv.org/abs/2510.25427][arXiv:2510.25427]]. Inspected: v1; first submitted 2025-10-29; revision 2025-10-29.
+- Priority: Experimental methodology.
+- System: Lean projects.
+- Arithmetic/model: Not an inference numerical semantics paper.
+- Reading scope: Abstract/results screening.
+
+Evaluates theorem proving on research-level Lean projects and finds substantial difficulty beyond curated benchmark tasks. Useful when designing a held-out evaluation of LLM assistance for accelerator invariants. The reported success rates characterize its models, tasks, and date; they should not be treated as estimates for current hardware proofs.
+
+** Additional neural-network theory
+
+*** An Agentic Formalization for Certified Quantum Neural Network Design
+
+- Paper: [[https://arxiv.org/abs/2607.12981][arXiv:2607.12981]]. Inspected: v1; first submitted 2026-07-14; revision 2026-07-14.
+- Priority: Peripheral.
+- System: Lean 4.
+- Arithmetic/model: Exact quantum/analytic mathematics.
+- Reading scope: Full-text introduction and scope screening; detailed development not audited.
+
+Formalizes quantum-network expressivity and trainability, exposing analytic assumptions in named hypotheses. Included for breadth and AI-assisted formalization methodology. It offers no PyTorch-to-classical-accelerator equivalence route; its role in this project would be methodological rather than infrastructural.
+
+*** Constructive Universal Approximation by Infinite-Dimensional Neural Networks via Gaussian-Weighted Ridgelet Transform
+
+- Paper: [[https://arxiv.org/abs/2610.24293][arXiv:2610.24293]]. Inspected: v1; first submitted 2026-10-16; revision 2026-10-16.
+- Priority: Peripheral.
+- System: Lean 4 companion formalization.
+- Arithmetic/model: Functional analysis over infinite-dimensional spaces.
+- Reading scope: Abstract and full-text scope/code-availability screening.
+
+Develops constructive neural approximation results with an accompanying Lean formalization. Included to distinguish formalized network theory from verified implementation. Its existence and approximation theorems do not establish a numerical correspondence between a saved PyTorch model and RTL. Low priority for the current FPGA proof path.
+
+* Relevant publications without a verified arXiv ID in this search
+
+These are real publications; absence of a verified arXiv ID here is not a
+claim that an arXiv version cannot exist.
+
+- [[https://doi.org/10.1145/3763167][Interactive Bitvector Reasoning using Verified Bit-Blasting]] (OOPSLA 2025).
+  Presents bv_decide and verified preprocessing/bit-blasting/LRAT checking.
+  High priority for exact datapaths. The paper's reflected execution
+  trusts the Lean compiler and kernel, while external SAT answers are
+  certificate checked. It supplies no tensor or RAM semantics by itself.
+
+- [[https://doi.org/10.1145/3498717][Verified Tensor-Program Optimization Via High-Level Scheduling Rewrites]]
+  (POPL 2022), and [[https://doi.org/10.1145/3656390][A Verified Compiler for a Functional Tensor Language]]
+  (PLDI 2024). ATL, in Coq/Rocq. The first proves scheduling rewrites; the
+  second verifies lowering to imperative loops and storage indexing.
+  Especially relevant invariants concern injectivity, allocation and
+  non-destructive writes. Arithmetic is modeled using mathematical reals,
+  and neither proves RTL/controller correctness.
+
+- [[https://vca.epfl.ch/papers/asplos26_fvo.pdf][Graphiti: Formally Verified Out-of-Order Execution in Dataflow Circuits]]
+  (ASPLOS 2026). Lean graph refinement, trace inclusion and a verified
+  loop rewrite. Useful for compositional scheduling proofs. Some
+  rewrites and downstream hardware generation remain outside its proofs.
+
+- [[https://doi.org/10.1145/3591268][Indexed Streams: A Formal Intermediate Representation for Fused Contraction Programs]]
+  (PLDI 2023). Etch verifies an indexed-stream algebra in Lean.
+  Imperative compilation correctness is explicitly left for future work.
+
+- [[https://link.springer.com/chapter/10.1007/978-3-031-98208-8_12][A Formally Verified Neural Network Converter for the Interactive Theorem Prover Coq]]
+  (TASE 2025). Particularly relevant model-conversion work. The available
+  author repository takes decoded ONNX, leaving byte decoding outside
+  that interface. Publisher abstract and repository were inspected;
+  full publisher text was not openly available in this search.
+
+- [[https://logicalhacking.com/publications/brucker.ea-feedforward-nn-verification-2023/brucker.ea-feedforward-nn-verification-2023.pdf][Verifying Feedforward Neural Networks for Classification in Isabelle/HOL]]
+  (FM 2023). Real-valued feedforward semantics and model import/proofs.
+  Useful import architecture; finite prediction checks do not establish
+  all-input runtime correspondence.
+
+- [[https://tyler-utah.github.io/files/kuiper.pdf][Kuiper]] (PLDI 2026; DOI
+  [[https://doi.org/10.1145/3808280][10.1145/3808280]]). Relevant verification language behind
+  RESOLVE's reduced-program proofs. It is a publication, not merely a
+  repository; the original-to-reduced correspondence remains a separate
+  question in the RESOLVE workflow.
+
+* Software and non-paper resources to track separately
+
+- [[https://reservoir.lean-lang.org/@lecopivo/scilean][SciLean]]: scientific-computing and differentiation infrastructure.
+  This search verified a software/talk trail rather than a dedicated
+  arXiv publication. TorchLean cites it as software.
+- [[https://github.com/opencompl/veir][VeIR]]: compiler framework/artifact. Do not assume every implemented
+  pass inherits Lean-MLIR's published theorems.
+- [[https://github.com/VCA-EPFL/lean-star][VCA-EPFL/lean-star]]: refinement-by-flushing infrastructure,
+  distinct from the similarly named Lean-STaR LLM paper.
+- [[https://github.com/ErosSph/xiangshan2Lean][xiangshan2Lean]]: the concrete hardware frontend already explored
+  in the project. A successful import does not prove source translation.
+- [[https://github.com/Beneficial-AI-Foundation/FloatSpec][FloatSpec]], [[https://github.com/opencompl/fp-lean][fp-lean]],
+  and [[https://github.com/neelsomani/vericuda][VeriCUDA]]: related artifacts; no matching arXiv-paper citation was
+  independently established for them in this survey.
+- [[https://gimletlabs.ai/blog/formally-verifying-ai-generated-kernels][Gimlet's kernel-equivalence work]]: primary company article,
+  separately labeled from arXiv literature.
+
+Repository versions, licenses, toolchain compatibility and theorem
+dependencies still need checking before integration. No integration or
+upstream-code build was performed for this survey.
+
+* Assessment for the moonshot
+
+The literature supports a concrete integration hypothesis: combine a
+precise model graph, explicit numerical semantics, reusable decomposition
+and loop/layout invariants, and independently checked proof artifacts.
+It does not support treating that combination as already demonstrated.
+
+The strongest potential contribution is a compositional path from the
+actual frozen quantized artifact to an initialized, clocked, memory-backed
+implementation, with honest correspondence boundaries and completion.
+This is an assessment of the surveyed work, not a universal novelty claim.
+
+For the first study, preserve the existing quantized artifact and select
+a production-derived Linear computation. Reuse TorchLean/FloatLib for
+the reference, investigate LARK-style decomposition, borrow BOLT's
+loop/layout relationships, and state Wavelet-style completion assumptions
+explicitly. Start with exact quantization and arithmetic contracts;
+reserve approximation bounds for separately named obligations.
+
+Evaluate proof reuse on a changed memory architecture and an adjacent
+block. Keep the original and final wiring in the proof boundary.
+Benchmark total human work and search cost rather than counting generated
+theorems. LLM success on mathematical benchmarks is not a substitute for
+this workload-specific measurement.
+
+The source-side and hardware-side research context used for this mapping
+is recorded in [[/home/roland/clean-LLM2FPGA/research/lean-equivalence.org][the existing equivalence research]]
+and [[/home/roland/clean-LLM2FPGA/research/yosys-lean-2026-11-02/report.org][the Yosys/Lean follow-up]].
+

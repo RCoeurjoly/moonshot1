@@ -1,0 +1,3 @@
+'Task2.Imported.BaselineAdapter.initial_exists' does not depend on any axioms
+'Task2.Imported.BaselineAdapter.memoryA_preserved' depends on axioms: [propext, Quot.sound]
+'Task2.Imported.BaselineAdapter.memoryB_preserved' depends on axioms: [propext, Quot.sound]

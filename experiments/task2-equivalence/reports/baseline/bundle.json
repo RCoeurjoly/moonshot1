@@ -1,0 +1,65 @@
+{
+  "scope": "concrete controls plus universal initialization/RAM lemmas; no universal result-equivalence or completion proof yet",
+  "artifacts": {
+    "canonical": {
+      "file": "canonical-canonical.il.gz",
+      "encoding": "gzip",
+      "sha256": "2ecca0034a8828f64f0446bba4a59ee98058d13922639360d5f21646efd82b4e"
+    },
+    "device_adapter": {
+      "file": "device_adapter-BaselineAdapter.lean",
+      "encoding": "identity",
+      "sha256": "b27e90bed4324a800a1381739530f8cb2da02525d6866a1486562ca66146a650"
+    },
+    "frontend_script": {
+      "file": "frontend_script-frontend.ys",
+      "encoding": "identity",
+      "sha256": "53640eeedd37536a9089284c4cf9853dfa36e60b8459236e6a59040f1bddb85f"
+    },
+    "functional_ir": {
+      "file": "functional_ir-cycle-ir.json.gz",
+      "encoding": "gzip",
+      "sha256": "89575a9e83da7a2bc464f160819062128dba5bd8ffb4956d7d4f86fe7c09358e"
+    },
+    "imported_core": {
+      "file": "imported_core-BaselineCore.lean.gz",
+      "encoding": "gzip",
+      "sha256": "0260866976bf0f386dba87158603549fb8d24fdf845833a8fec19308c0f89cc2"
+    },
+    "initialization_metadata": {
+      "file": "initialization_metadata-cycle.json.gz",
+      "encoding": "gzip",
+      "sha256": "157263ce01438b5817ccf123139e0a38c13b22ee2a1ba8408e00e6a40f89ae91"
+    },
+    "lean_trace": {
+      "file": "lean_trace-lean-traces.json.gz",
+      "encoding": "gzip",
+      "sha256": "65a9d552805b954f029cae0964bb707ff47c1ffc1974598eed0db39a8256339d"
+    },
+    "native_smt": {
+      "file": "native_smt-cycle.smt2.gz",
+      "encoding": "gzip",
+      "sha256": "5b4f524325a10343040cc5dcb4bb55bdc6ef7cd0fa86fed252bd97671c308c8a"
+    },
+    "normalization_script": {
+      "file": "normalization_script-normalize.ys",
+      "encoding": "identity",
+      "sha256": "eb502fa0ef5246e592aa202b1db9500b187219b4044721248a3d4f60ef32bdd5"
+    },
+    "testbench": {
+      "file": "testbench-control_tb.sv",
+      "encoding": "identity",
+      "sha256": "1f2a32ca67a26c49f204a84bfa68398ec3174d759a85729a4a16dc5b78fea47f"
+    },
+    "trace_comparison": {
+      "file": "trace_comparison-comparison.json",
+      "encoding": "identity",
+      "sha256": "85d2d96e16cb00d65a802534206de2abdba0ff9e1673549be47e1fef82a75994"
+    },
+    "word_controls": {
+      "file": "word_controls-word-controls.json",
+      "encoding": "identity",
+      "sha256": "6bcc8602362fb777771c63bad7b44d5b81a7f0b104273054f83cb3a9a7ed1b87"
+    }
+  }
+}

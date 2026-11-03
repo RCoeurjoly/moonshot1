@@ -1,0 +1,2 @@
+'Task2.source_agrees' depends on axioms: [propext, Classical.choice, Quot.sound]
+TASK2_REFERENCE_CONTROLS 6 passed; typed Program agrees
