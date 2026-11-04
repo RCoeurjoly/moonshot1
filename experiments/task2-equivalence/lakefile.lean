@@ -13,3 +13,5 @@ lean_lib Task2 where
 lean_lib Task2Imported where
   srcDir := "build/generated"
   roots := #[`Task2.Imported.Source]
+
+lean_lib LeanFlow
