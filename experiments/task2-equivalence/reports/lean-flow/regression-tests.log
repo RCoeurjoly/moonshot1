@@ -65,6 +65,6 @@ test_noop_or_renaming_is_not_a_pipeline_change (test_variant.VariantTests.test_n
 test_removed_logic_is_substantive (test_variant.VariantTests.test_removed_logic_is_substantive) ... ok
 
 ----------------------------------------------------------------------
-Ran 46 tests in 56.789s
+Ran 46 tests in 32.378s
 
 OK

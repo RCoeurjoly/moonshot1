@@ -32,6 +32,9 @@ def main : IO Unit := do
   execute "(bvor x s)" 1 2 3
   execute "(bvand x s)" 1 2 0
   execute "(bvxor x s)" 3 1 2
+  execute "(bvxor x s #b00000011)" 1 2 0
+  check (failed (SMT.parse (fixture "(bvxor x)"))) "unary SMT bvxor accepted"
+  check (failed (SMT.parse (fixture "(bvxor)"))) "empty SMT bvxor accepted"
   execute "(bvashr x s)" 128 8 255
   execute "(bvlshr x s)" 128 8 0
   execute "(bvshl x s)" 1 255 0
@@ -65,7 +68,31 @@ def main : IO Unit := do
   let result ← IO.ofExcept (SMT.eval program #[.bits 8 37] #[.memory 2 8 (fun _ => 0)])
   let answer ← IO.ofExcept (SMT.bitsAt 8 result.outputs 0)
   check (answer == 37) "memory select/store failed"
-  let actual ← IO.ofExcept (SMT.parse (← IO.FS.readFile "build/lean-flow/accelerator.smt2"))
+  let actualText ← IO.FS.readFile "build/lean-flow/accelerator.smt2"
+  let actual ← IO.ofExcept (SMT.parse actualText)
   check (actual.inputs.size == 6 && actual.states.size == 453 && actual.outputs.size == 5)
     "full Task2 SMT declarations did not parse"
+  let finalPair := "(pair (main_Outputs answer) (main_State s))"
+  let shadow (name : String) (output := "answer") :=
+    (fixture "x").replace finalPair s!"(let (({name} answer)) (pair (main_Outputs {output}) (main_State s)))"
+  let actualShadow (name : String) :=
+    (actualText.replace "(pair\n" s!"(let (({name} in2_st0)) (pair\n").replace
+      "(declare-const main-initial" ")\n(declare-const main-initial"
+  let cases := #[
+    ("pair constructor shadow", shadow "pair"),
+    ("record constructor shadow", shadow "main_Outputs"),
+    ("selector shadow", shadow "main_Inputs_x" "(main_Inputs_x inputs)"),
+    ("operator shadow", shadow "bvadd" "(bvadd x s)"),
+    ("function shadow", shadow "main"),
+    ("Pair selector shadow", shadow "first"),
+    ("syntax shadow", shadow "let"),
+    ("actual pair constructor shadow", actualShadow "pair"),
+    ("actual initial constant shadow", actualShadow "main-initial"),
+    ("selector/constructor collision", (fixture "x").replace "main_Outputs_y" "main_Inputs"),
+    ("function/selector collision", (fixture "x").replace "(define-fun main " "(define-fun main_Inputs_x "),
+    ("global operator collision", (fixture "x").replace "main_State_s" "bvadd")]
+  let mut accepted := #[]
+  for (name,text) in cases do
+    if !failed (SMT.parse text) then accepted := accepted.push name
+  check accepted.isEmpty s!"SMT invalid namespaces accepted: {String.intercalate ", " accepted.toList}"
   IO.println s!"LEAN_SMT_TESTS passed: primitives, rejection, memories; actual circuit {actual.nodes.size} nodes"

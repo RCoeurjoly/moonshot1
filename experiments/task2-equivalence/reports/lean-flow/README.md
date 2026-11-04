@@ -6,6 +6,10 @@ standard axiom audit, and all four native control suites. Changed, well-typed
 graph and SMT artifacts have concrete behavioral counterexamples and are
 rejected by the fresh entry-point proof check. A false theorem is also rejected.
 
+[Fresh review and fixes](review.md) records the parser regressions, their
+resolution and one deferred test-helper minor. The three `negative-*.log`
+files retain the intended kernel rejection diagnostics.
+
 [artifacts.sha256](artifacts.sha256) identifies the exported graph and retained
 hardware SMT. [regression-tests.log](regression-tests.log) records all 46
 existing regression tests passing. [transfer-check.log](transfer-check.log)

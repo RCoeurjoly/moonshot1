@@ -1,0 +1,8 @@
+build/lean-flow/negative-hardware.lean:12:8: error: (kernel) let-declaration type mismatch 'hardware_checked'
+theorem LeanFlow.Main.observable_equivalence : Task2.Implements (Hardware.device hardware) (Graph.scalar model) :=
+have graph_checked := Eq.refl pytorch;
+have hardware_checked := Eq.refl accelerator;
+Eq.mpr (id (congrArg (fun _a => Task2.Implements (Hardware.device hardware) (Graph.scalar _a)) graph_checked))
+  (Eq.mpr (id (congrArg (fun _a => Task2.Implements (Hardware.device _a) (Graph.scalar pytorch)) hardware_checked))
+    equivalence)
+'LeanFlow.Main.observable_equivalence' depends on axioms: [propext, Quot.sound, observable_equivalence]

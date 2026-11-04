@@ -10,11 +10,11 @@ Checking retained Task 2 transaction proof...
 ⚠ [2736/2737] Replayed Task2.Imported.BaselineTraceCorrect
 warning: build/lean-flow/retained/Task2/Imported/BaselineTraceCorrect.lean: imports `Mathlib.Tactic.IntervalCases` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
 Checking interpreter equivalence...
-⚠ [3709/3783] Replayed LeanFlow.Graph
+⚠ [3709/3761] Replayed LeanFlow.Graph
 warning: LeanFlow/Graph.lean: imports `Mathlib.Tactic.ToExpr` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
-⚠ [3713/3783] Replayed LeanFlow.SMT
+⚠ [3713/3761] Replayed LeanFlow.SMT
 warning: LeanFlow/SMT.lean: imports `Mathlib.Tactic.ToExpr` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
-⚠ [3800/3802] Replayed Task2.Imported.BaselineTraceCorrect
+⚠ [3797/3802] Replayed Task2.Imported.BaselineTraceCorrect
 warning: build/lean-flow/retained/Task2/Imported/BaselineTraceCorrect.lean: imports `Mathlib.Tactic.IntervalCases` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
 LEAN_GRAPH_TESTS passed: real JSON, node execution, overflow, rejection, composition
 LEAN_SMT_TESTS passed: primitives, rejection, memories; actual circuit 6318 nodes

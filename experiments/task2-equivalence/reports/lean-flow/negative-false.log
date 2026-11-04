@@ -1,0 +1,4 @@
+build/lean-flow/negative-false.lean:2:0: error: (kernel) declaration type mismatch, '_example' has type
+  2 = 2
+but it is expected to have type
+  1 = 2

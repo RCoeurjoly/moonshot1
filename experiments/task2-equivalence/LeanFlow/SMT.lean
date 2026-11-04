@@ -157,7 +157,7 @@ def infer (op : String) (arguments : Array Ty) (parameter : Nat := 0)
   | "bvadd" | "bvsub" | "bvmul" | "bvudiv" | "bvurem" | "bvand" | "bvor" |
       "bvshl" | "bvlshr" | "bvashr" => pure (.bits (← sameBits arguments 2))
   | "bvxor" =>
-    unless !arguments.isEmpty do throw "SMT: empty xor"
+    unless arguments.size ≥ 2 do throw "SMT: xor requires at least two operands"
     pure (.bits (← sameBits arguments arguments.size))
   | "bvnot" | "bvneg" => pure (.bits (← sameBits arguments 1))
   | "bvugt" | "bvuge" | "bvult" | "bvule" | "bvsgt" | "bvsge" | "bvslt" | "bvsle" =>
@@ -267,9 +267,28 @@ private partial def initialSort (selectors : Std.HashMap String (Bool × Nat × 
     | [.atom "select",memory,address] => infer "select" #[← initialSort selectors memory,← initialSort selectors address]
     | _ => throw "SMT: unsupported initial-state expression"
 
+/-- This first-order fragment rejects shadowing rather than implementing
+    overloaded or locally rebound constructor/operator resolution. -/
+private def reservedSymbol (name : String) : Bool :=
+  ["!", "_", "as", "let", "exists", "forall", "match", "par",
+   "Bool", "BitVec", "Array", "Pair", "pair", "first", "second", "inputs", "state",
+   "declare-datatype", "declare-datatypes", "declare-const", "define-fun", "assert",
+   "ite", "concat", "extract", "zero_extend", "sign_extend",
+   "bvadd", "bvsub", "bvmul", "bvudiv", "bvurem", "bvand", "bvor", "bvxor",
+   "bvnot", "bvneg", "bvshl", "bvlshr", "bvashr",
+   "bvugt", "bvuge", "bvult", "bvule", "bvsgt", "bvsge", "bvslt", "bvsle",
+   "=", "distinct", "not", "and", "or", "select", "store"].contains name ||
+    (literal name).isSome
+
+private def declareSymbol (known : Std.HashSet String) (name : String) :
+    Except String (Std.HashSet String) := do
+  if reservedSymbol name || known.contains name then
+    throw s!"SMT: reserved or duplicate global symbol {name}"
+  pure (known.insert name)
+
 private def readProgram (roots : Array SExpr) : Except String Program := do
   let mut records : Std.HashMap String (Array Field) := {}
-  let mut fieldNames : Std.HashSet String := {}
+  let mut globals : Std.HashSet String := {}
   let mut definitions := #[]
   let mut assertions := #[]
   let mut initialType : Option String := none
@@ -280,17 +299,20 @@ private def readProgram (roots : Array SExpr) : Except String Program := do
     | .atom "declare-datatype" :: _ =>
       let (name,fields) ← record root
       if records.contains name then throw "SMT: duplicate record type"
+      globals ← declareSymbol globals name
       for field in fields do
-        if fieldNames.contains field.name then throw "SMT: duplicate datatype selector"
-        fieldNames := fieldNames.insert field.name
+        globals ← declareSymbol globals field.name
       records := records.insert name fields
     | [.atom "declare-datatypes",_,_] =>
       let expected ← sexprs "(declare-datatypes ((Pair 2)) ((par (X Y) ((pair (first X) (second Y))))))"
       unless !pairDeclared && expected == #[root] do throw "SMT: invalid or duplicate Pair declaration"
       pairDeclared := true
-    | .atom "define-fun" :: _ => definitions := definitions.push xs
+    | .atom "define-fun" :: .atom name :: _ =>
+      globals ← declareSymbol globals name
+      definitions := definitions.push xs
     | [.atom "declare-const",.atom "main-initial",.atom typ] =>
       if initialType.isSome then throw "SMT: duplicate initial-state constant"
+      globals ← declareSymbol globals "main-initial"
       initialType := some typ
     | [.atom "assert",expression] => assertions := assertions.push expression
     | _ => throw "SMT: unsupported top-level command"
@@ -328,7 +350,7 @@ private def readProgram (roots : Array SExpr) : Except String Program := do
           let [.atom "let",bindings,next] := xs.toList | throw "SMT: malformed let"
           let [binding] := (← items bindings).toList | throw "SMT: only single-binding lets are supported"
           let [.atom name,value] := (← items binding).toList | throw "SMT: malformed binding"
-          if (← get).names.contains name || name == "inputs" || name == "state" || (literal name).isSome then
+          if (← get).names.contains name || globals.contains name || reservedSymbol name then
             throw "SMT: duplicate or shadowed binding"
           let index ← lower value
           modify fun state => { state with names := state.names.insert name index }

@@ -55,4 +55,4 @@
 **Files:** LeanFlow/Main.lean, LeanFlow/README.md; minimal Lake wiring.
 - [x] One clear export/read/prove command sequence; actual artifact paths visible in Lean.
 - [x] Run native tests and final proof audits; retain concise evidence.
-- [ ] Fresh final review and one TDD fix pass; preserve branch without publishing.
+- [x] Fresh final review and one TDD fix pass; preserve branch without publishing.
