@@ -1,0 +1,56 @@
+{
+  "mapping": [
+    {
+      "role": "gold",
+      "memories": [
+        {
+          "memory": "handshake_memory0._handshake_memory_5",
+          "port": "task2_words_a",
+          "words": 16,
+          "word_bits": 32,
+          "mapping": "word i occupies bits [32*i +: 32]; shift amount is address << 5",
+          "initialization": "all 512 bits symbolic; no source-defined fixed bits",
+          "readonly": true
+        },
+        {
+          "memory": "handshake_memory1._handshake_memory_4",
+          "port": "task2_words_b",
+          "words": 16,
+          "word_bits": 32,
+          "mapping": "word i occupies bits [32*i +: 32]; shift amount is address << 5",
+          "initialization": "all 512 bits symbolic; no source-defined fixed bits",
+          "readonly": true
+        }
+      ]
+    },
+    {
+      "role": "gate",
+      "memories": [
+        {
+          "memory": "handshake_memory0._handshake_memory_5",
+          "port": "task2_words_a",
+          "words": 16,
+          "word_bits": 32,
+          "mapping": "word i occupies bits [32*i +: 32]; shift amount is address << 5",
+          "initialization": "all 512 bits symbolic; no source-defined fixed bits",
+          "readonly": true
+        },
+        {
+          "memory": "handshake_memory1._handshake_memory_4",
+          "port": "task2_words_b",
+          "words": 16,
+          "word_bits": 32,
+          "mapping": "word i occupies bits [32*i +: 32]; shift amount is address << 5",
+          "initialization": "all 512 bits symbolic; no source-defined fixed bits",
+          "readonly": true
+        }
+      ]
+    }
+  ],
+  "shared_inputs": "EQY matches the same top-level task2_words_a/b primary inputs on gold and gate",
+  "contract_relation": "The same primary words feed both designs. Stability assumptions hold for every constant input sequence, encoding every Device.initial memory pair; no words are fixed to a sample.",
+  "startup": "four reset edges, start initially unspecified then held through acceptance, both ready=1, done_valid=0",
+  "observation": "first accepted payload only; pre-edge event at k corresponds to Device.result after k+1 steps",
+  "trust_boundary": "read-only memory lifting and wrapper elaboration are trusted translations; no EQY result enters Lean as an axiom",
+  "documentation": "https://yosyshq.readthedocs.io/projects/eqy/en/latest/xprop.html"
+}

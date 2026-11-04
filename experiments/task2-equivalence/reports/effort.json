@@ -1,0 +1,70 @@
+{
+  "measurement_policy": "Active proof-engineering time was not instrumented. Keep it missing; never substitute tool replay or line counts.",
+  "baseline_proof": {
+    "actor": "codex",
+    "active_seconds": null,
+    "interventions": [
+      "Construct universal raw-state parameterization",
+      "Build untrusted symbolic trace/cut certificate generator",
+      "Prove word reassembly and final arithmetic",
+      "Compose finite trajectory into first-result and Implements theorems",
+      "Add final-kernel negative controls and artifact/type gates"
+    ],
+    "changed_obligations": [
+      "initialization nonvacuity/all permitted states",
+      "RAM preservation",
+      "5077 distinct circuit cuts",
+      "436 full transitions",
+      "word dot arithmetic",
+      "first accepted result and uniform bound"
+    ],
+    "proof_stage_seconds": 655.6291955439956
+  },
+  "candidate_proof": {
+    "actor": "codex",
+    "active_seconds": null,
+    "interventions": [
+      "Support FunctionalIR distinct from optimized reductions",
+      "Add OR-absorption normalization and two elementary one-bit Std laws",
+      "Restrict reflexivity shortcut to repeated bit-reassembly blocks after a kernel rejection"
+    ],
+    "changed_obligations": [
+      "4907 design-specific generated circuit cuts",
+      "436 generated transitions",
+      "two elementary one-bit OR laws"
+    ],
+    "shared_sources_unchanged": [
+      "Task2/WordDot.lean",
+      "Task2/Source.lean",
+      "Task2/Hardware.lean",
+      "Task2/ProofTools.lean"
+    ],
+    "handwritten_candidate_controller_invariants": 0,
+    "failed_proof_stage_seconds": 126.15140646701911,
+    "successful_proof_stage_seconds": 588.7950617620372
+  },
+  "source_and_import_setup": {
+    "actor": "codex",
+    "active_seconds": null,
+    "interventions": [
+      "Reuse frozen Nix source/compiler baseline",
+      "Narrow missing int32 TorchLean semantics",
+      "Port/check hardware import under Lean4.35",
+      "Candidate process x-branch cleanup and flattened RAM/control entrypoints"
+    ],
+    "baseline_reference_stage_seconds": 39.57896,
+    "baseline_hardware_stage_seconds": 15.40229396900395,
+    "candidate_hardware_stage_seconds": 22.025482136989012
+  },
+  "provisioning": {
+    "actor": "codex",
+    "active_seconds": null,
+    "elapsed_seconds": null,
+    "note": "Existing CIRCT derivation and tool/dependency realization are one-time setup, excluded from proof-effort comparison."
+  },
+  "events_record": "The execution ledger and commits retain interventions; exact active durations were not logged.",
+  "usage": {
+    "tokens": null,
+    "monetary_cost": null
+  }
+}

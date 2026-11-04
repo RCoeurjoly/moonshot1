@@ -1,0 +1,32 @@
+[options]
+splitnets on
+
+[gold]
+read_json "/home/roland/moonshot1/experiments/task2-equivalence/build/formal/state-and-accumulator/gold-lifted.json"
+rename main task2_design
+read_verilog -formal "/home/roland/moonshot1/experiments/task2-equivalence/build/formal/state-and-accumulator/driver.sv"
+prep -top task2_compare
+flatten
+opt_clean
+
+[gate]
+read_json "/home/roland/moonshot1/experiments/task2-equivalence/build/formal/state-and-accumulator/gate-lifted.json"
+rename main task2_design
+read_verilog -formal "/home/roland/moonshot1/experiments/task2-equivalence/build/formal/state-and-accumulator/driver.sv"
+prep -top task2_compare
+flatten
+opt_clean
+
+[match task2_compare]
+gold-nomatch dut._*
+gate-nomatch dut._*
+gold-match clock,task2_words_*,accepted_*,driver_*,seen_payload,past_*
+gold-match dut.*reg*,dut.*emitted*,dut.handshake_memory2.*handshake_memory_3*
+gold-nomatch *
+gate-nomatch *
+
+[strategy induction]
+use sby
+engine smtbmc z3
+depth 8
+xprop on

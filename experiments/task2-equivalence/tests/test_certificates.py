@@ -27,6 +27,16 @@ class CertificateTests(unittest.TestCase):
         zero = terms.const(0, 32)
         self.assertEqual(terms.apply("bvand", 32, [x, zero]), zero)
         self.assertEqual(terms.apply("bvand", 32, [zero, x]), zero)
+        ones=terms.const(0xffffffff,32)
+        self.assertEqual(terms.apply("bvor",32,[x,ones]),ones)
+        self.assertEqual(terms.apply("bvor",32,[ones,x]),ones)
+
+    def test_optimized_reduce_or_retains_boolean_semantics(self):
+        terms=self.load().Terms()
+        x=terms.make("raw",32,extra="s45")
+        self.assertEqual(terms.apply("distinct",None,[x,x]),terms.const(False,None))
+        self.assertEqual(terms.apply("distinct",None,[terms.const(1,32),terms.const(0,32)]),terms.const(True,None))
+        self.assertEqual(terms.apply("distinct",None,[terms.const(0,32),terms.const(0,32)]),terms.const(False,None))
 
     def test_unknown_initial_registers_are_retained(self):
         module = self.load()

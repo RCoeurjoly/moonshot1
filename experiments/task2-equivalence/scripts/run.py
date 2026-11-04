@@ -141,6 +141,29 @@ def attach(args):
     return {"status": "prepared", "manifest": str(out / "manifest.json"), "interface": manifest["interface"]}
 
 
+def terminate_process_tree(root_pid):
+    """Kill owned verification descendants even when tools create new sessions."""
+    rows={}
+    for path in Path('/proc').glob('[0-9]*/stat'):
+        try:
+            values=path.read_text().rsplit(')',1)[1].split()
+            rows[int(path.parent.name)]=(int(values[1]),values[19])
+        except (OSError,ValueError,IndexError):continue
+    descendants=[];parents=[root_pid]
+    while parents:
+        children=[pid for pid,(parent,_) in rows.items() if parent in parents]
+        descendants.extend(children);parents=children
+    for pid in reversed(descendants):
+        try:
+            current=Path(f'/proc/{pid}/stat').read_text().rsplit(')',1)[1].split()
+            if current[19]==rows[pid][1]:os.kill(pid,signal.SIGKILL)
+        except (OSError,ValueError,IndexError):pass
+    try:os.killpg(root_pid,signal.SIGKILL)
+    except ProcessLookupError:pass
+    try:os.kill(root_pid,signal.SIGKILL)
+    except ProcessLookupError:pass
+
+
 def execute(command, log, env=None, timeout=600):
     """Keep every invocation and full log; timeout is an inconclusive outcome."""
     started = time.monotonic()
@@ -158,7 +181,7 @@ def execute(command, log, env=None, timeout=600):
             if time.monotonic() - started >= timeout:
                 timed_out = True
                 # Stop Lake/solver descendants as well as the direct process.
-                os.killpg(process.pid, signal.SIGKILL)
+                terminate_process_tree(process.pid)
                 _, wait_status, usage = os.wait4(process.pid, 0)
                 process.returncode = os.waitstatus_to_exitcode(wait_status)
                 break
@@ -263,11 +286,30 @@ def check(args):
                      ("lake_manifest",ROOT/"lake-manifest.json")]:
         require_current_artifact(source,key,path)
     require_current_artifact(hardware_result,"trace_semantics",ROOT/"Task2/Trace.lean")
+    if args.design=="candidate":
+        baseline=json.loads((args.out/"check-baseline-result.json").read_text())
+        verify_manifest(baseline)
+        require_current_artifact(baseline,"proof_support_Hardware.lean",ROOT/"Task2/Hardware.lean")
     if source["status"] != "proved" or hardware_result["status"] != "passed_control":
         raise ValueError("source proof and checked hardware import are prerequisites")
     from prove_trace import prove_design
     return prove_design(args.out.resolve(), args.design, source, hardware_result,
                         timeout=args.timeout, workers=args.workers)
+
+
+def variant(args):
+    from variant import create_variant
+    return create_variant(args.out,args.yosys)
+
+
+def compare(args):
+    from compare import compare_designs
+    return compare_designs(args.out,args.repeats,args.timeout)
+
+
+def report(args):
+    from report import build_report
+    return build_report(args.out)
 
 
 def main():
@@ -288,10 +330,20 @@ def main():
     p.add_argument("--design", choices=["baseline", "candidate"], default="baseline")
     p.add_argument("--timeout", type=float, default=600, help="per compiler invocation limit")
     p.add_argument("--workers", type=int, default=8)
+    p = subs.add_parser("variant")
+    p.add_argument("--out",type=Path,default=ROOT/"build")
+    p.add_argument("--yosys",default="yosys")
+    p = subs.add_parser("compare")
+    p.add_argument("--out",type=Path,default=ROOT/"build")
+    p.add_argument("--repeats",type=int,default=3)
+    p.add_argument("--timeout",type=float,default=600)
+    p = subs.add_parser("report")
+    p.add_argument("--out",type=Path,default=ROOT/"build")
     args = parser.parse_args()
     started = time.monotonic()
     try:
-        result = {"attach": attach, "reference": reference, "hardware": hardware, "check": check}[args.stage](args)
+        result = {"attach": attach, "reference": reference, "hardware": hardware, "check": check,
+                  "variant":variant,"compare":compare,"report":report}[args.stage](args)
         result["elapsed_seconds"] = time.monotonic() - started
         key = args.stage + ("-" + args.design if hasattr(args, "design") else "")
         write_json(args.out / (key + "-result.json"), result)

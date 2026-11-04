@@ -20,5 +20,19 @@
   "hardware_importer": {
     "url": "https://github.com/ErosSph/xiangshan2Lean",
     "revision": "a1299b564831e571b9b80f816219ae06c91db342"
+  },
+  "comparison_tools": {
+    "eqy": {
+      "version": "0.66",
+      "package": "/nix/store/2xwa4ma1dfs0x600wgb72bfpan1j76r3-yosys-eqy-0.66"
+    },
+    "sby": {
+      "version": "0.66",
+      "package": "/nix/store/8y7jw7q3ndzcxy6kby8b3gzk7b1xdzck-yosys-sby-0.66"
+    },
+    "z3": {
+      "version": "4.15.4",
+      "package": "/nix/store/0csh0z5rlf8yk6fdwrghbplapik1wdqc-z3-4.15.4"
+    }
   }
 }

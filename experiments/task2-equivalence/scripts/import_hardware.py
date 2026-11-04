@@ -228,19 +228,44 @@ def compare_traces(lean_rows, rtl_rows, expected):
     return event
 
 
+def source_artifact(manifest, design, variant=None):
+    if design=="baseline":return manifest["artifacts"]["baseline"]
+    if design!="candidate":raise NotImplementedError("unknown hardware design")
+    if variant is None or variant["status"]!="prepared":
+        raise ValueError("candidate requires a recorded substantive pipeline variant")
+    artifact=manifest["artifacts"]["candidate"]
+    if artifact["sha256"]!=variant["artifacts"]["candidate"]["sha256"]:
+        raise ValueError("candidate variant artifact identity differs")
+    return artifact
+
+
+def control_entrypoint(design):
+    name=design.title()
+    return f"import Task2.Imported.{name}Adapter\n\ndef main (args : List String) : IO Unit :=\n  Task2.Trace.runControls Task2.Imported.{name}Adapter.harness args\n"
+
+
+def control_testbench(text, design):
+    if design=="candidate":
+        for number,memory in [(0,5),(1,4)]:
+            path=f"handshake_memory{number}._handshake_memory_{memory}"
+            text=text.replace("dut."+path+"[", "dut.\\"+path+" [")
+    return text
+
+
 def import_design(manifest, out, design, yosys="yosys"):
-    from run import artifact, require_run, write_json, audit_axioms, find_derivation
+    from run import artifact, require_run, write_json, audit_axioms, find_derivation, verify_manifest
     out = Path(out).resolve()
     work = out / "hardware" / design
     work.mkdir(parents=True, exist_ok=True)
-    if design != "baseline":
-        raise NotImplementedError("candidate import requires a recorded variant artifact")
-    sources = Path(manifest["artifacts"]["baseline"]["path"]) / "sources.f"
+    variant=json.loads((out/"variant-result.json").read_text()) if design=="candidate" else None
+    if variant is not None:verify_manifest(variant)
+    sources = Path(source_artifact(manifest,design,variant)["path"]) / "sources.f"
     frontend = work / "frontend.ys"
+    cleanup=["opt_expr","opt_muxtree","opt_clean"] if design=="candidate" else []
     frontend.write_text("\n".join([
         f"read_slang --top main --no-proc --no-synthesis-define --no-default-translate-off-format -f {sources}",
         "hierarchy -check -top main", "proc -noopt", "flatten", "opt_clean", "memory_collect",
-        "memory_map t:$mem_v2 r:SIZE=1 %i", "select *", "opt_clean", "check -assert",
+        "memory_map t:$mem_v2 r:SIZE=1 %i", "select *", "opt_clean"]+cleanup+["check -assert",
         f"write_rtlil {work / 'canonical.il'}", f"write_json {work / 'canonical.json'}", ""]) )
     runs = [require_run([yosys, "-Q", "-T", "-m", "slang", "-s", str(frontend)], work / "frontend.log")]
     canonical = json.loads((work / "canonical.json").read_text())["modules"]["main"]
@@ -250,11 +275,15 @@ def import_design(manifest, out, design, yosys="yosys"):
     normalize.write_text("\n".join([
         f"read_rtlil {work / 'canonical.il'}", "formalff -clk2ff", "memory_nordff", "opt_clean",
         "setundef -undriven -anyseq", "check -assert", f"write_json {work / 'cycle.json'}",
-        f"write_functional_smt2 {work / 'cycle.smt2'}", ""]))
+        *([f"write_functional_smt2 {work / 'cycle.smt2'}"] if design=="baseline" else []), ""]))
     runs.append(require_run([yosys, "-Q", "-T", "-s", str(normalize)], work / "normalize.log"))
     module = json.loads((work / "cycle.json").read_text())["modules"]["main"]
     if any(c["type"] == "$anyseq" for c in module["cells"].values()):
         raise NotImplementedError("additional arbitrary input ports need an explicit environment contract")
+    if design=="candidate":
+        export=work/"export-functional.ys"
+        export.write_text(f"read_json {work/'cycle.json'}\nwrite_functional_smt2 {work/'cycle.smt2'}\n")
+        runs.append(require_run([yosys,"-Q","-T","-s",str(export)],work/"export-functional.log"))
     f = upstream()
     core_namespace = "Task2.Imported." + design.title() + "Core"
     # The native SMT initializer assertions are intentionally ignored by this
@@ -265,7 +294,7 @@ def import_design(manifest, out, design, yosys="yosys"):
     generated = out / "generated/Task2/Imported"
     generated.mkdir(parents=True, exist_ok=True)
     core = generated / (design.title() + "Core.lean")
-    core.write_text(f.emit_lean(ir))
+    core.write_text(f.emit_lean(ir,chunk_size=128))
     adapter = generated / (design.title() + "Adapter.lean")
     emit_adapter(ir, canonical, adapter, design)
     objects = ROOT / ".lake/build/lib/lean/Task2/Imported"
@@ -284,7 +313,9 @@ def import_design(manifest, out, design, yosys="yosys"):
     controls.mkdir(exist_ok=True)
     lean_trace = controls / "lean-traces.json"
     requests = out / "reference/word-controls.json"
-    runs.append(require_run(["lean", "--run", "Task2/HardwareControls.lean", str(requests), str(lean_trace)],
+    control_source=controls/"Controls.lean"
+    control_source.write_text(control_entrypoint(design))
+    runs.append(require_run(["lean", "--run", str(control_source), str(requests), str(lean_trace)],
                             controls / "lean.log", env=env))
     lean_cases = json.loads(lean_trace.read_text())
     graph = json.loads(Path(manifest["artifacts"]["derivation_graph"]["path"]).read_text())
@@ -293,10 +324,12 @@ def import_design(manifest, out, design, yosys="yosys"):
     verilator = next(Path(p) / "bin/verilator" for p in build_inputs if "verilator" in Path(p).name)
     simulation_env = dict(os.environ)
     simulation_env["PATH"] = ":".join(str(Path(p) / "bin") for p in build_inputs) + ":" + simulation_env["PATH"]
+    testbench=controls/"control_tb.sv"
+    testbench.write_text(control_testbench((ROOT/"scripts/control_tb.sv").read_text(),design))
     obj = controls / "obj_dir"
     runs.append(require_run([str(verilator), "--binary", "--timing", "--language", "1800-2017", "-Wno-fatal",
                              "-top", "tb_control", "-Mdir", str(obj), "-o", "sim_control", "-f", str(sources),
-                             str(ROOT / "scripts/control_tb.sv")], controls / "verilator-build.log", env=simulation_env))
+                             str(testbench)], controls / "verilator-build.log", env=simulation_env))
     cases = json.loads(requests.read_text())
     cases.append({"input_words": [list(range(1, 17)), list(range(16, 0, -1))], "expected_output_words": [[816]]})
     comparison = []
@@ -316,10 +349,12 @@ def import_design(manifest, out, design, yosys="yosys"):
         comparison.append({"case": index, **event, "edges": event["cycle"] + 1, "rtl_trace": artifact(rtl_trace)})
     write_json(controls / "comparison.json", comparison)
     bound = {"baseline": manifest["artifacts"]["baseline"]}
+    if design=="candidate":bound["candidate"]=manifest["artifacts"]["candidate"]
+    if design=="candidate":bound["functional_export_script"]=artifact(export)
     for name, path in [("frontend_script", frontend), ("normalization_script", normalize), ("canonical", work / "canonical.il"),
                        ("native_smt", work / "cycle.smt2"), ("initialization_metadata", work / "cycle.json"),
                        ("functional_ir", work / "cycle-ir.json"), ("imported_core", core), ("device_adapter", adapter),
-                       ("trace_semantics", ROOT / "Task2/Trace.lean"), ("testbench", ROOT / "scripts/control_tb.sv"),
+                       ("trace_semantics", ROOT / "Task2/Trace.lean"), ("testbench", testbench), ("control_entrypoint",control_source),
                        ("lean_trace", lean_trace), ("trace_comparison", controls / "comparison.json"), ("word_controls", requests),
                        ("importer", Path(f.__file__)), ("experiment_importer", Path(__file__)), ("tool_pins", ROOT / "tool-pins.json"),
                        ("flake_lock", ROOT / "flake.lock")]:

@@ -1,0 +1,21 @@
+{
+  "status": "proved",
+  "claim": "Task2.candidate_correct : Implements Imported.candidate sourceEval",
+  "scope": "all pairs of 16 complete int32 word vectors; every permitted raw initial state; first accepted payload",
+  "completion_bound_edges": 436,
+  "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "elapsed_seconds": 588.7950617620372,
+  "obligations": {
+    "batches": 50,
+    "cycles": 436,
+    "definitions": "CandidateTrace.lean",
+    "transition_batches": 22,
+    "unique_cuts": 4907
+  },
+  "peak_process_rss_kib": 5508768,
+  "active_engineering_seconds": null
+}

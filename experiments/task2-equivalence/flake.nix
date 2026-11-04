@@ -12,6 +12,9 @@
     url = "path:/nix/store/0j9h5572kfzlqpbds1y9dja1p159ihfk-yosys-with-plugins-0.66";
     flake = false;
   };
+  inputs.verification-eqy = { url = "path:/nix/store/2xwa4ma1dfs0x600wgb72bfpan1j76r3-yosys-eqy-0.66"; flake = false; };
+  inputs.verification-sby = { url = "path:/nix/store/8y7jw7q3ndzcxy6kby8b3gzk7b1xdzck-yosys-sby-0.66"; flake = false; };
+  inputs.verification-z3 = { url = "path:/nix/store/0csh0z5rlf8yk6fdwrghbplapik1wdqc-z3-4.15.4"; flake = false; };
   outputs = inputs@{ self, nixpkgs, task2, ... }: let
     system = "x86_64-linux";
     pkgs = import nixpkgs { inherit system; };
@@ -41,10 +44,10 @@
         done
       '';
     };
-    verificationTools = pkgs.runCommand "task2-verification-tools" {} ''
-      mkdir -p "$out"
-      ln -s ${inputs.verification-yosys}/bin "$out/bin"
-    '';
+    verificationTools = pkgs.symlinkJoin {
+      name = "task2-verification-tools";
+      paths = [ inputs.verification-yosys inputs.verification-eqy inputs.verification-sby inputs.verification-z3 ];
+    };
   in {
     packages.${system}.lean = lean435;
     devShells.${system}.default = pkgs.mkShellNoCC {

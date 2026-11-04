@@ -45,10 +45,14 @@ class Terms:
                 return args[1]
         if op == "=" and args[0] == args[1]:
             return self.const(True, None)
+        if op == "distinct" and len(args)==2 and args[0]==args[1]:
+            return self.const(False,None)
         if op in ("bvand", "bvor", "bvadd", "bvmul"):
             zero, ones = self.const(0, width), self.const((1 << width)-1, width)
             if op in ("bvand", "bvmul") and zero in args:
                 return zero
+            if op=="bvor" and ones in args:
+                return ones
             identity = {"bvand": ones, "bvor": zero, "bvadd": zero,
                         "bvmul": self.const(1, width)}[op]
             remaining = tuple(a for a in args if a != identity)
@@ -80,6 +84,7 @@ class Terms:
         if all(a.op == "constant" for a in args):
             a = [x.extra for x in args]
             if op == "=": value = a[0] == a[1]
+            elif op == "distinct": value = len(set(a))==len(a)
             elif op == "extract": value = a[0] >> offset
             elif op == "zero_extend": value = a[0]
             elif op == "concat": value = (a[0] << args[1].width) | a[1]
@@ -187,6 +192,7 @@ def emit(trace, out, design="Baseline", limit=None, core_source=None):
             op = {"bvand": " &&& ", "bvor": " ||| ", "bvadd": " + ", "bvmul": " * "}[term.op]
             return "(" + op.join(a) + ")"
         if term.op == "=": return f"({a[0]} == {a[1]})"
+        if term.op == "distinct" and len(a)==2:return f"({a[0]} != {a[1]})"
         if term.op == "ite": return f"(if {a[0]} then {a[1]} else {a[2]})"
         if term.op == "bvnot": return f"(~~~{a[0]})"
         if term.op == "extract": return f"(BitVec.extractLsb' {term.extra} {term.width} {a[0]})"
@@ -201,6 +207,8 @@ def emit(trace, out, design="Baseline", limit=None, core_source=None):
              "set_option linter.unusedVariables false", f"namespace {namespace}",
              "@[simp] theorem mask1_left (x : BitVec 1) : 1#1 &&& x = x := BitVec.allOnes_and",
              "@[simp] theorem mask1_right (x : BitVec 1) : x &&& 1#1 = x := BitVec.and_allOnes",
+             "@[simp] theorem or1_left (x : BitVec 1) : 1#1 ||| x = 1#1 := BitVec.allOnes_or",
+             "@[simp] theorem or1_right (x : BitVec 1) : x ||| 1#1 = 1#1 := BitVec.or_allOnes",
              "theorem join_low {w n : Nat} (x : BitVec w) :",
              "    x.extractLsb' n 1 ++ x.extractLsb' 0 n = x.extractLsb' 0 (1+n) :=",
              "  BitVec.extractLsb'_append_extractLsb'_eq_extractLsb' (by omega)"]
@@ -288,7 +296,8 @@ def emit(trace, out, design="Baseline", limit=None, core_source=None):
                          "  all_goals simp only [" + ", ".join(f"join{i}" for i in range(1,32)) + ", BitVec.extractLsb'_eq_self]",
                          f"#print axioms cut{cycle}_{number}"]
                 concatenations=[values[n['id']] for n in trace.ir['nodes'][number*128:(number+1)*128] if n['op']=='concat']
-                if concatenations and all(t.op=='constant' for t in concatenations):
+                repeated_slices=sum(n['op']=='extract' for n in trace.ir['nodes'][number*128:(number+1)*128])>=4
+                if repeated_slices and concatenations and all(t.op=='constant' for t in concatenations):
                     # Closed zero-write masks trigger slow generic simplifier rules;
                     # reflexivity gives the kernel a much smaller certificate.
                     proof=proof[:2]+["  kernel_rfl",proof[-1]]

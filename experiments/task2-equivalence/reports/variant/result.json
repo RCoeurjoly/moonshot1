@@ -1,0 +1,106 @@
+{
+  "after": {
+    "cell_types": {
+      "$add": 2,
+      "$and": 671,
+      "$dff": 1,
+      "$lt": 1,
+      "$mem_v2": 2,
+      "$mul": 1,
+      "$mux": 211,
+      "$not": 571,
+      "$or": 317,
+      "$reduce_bool": 1,
+      "$reduce_or": 58,
+      "$sdff": 186,
+      "$sdffce": 1,
+      "$sdffe": 251,
+      "$shl": 1
+    },
+    "cell_width_bits": 13637,
+    "state_bits": 5738
+  },
+  "artifacts": {
+    "after": {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/build/evidence/variant/artifacts/a3b26943c14ccce21697-after.json",
+      "sha256": "a3b26943c14ccce216979f6881b441cbb5738e654a3c532fba17c5b247b6309f",
+      "original_path": "/home/roland/moonshot1/experiments/task2-equivalence/build/hardware/candidate/compiler/after.json"
+    },
+    "baseline_checkpoint": {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/build/evidence/variant/artifacts/2ecca0034a8828f64f04-2ecca0034a8828f64f04-canonical.il",
+      "sha256": "2ecca0034a8828f64f0446bba4a59ee98058d13922639360d5f21646efd82b4e",
+      "original_path": "/home/roland/moonshot1/experiments/task2-equivalence/build/evidence/baseline/artifacts/2ecca0034a8828f64f04-canonical.il"
+    },
+    "baseline_proof": {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/build/evidence/variant/artifacts/11b51dff22f073ccebfe-check-baseline-result.json",
+      "sha256": "11b51dff22f073ccebfe43d1ecc39c58b614242af6bee7bbc642404bca672151",
+      "original_path": "/home/roland/moonshot1/experiments/task2-equivalence/build/check-baseline-result.json"
+    },
+    "before": {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/build/evidence/variant/artifacts/c749427cbc15eb8c8cd3-before.json",
+      "sha256": "c749427cbc15eb8c8cd3575957e7222e2c06866fff25bef64269fc22958397eb",
+      "original_path": "/home/roland/moonshot1/experiments/task2-equivalence/build/hardware/candidate/compiler/before.json"
+    },
+    "candidate": {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/build/evidence/variant/artifacts/05d2bda8f2fa6c1d60f8-rtl",
+      "sha256": "05d2bda8f2fa6c1d60f848b3bc9573e794d9f950db25836770e3a0c439b8e6a0",
+      "original_path": "/home/roland/moonshot1/experiments/task2-equivalence/build/hardware/candidate/rtl"
+    },
+    "candidate_checkpoint": {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/build/evidence/variant/artifacts/89b6310d61b76c16a1b4-candidate.il",
+      "sha256": "89b6310d61b76c16a1b4010906376dab4b1db332c41a41271bf8ff3f5531f89a",
+      "original_path": "/home/roland/moonshot1/experiments/task2-equivalence/build/hardware/candidate/compiler/candidate.il"
+    },
+    "script": {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/build/evidence/variant/artifacts/06db7e2cff8b2de44092-opt-full.ys",
+      "sha256": "06db7e2cff8b2de44092eae89b929f60af1b3ecf44451e9a8aa7ab756487f659",
+      "original_path": "/home/roland/moonshot1/experiments/task2-equivalence/build/hardware/candidate/compiler/opt-full.ys"
+    }
+  },
+  "before": {
+    "cell_types": {
+      "$add": 2,
+      "$and": 735,
+      "$dff": 451,
+      "$eq": 1,
+      "$lt": 1,
+      "$mem_v2": 2,
+      "$mul": 1,
+      "$mux": 1193,
+      "$not": 597,
+      "$or": 185,
+      "$shl": 5
+    },
+    "cell_width_bits": 31573,
+    "state_bits": 6754
+  },
+  "criterion": "changed cell-type counts or total cell/state widths at the same physical checkpoint",
+  "runs": [
+    {
+      "command": [
+        "/nix/store/0j9h5572kfzlqpbds1y9dja1p159ihfk-yosys-with-plugins-0.66/bin/yosys",
+        "-s",
+        "/home/roland/moonshot1/experiments/task2-equivalence/build/hardware/candidate/compiler/opt-full.ys"
+      ],
+      "elapsed_seconds": 0.9448216599994339,
+      "log": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/build/evidence/variant/artifacts/70e4d46b43deb4bbb515-opt-full.log",
+        "sha256": "70e4d46b43deb4bbb515652dc6cef0d10070fddfa67236b3ddfbd79a09aa76a4",
+        "original_path": "/home/roland/moonshot1/experiments/task2-equivalence/build/hardware/candidate/compiler/opt-full.log"
+      },
+      "memory_measurement": "Linux wait4 ru_maxrss, maximum process RSS; not simultaneous tree sum",
+      "peak_rss_kib": 54412,
+      "returncode": 0,
+      "status": "prepared"
+    }
+  ],
+  "scope": "compiler-produced structural change only; candidate proof still required",
+  "status": "prepared",
+  "transformation": "opt -full",
+  "yosys_version": "Yosys 0.66 (git sha1 7f8fdfd8d7bc08c749a2a969388d3425d4f369d5, clang++ 18.1.8 -fPIC -O3)",
+  "archive": {
+    "scope": "exact checked inputs and logs; verdict unchanged",
+    "directory": "/home/roland/moonshot1/experiments/task2-equivalence/build/evidence/variant",
+    "retained_artifacts": 8
+  }
+}
