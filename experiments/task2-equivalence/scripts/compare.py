@@ -1,11 +1,13 @@
 """Warm incremental proof-composition replay, separate from construction/setup costs."""
 import json
+import copy
 import os
 from pathlib import Path
 import shutil
 import statistics
 import subprocess
 import sys
+import time
 
 
 def summarize_runs(runs):
@@ -16,12 +18,34 @@ def summarize_runs(runs):
             'peak_process_rss_kib':max((r.get('peak_rss_kib',0) for r in runs),default=None),'runs':runs}
 
 
+def qualify_replay_evidence(comparison):
+    """Keep historical timings without inventing missing cache provenance."""
+    from cache_attestation import require
+    qualified=copy.deepcopy(comparison)
+    for design,summary in qualified.get('lean',{}).items():
+        for sample in summary['runs']:
+            if sample['status']!='proved':continue
+            try:
+                cache=require(sample)
+                if not all(cache.get(key) for key in ['sources','compiled','compiler','pins']):
+                    raise ValueError('incomplete cache attestation')
+                if sample.get('cache_validation')!='resolved compiled closure and live sources checked before and after replay':
+                    raise ValueError('cache validation receipt missing')
+            except (ValueError,OSError,KeyError) as error:
+                sample.update(recorded_status='proved',status='inconclusive',
+                              reason='historical composition compilation completed, but its dependency cache was not bound: '+str(error))
+        qualified['lean'][design]=summarize_runs(summary['runs'])
+    qualified['replay_cache_binding']='only samples with recorded before/after cache validation qualify as proved'
+    return qualified
+
+
 def replay_composition(out,design,repeat,timeout):
-    from run import ROOT,artifact,execute,audit_axioms,verify_manifest,require_current_artifact
+    started=time.monotonic();deadline=started+timeout
+    from run import ROOT,artifact,execute,audit_axioms,verify_manifest
     result_path=out/f'check-{design}-result.json';result=json.loads(result_path.read_text());verify_manifest(result)
     if result['status']!='proved':raise ValueError('a complete checked theorem bundle is required for warm replay')
-    for name in ['Hardware','WordDot']:
-        require_current_artifact(result,f'proof_support_{name}.lean',ROOT/f'Task2/{name}.lean')
+    from cache_attestation import require,validate
+    attestation=require(result)
     folder=out/'compare'/design/f'repeat-{repeat}';folder.mkdir(parents=True,exist_ok=True)
     original=Path(result['artifacts'][f'certificate_{design.title()}TraceCorrect']['path'])
     code=original.read_text()+f'''
@@ -35,11 +59,28 @@ end Task2.WarmReplay
     lean=shutil.which('lean')
     if lean is None:raise ValueError('run comparison inside the pinned Nix environment')
     env=dict(os.environ);env['LEAN_PATH']=subprocess.check_output(['lake','env','printenv','LEAN_PATH'],cwd=ROOT,text=True).strip()
+    cache_started=time.monotonic()
+    try:validate(attestation,ROOT,env,cwd=folder,deadline=deadline)
+    except TimeoutError as error:
+        return {'status':'timeout','elapsed_seconds':time.monotonic()-started,'error':str(error),
+                'artifacts':{'cache_attestation':result['artifacts']['cache_attestation']}}
+    cache_seconds=time.monotonic()-cache_started
     # Only this retained proof source is present in the working directory. No
     # exploratory symbolic scripts/DAGs are consulted; dependencies are cached.
     command=[sys.executable,'-c','import os,sys;os.chdir(sys.argv[1]);os.execv(sys.argv[2],sys.argv[2:])',
              str(folder),lean,'-o',str(folder/'Replay.olean'),str(source)]
-    replay=execute(command,folder/'replay.log',env=env,timeout=timeout)
+    replay=execute(command,folder/'replay.log',env=env,timeout=max(0.001,deadline-time.monotonic()))
+    cache_started=time.monotonic()
+    try:validate(attestation,ROOT,env,cwd=folder,deadline=deadline)
+    except TimeoutError as error:
+        replay['status']='timeout';replay['error']=str(error)
+    except ValueError as error:
+        replay['status']='failed';replay['error']=str(error)
+    cache_seconds+=time.monotonic()-cache_started
+    replay['lean_command_seconds']=replay['elapsed_seconds']
+    replay['elapsed_seconds']=time.monotonic()-started
+    replay['cache_validation_seconds']=cache_seconds
+    replay['timing_scope']='complete replay including cache validation; peak RSS covers the Lean command'
     if replay['status']=='prepared':
         try:
             replay['axioms']=audit_axioms(Path(replay['log']['path']).read_text(),f'Task2.WarmReplay.{design}_claim')
@@ -48,7 +89,9 @@ end Task2.WarmReplay
     replay.update(design=design,cache_state='prechecked dependency/chunk/transition oleans; freshly kernel-check final first-result/correctness composition',
                   search_artifacts='absent from isolated working directory; retained Lean source only',
                   claim=f'Implements Imported.{design} sourceEval, final composition replay',
-                  artifacts={'retained_composition':artifact(original),'replay_source':artifact(source),'proved_stage_result':artifact(result_path)})
+                  cache_validation='resolved compiled closure and live sources checked before and after replay',
+                  artifacts={'retained_composition':artifact(original),'replay_source':artifact(source),'proved_stage_result':artifact(result_path),
+                             'cache_attestation':result['artifacts']['cache_attestation']})
     (folder/'result.json').write_text(json.dumps(replay,indent=2)+'\n')
     return replay
 

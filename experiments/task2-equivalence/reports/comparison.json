@@ -101,6 +101,10 @@
         "path": "/home/roland/moonshot1/experiments/task2-equivalence/build/evidence/comparison/artifacts/9a6edf8a4913508493e2-check-candidate-result.json",
         "sha256": "9a6edf8a4913508493e2f74a256c0294a528dafaa7b96f94729702a049407131",
         "original_path": "/home/roland/moonshot1/experiments/task2-equivalence/build/check-candidate-result.json"
+      },
+      "historical_comparison": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/reports/comparison-evidence/historical-result.json",
+        "sha256": "90f6c6f31a06f3c8ef32450a2f4ec5d5a32cd829a46ee1b939568a44bdf70649"
       }
     },
     "construction_cache_state": "fresh generated proof modules, existing dependency caches; recorded separately from warm replay",
@@ -489,9 +493,9 @@
     },
     "lean": {
       "baseline": {
-        "all_proved": true,
+        "all_proved": false,
         "median_attempt_wall_seconds": 81.84182484302437,
-        "median_proved_wall_seconds": 81.84182484302437,
+        "median_proved_wall_seconds": null,
         "peak_process_rss_kib": 4595280,
         "runs": [
           {
@@ -540,7 +544,9 @@
             "peak_rss_kib": 4585200,
             "returncode": 0,
             "search_artifacts": "absent from isolated working directory; retained Lean source only",
-            "status": "proved"
+            "status": "inconclusive",
+            "recorded_status": "proved",
+            "reason": "historical composition compilation completed, but its dependency cache was not bound: cache attestation missing; rerun check before warm replay"
           },
           {
             "artifacts": {
@@ -588,7 +594,9 @@
             "peak_rss_kib": 4595280,
             "returncode": 0,
             "search_artifacts": "absent from isolated working directory; retained Lean source only",
-            "status": "proved"
+            "status": "inconclusive",
+            "recorded_status": "proved",
+            "reason": "historical composition compilation completed, but its dependency cache was not bound: cache attestation missing; rerun check before warm replay"
           },
           {
             "artifacts": {
@@ -636,14 +644,16 @@
             "peak_rss_kib": 4592772,
             "returncode": 0,
             "search_artifacts": "absent from isolated working directory; retained Lean source only",
-            "status": "proved"
+            "status": "inconclusive",
+            "recorded_status": "proved",
+            "reason": "historical composition compilation completed, but its dependency cache was not bound: cache attestation missing; rerun check before warm replay"
           }
         ]
       },
       "candidate": {
-        "all_proved": true,
+        "all_proved": false,
         "median_attempt_wall_seconds": 72.43231352203293,
-        "median_proved_wall_seconds": 72.43231352203293,
+        "median_proved_wall_seconds": null,
         "peak_process_rss_kib": 4580520,
         "runs": [
           {
@@ -692,7 +702,9 @@
             "peak_rss_kib": 4579964,
             "returncode": 0,
             "search_artifacts": "absent from isolated working directory; retained Lean source only",
-            "status": "proved"
+            "status": "inconclusive",
+            "recorded_status": "proved",
+            "reason": "historical composition compilation completed, but its dependency cache was not bound: cache attestation missing; rerun check before warm replay"
           },
           {
             "artifacts": {
@@ -740,7 +752,9 @@
             "peak_rss_kib": 4578728,
             "returncode": 0,
             "search_artifacts": "absent from isolated working directory; retained Lean source only",
-            "status": "proved"
+            "status": "inconclusive",
+            "recorded_status": "proved",
+            "reason": "historical composition compilation completed, but its dependency cache was not bound: cache attestation missing; rerun check before warm replay"
           },
           {
             "artifacts": {
@@ -788,7 +802,9 @@
             "peak_rss_kib": 4580520,
             "returncode": 0,
             "search_artifacts": "absent from isolated working directory; retained Lean source only",
-            "status": "proved"
+            "status": "inconclusive",
+            "recorded_status": "proved",
+            "reason": "historical composition compilation completed, but its dependency cache was not bound: cache attestation missing; rerun check before warm replay"
           }
         ]
       }
@@ -798,9 +814,14 @@
     "status": "prepared",
     "timeout_seconds_per_run": 600.0,
     "archive": {
-      "scope": "exact checked inputs and logs; verdict unchanged",
+      "scope": "original inputs/logs unchanged; historical warm verdicts reclassified for missing cache binding",
       "directory": "/home/roland/moonshot1/experiments/task2-equivalence/build/evidence/comparison",
       "retained_artifacts": 42
+    },
+    "replay_cache_binding": "only samples with recorded before/after cache validation qualify as proved",
+    "correction": {
+      "reason": "Warm compilations completed, but the consumed dependency cache was not fingerprinted. Preserve attempts; withdraw artifact-bound replay verdicts and proved medians. No retrospective attestation.",
+      "full_proof_verdicts": "unchanged; all generated circuit modules were freshly compiled in the retained proof stages"
     }
   },
   "engineering_effort": {
@@ -871,6 +892,17 @@
     "usage": {
       "tokens": null,
       "monetary_cost": null
+    },
+    "review_validation_infrastructure": {
+      "actor": "codex",
+      "active_seconds": null,
+      "interventions": [
+        "Bind fresh checked outputs and the resolved compiled closure to live semantic sources and dependency pins",
+        "Reject cache changes before/after replay and reclassify historical unbound samples",
+        "Bootstrap upstream Lean modules before reference import",
+        "Remove exploratory-directory dependency from the corrupt-cut control"
+      ],
+      "note": "After the original proof experiments; no active duration measured. Does not change the original baseline/candidate proof obligations."
     }
   },
   "trust_boundary": [
@@ -910,11 +942,11 @@
     },
     "compare-result": {
       "path": "/home/roland/moonshot1/experiments/task2-equivalence/build/compare-result.json",
-      "sha256": "90f6c6f31a06f3c8ef32450a2f4ec5d5a32cd829a46ee1b939568a44bdf70649"
+      "sha256": "8d64f78c27ecbd2db93720e68bc5fbbc17536f6ecdf33c1486fc907cbc138d12"
     },
     "effort": {
       "path": "/home/roland/moonshot1/experiments/task2-equivalence/reports/effort.json",
-      "sha256": "ab5f1191f0b0b5c4c753dba9bf37c0a00125700a3d70e8909ca76e66b1eb5fb6"
+      "sha256": "43d021f482caf609a36460655f49e97b499ba4903f592e69bb3bb57d802a2d01"
     }
   }
 }

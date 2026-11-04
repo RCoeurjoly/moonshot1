@@ -27,6 +27,7 @@ def milestone_verdict(technical,effort):
 
 def build_report(out):
     from run import ROOT,artifact,verify_manifest
+    from compare import qualify_replay_evidence
     out=Path(out).resolve()
     names=['manifest','reference-result','hardware-baseline-result','hardware-candidate-result',
            'check-baseline-result','check-candidate-result','variant-result','compare-result']
@@ -53,7 +54,7 @@ def build_report(out):
             'structural_change':{k:variant[k] for k in ['transformation','criterion','before','after']},
             'shared_contract_sources_identical':same_contract,'fixed_artifact_identities':identities,
             'nonvacuity':'both Implements theorems include initialized-state existence for every input pair',
-            'warm_comparison':stages['compare-result'],'engineering_effort':effort,
+            'warm_comparison':qualify_replay_evidence(stages['compare-result']),'engineering_effort':effort,
             'trust_boundary':json.loads((ROOT/'contract.json').read_text())['trust_boundary'],
             'integer_extension':'narrow modular int32 semantics for the actual checked matmul graph; upstream TorchLean lacks int32 arithmetic',
             'artifacts':{name:artifact(out/(name+'.json')) for name in names}}

@@ -407,6 +407,7 @@ def prove_design(out, design, source_result, hardware_result, timeout=600, worke
     library = ROOT / ".lake/build/lib/lean"
 
     def compile_file(path, module, audits=()):
+        checked_source=artifact(path)
         target = library.joinpath(*module.split(".")).with_suffix(".olean")
         target.parent.mkdir(parents=True, exist_ok=True)
         # Failed attempts cannot leave an old object eligible for a later stage.
@@ -419,7 +420,12 @@ def prove_design(out, design, source_result, hardware_result, timeout=600, worke
                 result["status"]="proved" if audits else "prepared"
             except ValueError as error:
                 result["status"]="failed";result["error"]=str(error)
-        result["source"]=artifact(path)
+        result['compiled_module']=module
+        result["source"]=checked_source
+        if artifact(path)!=checked_source:
+            result['status']='failed';result['error']='source changed during compilation'
+        if result['status'] in ('prepared','proved'):
+            result['compiled_output']=artifact(target)
         return result
 
     def stopped():
@@ -430,7 +436,10 @@ def prove_design(out, design, source_result, hardware_result, timeout=600, worke
 
     runs.append(execute(["lake","build","Task2.Source","Task2.Hardware"],folder/"library.log",timeout=timeout))
     if stopped():return stopped()
-    for path,module in [(ROOT/"Task2/Trace.lean","Task2.Trace"),(ROOT/"Task2/ProofTools.lean","Task2.ProofTools"),
+    for path,module in [(ROOT/'Task2/WordDot.lean','Task2.WordDot'),
+                        (Path(source_result['artifacts']['imported_source']['path']),'Task2.Imported.Source'),
+                        (ROOT/'Task2/Source.lean','Task2.Source'),(ROOT/'Task2/Hardware.lean','Task2.Hardware'),
+                        (ROOT/"Task2/Trace.lean","Task2.Trace"),(ROOT/"Task2/ProofTools.lean","Task2.ProofTools"),
                         (Path(hardware_result['artifacts']['imported_core']['path']),f"Task2.Imported.{name}Core"),
                         (Path(hardware_result['artifacts']['device_adapter']['path']),f"Task2.Imported.{name}Adapter")]:
         runs.append(compile_file(path,module))
@@ -475,8 +484,14 @@ def prove_design(out, design, source_result, hardware_result, timeout=600, worke
     for path in sorted(folder.glob("*.lean")):
         bindings["certificate_"+path.stem]=artifact(path)
     for path in [ROOT/"Task2/WordDot.lean",ROOT/"Task2/Hardware.lean",ROOT/"Task2/Trace.lean",
-                 ROOT/"Task2/ProofTools.lean",public,ROOT/"scripts/prove_trace.py",ROOT/"scripts/run.py",ROOT/"scripts/public_claim.py"]:
+                 ROOT/"Task2/ProofTools.lean",public,ROOT/"scripts/prove_trace.py",ROOT/"scripts/run.py",ROOT/"scripts/public_claim.py",
+                 ROOT/'scripts/cache_attestation.py',ROOT/'scripts/CacheClosure.lean']:
         bindings["proof_support_"+path.name]=artifact(path)
+    from cache_attestation import capture
+    cache=capture(ROOT,out,design,{r['compiled_module']:r['source'] for r in runs if 'compiled_module' in r},env,
+                  checked_outputs={r['compiled_module']:r['compiled_output'] for r in runs if 'compiled_output' in r})
+    cache_file=folder/'cache-attestation.json';cache_file.write_text(json.dumps(cache,indent=2)+'\n')
+    bindings['cache_attestation']=artifact(cache_file)
     return {"status":"proved","design":design,"claim":f"Task2.{design}_correct : Implements Imported.{design} sourceEval",
             "scope":"all pairs of 16 complete int32 word vectors; every permitted raw initial state; first accepted payload",
             "completion_bound_edges":trace.cycle,"includes_reset_edges":4,"axioms":axioms,

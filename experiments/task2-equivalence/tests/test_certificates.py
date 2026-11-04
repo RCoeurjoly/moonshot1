@@ -69,7 +69,7 @@ class CertificateTests(unittest.TestCase):
     def test_kernel_rejects_corrupted_cut_equation(self):
         """A deliberately wrong reset input cannot satisfy the checked cut."""
         root = Path(__file__).resolve().parents[1]
-        folder = root / "build/certificates-all"
+        folder = root / "build/proof/baseline"
         source = folder / "BaselineCuts0.lean"
         self.assertTrue(source.exists(), "generate chunk certificates before this control")
         text=source.read_text().split("theorem cut0_1")[0]

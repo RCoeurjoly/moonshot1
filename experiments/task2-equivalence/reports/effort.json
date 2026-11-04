@@ -66,5 +66,16 @@
   "usage": {
     "tokens": null,
     "monetary_cost": null
+  },
+  "review_validation_infrastructure": {
+    "actor": "codex",
+    "active_seconds": null,
+    "interventions": [
+      "Bind fresh checked outputs and the resolved compiled closure to live semantic sources and dependency pins",
+      "Reject cache changes before/after replay and reclassify historical unbound samples",
+      "Bootstrap upstream Lean modules before reference import",
+      "Remove exploratory-directory dependency from the corrupt-cut control"
+    ],
+    "note": "After the original proof experiments; no active duration measured. Does not change the original baseline/candidate proof obligations."
   }
 }

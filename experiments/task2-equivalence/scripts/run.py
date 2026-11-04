@@ -225,8 +225,10 @@ def reference(args):
     out = args.out.resolve()
     bridge = out / "reference/torchlean-adapter.py"
     bridge.parent.mkdir(parents=True, exist_ok=True)
-    runs = [require_run(["lake", "env", "lean", "--run", "scripts/EmitAdapter.lean", str(bridge)],
-                        out / "reference/emit.log")]
+    runs = [require_run(["lake", "build", "NN.Runtime.PyTorch.Export.TorchExport", "NN.Runtime.IR"],
+                        out / "reference/bootstrap.log")]
+    runs.append(require_run(["lake", "env", "lean", "--run", "scripts/EmitAdapter.lean", str(bridge)],
+                            out / "reference/emit.log"))
     runs.append(require_run([str(Path(manifest["python_environment"]) / "bin/python3"),
                             "scripts/import_reference.py", "--manifest", str(manifest_path.resolve()),
                             "--adapter-script", str(bridge), "--out", str(out / "reference")],

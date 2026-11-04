@@ -6,7 +6,7 @@ The first technical milestone is demonstrated: both the existing Task 2 circuit 
 | Accepted result bound, including reset | 436 edges | 436 edges |
 | Distinct checked circuit cuts | 5,077 | 4,907 |
 | Checked complete transitions | 436 | 436 |
-| Warm final-composition median (3/3 pass each) | 81.84 s | 72.43 s |
+| Historical composition attempt median (cache binding absent) | 81.84 s | 72.43 s |
 | Fresh proof-stage wall time | 655.63 s | 588.80 s |
 | Largest recorded process RSS | 5,740,988 KiB | 5,508,768 KiB |
 | Physical registered bits | 6,754 | 5,738 |
@@ -16,7 +16,7 @@ The theorem covers arbitrary complete int32 input words, arithmetic modulo 2^32,
 
 The proof approach emits a universally symbolic trajectory over the actual imported circuit. Lean checks every distinct local circuit equation and transition, then composes first-result and arithmetic facts. Python's normalized expressions are proposals, never an authority for the verdict. The optimized circuit reused the same generator and unchanged word/source/device definitions; maintenance added primitive simplifications and corrected a proof-method selector. The failed candidate attempt is retained and excluded from warm replay medians, not erased from the effort record.
 
-`comparison.json` contains the final serial three-run measurements, artifact identities, cache/backend descriptions and EQY status. Warm Lean measurements recheck the final composition using prechecked dependency/cut/transition oleans. All three EQY attempts timed out at 600 seconds; its proved-runtime median is null. EQY is a supplementary toolchain comparison with a trusted shared-memory lift and driver. Partial partitions, failed runs and timeouts establish no extra equivalence claim. Neither faster replay nor fewer generated cuts measures engineering effort.
+`comparison.json` contains the final serial three-run measurements, artifact identities, cache/backend descriptions and EQY status. The six historical Lean composition commands completed, but their consumed cache identities were not recorded. Their attempt timings are retained; replay verdicts are inconclusive and proved-runtime medians are null. New checks/replays enforce cache attestations; no replacement measurements are claimed. The immutable fresh full-proof results above are unchanged. All three EQY attempts timed out at 600 seconds; its proved-runtime median is null. EQY is a supplementary toolchain comparison with a trusted shared-memory lift and driver. Partial partitions, failed runs and timeouts establish no extra equivalence claim. Neither faster replay nor fewer generated cuts measures engineering effort.
 
 Evidence bundles live in `baseline-proof/`, `candidate-proof/`, `variant/`, and `comparison-evidence/`. Their hashes identify exact checked inputs and logs; original Nix artifacts remain the baseline. `effort.json` records interventions and missing active durations. Reproduction commands and the host-closure portability constraint are in the experiment README.
 
