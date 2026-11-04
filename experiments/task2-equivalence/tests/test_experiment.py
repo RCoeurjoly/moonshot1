@@ -97,6 +97,18 @@ class ExperimentTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "identity"):
                 runner.verify_manifest(manifest)
 
+    def test_mismatched_artifact_cannot_reuse_verdict(self):
+        """A previously proved status must not bypass a changed RTL identity."""
+        runner=self.runner()
+        self.assertTrue(hasattr(runner,"check"),"hardware proof stage is missing")
+        from types import SimpleNamespace
+        with tempfile.TemporaryDirectory() as td:
+            root=Path(td);manifest=runner.assemble_manifest(self.fixture(root))
+            (root/"manifest.json").write_text(json.dumps(manifest))
+            (root/"sv/main.sv").write_text("module main; wire changed = 1; endmodule\n")
+            with self.assertRaisesRegex(ValueError,"identity"):
+                runner.check(SimpleNamespace(out=root,design="baseline",timeout=600,workers=4))
+
     def test_reference_word_parity(self):
         """Catches signed conversion, missing modular reduction and skipped terms."""
         ref = self.reference()

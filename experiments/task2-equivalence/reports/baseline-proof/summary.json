@@ -1,0 +1,29 @@
+{
+  "status": "proved",
+  "claim": "Task2.baseline_correct : Implements Imported.baseline sourceEval",
+  "scope": "all pairs of 16 complete int32 word vectors; every permitted raw initial state; first accepted payload",
+  "completion_bound_edges": 436,
+  "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "lean_version": "Lean (version 4.35.0, x86_64-unknown-linux-gnu, commit eb6cafb7290e8bd5f2937522d8d804f58f02bafc, Release)",
+  "elapsed_seconds": 655.6291955439956,
+  "obligations": {
+    "batches": 51,
+    "cycles": 436,
+    "definitions": "BaselineTrace.lean",
+    "transition_batches": 22,
+    "unique_cuts": 5077
+  },
+  "workers": 8,
+  "peak_process_rss_kib": 5740988,
+  "active_engineering_seconds": null,
+  "proof_inputs_bundle": {
+    "path": "/home/roland/moonshot1/experiments/task2-equivalence/reports/baseline-proof/checked-inputs.tar.gz",
+    "sha256": "feab0864a9df4d9b5d1ed833f6cb82c711894063b3bcb04aee82817ed3311bcb"
+  },
+  "original_task2_repositories_modified": false,
+  "remaining_milestone": "candidate proof, contract-matched EQY comparison, proof-maintenance measurements"
+}

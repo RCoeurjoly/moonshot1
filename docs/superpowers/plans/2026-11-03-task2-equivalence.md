@@ -187,13 +187,13 @@ Expected: successful proof compilation followed by the declared axiom audit, wit
 
 **Produces:** baseline_correct, its concrete completion bound and an auditable proof bundle.
 
-- [ ] State baseline_correct before proving it and run its build to expose the missing obligations. Do not use sorry, admit, a solver-success axiom, or a precondition assuming the desired result.
-- [ ] Prove initial-state existence for every a,b, preservation of input memory through reset, and entry into the computation phase under the fixed driver.
-- [ ] Define/prove the controller invariant relating index, loaded operands, accumulator and completed products to a prefix of dot32. Relate the true implementation registers/memories to that invariant.
-- [ ] Derive a uniform finite bound from the imported control behavior, including handshake phases; prove FirstResult and compose with source_agrees. Do not turn the 10000-cycle simulation timeout into an assumption.
-- [ ] Add test_corrupt_payload_has_counterexample: XOR the observed payload bit zero in an explicitly labeled test-only mutant, replay a concrete input and retain its mismatch witness. Add test_mismatched_artifact_cannot_reuse_verdict.
-- [ ] Implement check --design baseline to bind the theorem and complete generated-definition hashes, run the proof build and transitive axiom audit, and distinguish correspondence controls from the theorem.
-- [ ] Record baseline proof-construction effort separately from dependency/setup/import effort. Run all baseline checks, inspect the public theorem type and assumptions, and commit.
+- [x] State baseline_correct before proving it and run its build to expose the missing obligations. Do not use sorry, admit, a solver-success axiom, or a precondition assuming the desired result.
+- [x] Prove initial-state existence for every a,b, preservation of input memory through reset, and entry into the computation phase under the fixed driver.
+- [x] Define/prove the controller invariant relating index, loaded operands, accumulator and completed products to a prefix of dot32. Relate the true implementation registers/memories to that invariant.
+- [x] Derive a uniform finite bound from the imported control behavior, including handshake phases; prove FirstResult and compose with source_agrees. Do not turn the 10000-cycle simulation timeout into an assumption.
+- [x] Add test_corrupt_payload_has_counterexample: XOR the observed payload bit zero in an explicitly labeled test-only mutant, replay a concrete input and retain its mismatch witness. Add test_mismatched_artifact_cannot_reuse_verdict.
+- [x] Implement check --design baseline to bind the theorem and complete generated-definition hashes, run the proof build and transitive axiom audit, and distinguish correspondence controls from the theorem.
+- [x] Record baseline proof-construction effort separately from dependency/setup/import effort. Run all baseline checks, inspect the public theorem type and assumptions, and commit.
 
 ### Task 5: Make one substantive pipeline change and reuse the proof
 

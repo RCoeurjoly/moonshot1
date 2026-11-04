@@ -1,0 +1,3 @@
+Task2.baseline_correct : Task2.Implements Task2.Imported.baseline Task2.sourceEval
+'Task2.baseline_correct' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Task2.PublicAudit.claim_type_check' depends on axioms: [propext, Classical.choice, Quot.sound]

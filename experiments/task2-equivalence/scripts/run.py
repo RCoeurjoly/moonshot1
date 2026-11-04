@@ -245,6 +245,31 @@ def hardware(args):
     return import_design(manifest, args.out, args.design, args.yosys)
 
 
+def require_current_artifact(result, key, current):
+    if digest(current) != result["artifacts"][key]["sha256"]:
+        raise ValueError(f"live semantic artifact identity differs from the checked snapshot: {current}")
+
+
+def check(args):
+    manifest = json.loads((args.out / "manifest.json").read_text())
+    verify_manifest(manifest)
+    source = json.loads((args.out / "reference-result.json").read_text())
+    hardware_result = json.loads((args.out / f"hardware-{args.design}-result.json").read_text())
+    verify_manifest(source)
+    verify_manifest(hardware_result)
+    for key,path in [("source_semantics",ROOT/"Task2/Source.lean"),
+                     ("word_semantics",ROOT/"Task2/WordDot.lean"),
+                     ("imported_source",args.out/"generated/Task2/Imported/Source.lean"),
+                     ("lake_manifest",ROOT/"lake-manifest.json")]:
+        require_current_artifact(source,key,path)
+    require_current_artifact(hardware_result,"trace_semantics",ROOT/"Task2/Trace.lean")
+    if source["status"] != "proved" or hardware_result["status"] != "passed_control":
+        raise ValueError("source proof and checked hardware import are prerequisites")
+    from prove_trace import prove_design
+    return prove_design(args.out.resolve(), args.design, source, hardware_result,
+                        timeout=args.timeout, workers=args.workers)
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     subs = parser.add_subparsers(dest="stage", required=True)
@@ -258,14 +283,21 @@ def main():
     p.add_argument("--out", type=Path, default=ROOT / "build")
     p.add_argument("--design", choices=["baseline", "candidate"], default="baseline")
     p.add_argument("--yosys", default="yosys")
+    p = subs.add_parser("check")
+    p.add_argument("--out", type=Path, default=ROOT / "build")
+    p.add_argument("--design", choices=["baseline", "candidate"], default="baseline")
+    p.add_argument("--timeout", type=float, default=600, help="per compiler invocation limit")
+    p.add_argument("--workers", type=int, default=8)
     args = parser.parse_args()
     started = time.monotonic()
     try:
-        result = {"attach": attach, "reference": reference, "hardware": hardware}[args.stage](args)
+        result = {"attach": attach, "reference": reference, "hardware": hardware, "check": check}[args.stage](args)
         result["elapsed_seconds"] = time.monotonic() - started
         key = args.stage + ("-" + args.design if hasattr(args, "design") else "")
         write_json(args.out / (key + "-result.json"), result)
         print(json.dumps(result, indent=2))
+        if result["status"] in ("failed", "timeout", "unsupported"):
+            return 1
     except (ValueError, OSError, subprocess.SubprocessError, NotImplementedError) as error:
         result = {"status": "unsupported" if isinstance(error, NotImplementedError) else "failed", "error": str(error), "elapsed_seconds": time.monotonic() - started}
         key = args.stage + ("-" + args.design if hasattr(args, "design") else "")

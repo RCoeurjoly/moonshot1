@@ -25,4 +25,26 @@ def Implements (d : Device) (f : Words → Words → Except String Word) : Prop 
   ∃ C : Nat, ∀ a b s, d.initial a b s →
     ∃ n v, n ≤ C ∧ FirstResult d s n v ∧ f a b = .ok v
 
+/-- A finite symbolic trajectory certifies every covered transition. -/
+theorem run_eq_trace (d : Device) (trace : Nat → d.State) (C : Nat)
+    (steps : ∀ n, n < C → d.step (trace n) = trace (n + 1)) :
+    ∀ n, n ≤ C → run d (trace 0) n = trace n := by
+  intro n hn
+  induction n with
+  | zero => rfl
+  | succ n ih =>
+    rw [run, ih (by omega), steps n (by omega)]
+
+theorem firstResult_of_trace (d : Device) (trace : Nat → d.State) (C : Nat) (v : Word)
+    (steps : ∀ n, n < C → d.step (trace n) = trace (n + 1))
+    (completed : d.result (trace C) = some v)
+    (earlier : ∀ n, n < C → d.result (trace n) = none) :
+    FirstResult d (trace 0) C v := by
+  constructor
+  · rw [run_eq_trace d trace C steps C (by omega)]
+    exact completed
+  · intro n hn
+    rw [run_eq_trace d trace C steps n (by omega)]
+    exact earlier n hn
+
 end Task2
