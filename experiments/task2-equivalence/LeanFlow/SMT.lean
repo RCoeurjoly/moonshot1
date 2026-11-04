@@ -269,6 +269,7 @@ private partial def initialSort (selectors : Std.HashMap String (Bool × Nat × 
 
 private def readProgram (roots : Array SExpr) : Except String Program := do
   let mut records : Std.HashMap String (Array Field) := {}
+  let mut fieldNames : Std.HashSet String := {}
   let mut definitions := #[]
   let mut assertions := #[]
   let mut initialType : Option String := none
@@ -279,6 +280,9 @@ private def readProgram (roots : Array SExpr) : Except String Program := do
     | .atom "declare-datatype" :: _ =>
       let (name,fields) ← record root
       if records.contains name then throw "SMT: duplicate record type"
+      for field in fields do
+        if fieldNames.contains field.name then throw "SMT: duplicate datatype selector"
+        fieldNames := fieldNames.insert field.name
       records := records.insert name fields
     | [.atom "declare-datatypes",_,_] =>
       let expected ← sexprs "(declare-datatypes ((Pair 2)) ((par (X Y) ((pair (first X) (second Y))))))"

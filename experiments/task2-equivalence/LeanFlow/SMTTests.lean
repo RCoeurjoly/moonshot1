@@ -29,6 +29,9 @@ private def execute (expression : String) (x s expected : Nat) : IO Unit := do
 def main : IO Unit := do
   execute "(bvadd x s)" 255 2 1
   execute "(bvmul x s)" 255 2 254
+  execute "(bvor x s)" 1 2 3
+  execute "(bvand x s)" 1 2 0
+  execute "(bvxor x s)" 3 1 2
   execute "(bvashr x s)" 128 8 255
   execute "(bvlshr x s)" 128 8 0
   execute "(bvshl x s)" 1 255 0
@@ -43,6 +46,8 @@ def main : IO Unit := do
   check (failed (SMT.parse ((fixture "x") ++ "(assert false)"))) "non-initializer assertion silently ignored"
   check (failed (SMT.parse ((fixture "x").replace "(first X)" "(first Y)")))
     "malformed Pair declaration accepted"
+  check (failed (SMT.parse ((fixture "x").replace "main_Outputs_y" "main_Inputs_x")))
+    "duplicate datatype selector accepted"
   check (failed (SMT.parse ((fixture "x").replace "((s (main_State_s state)))" "((x (main_State_s state)))")))
     "shadowed let binding accepted"
   let memoryText := "
@@ -60,7 +65,7 @@ def main : IO Unit := do
   let result ← IO.ofExcept (SMT.eval program #[.bits 8 37] #[.memory 2 8 (fun _ => 0)])
   let answer ← IO.ofExcept (SMT.bitsAt 8 result.outputs 0)
   check (answer == 37) "memory select/store failed"
-  let actual ← IO.ofExcept (SMT.parse (← IO.FS.readFile "build/hardware/baseline/cycle.smt2"))
+  let actual ← IO.ofExcept (SMT.parse (← IO.FS.readFile "build/lean-flow/accelerator.smt2"))
   check (actual.inputs.size == 6 && actual.states.size == 453 && actual.outputs.size == 5)
     "full Task2 SMT declarations did not parse"
   IO.println s!"LEAN_SMT_TESTS passed: primitives, rejection, memories; actual circuit {actual.nodes.size} nodes"
