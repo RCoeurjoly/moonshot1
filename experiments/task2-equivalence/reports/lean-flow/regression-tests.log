@@ -1,0 +1,70 @@
+test_actual_compiled_closure_is_bound_to_live_sources (test_cache_attestation.CacheAttestationTests.test_actual_compiled_closure_is_bound_to_live_sources) ... ok
+test_missing_attestation_cannot_authorize_replay (test_cache_attestation.CacheAttestationTests.test_missing_attestation_cannot_authorize_replay) ... ok
+test_candidate_requires_matching_substantive_variant (test_candidate_import.CandidateImportTests.test_candidate_requires_matching_substantive_variant) ... ok
+test_candidate_uses_its_own_lean_controls_and_flat_rams (test_candidate_import.CandidateImportTests.test_candidate_uses_its_own_lean_controls_and_flat_rams) ... ok
+test_optimized_control_cut_uses_required_bit_laws (test_candidate_import.CandidateImportTests.test_optimized_control_cut_uses_required_bit_laws) ... ok
+test_corrupt_payload_has_counterexample (test_certificates.CertificateTests.test_corrupt_payload_has_counterexample)
+The real imported trajectory must expose a one-bit output mutation. ... ok
+test_direct_submission_still_requires_kernel_validation (test_certificates.CertificateTests.test_direct_submission_still_requires_kernel_validation) ... ok
+test_kernel_rejects_corrupted_cut_equation (test_certificates.CertificateTests.test_kernel_rejects_corrupted_cut_equation)
+A deliberately wrong reset input cannot satisfy the checked cut. ... ok
+test_optimized_reduce_or_retains_boolean_semantics (test_certificates.CertificateTests.test_optimized_reduce_or_retains_boolean_semantics) ... ok
+test_reassembly_and_masked_unknown (test_certificates.CertificateTests.test_reassembly_and_masked_unknown) ... ok
+test_unknown_initial_registers_are_retained (test_certificates.CertificateTests.test_unknown_initial_registers_are_retained) ... ok
+test_legacy_cache_samples_are_attempts_without_proved_medians (test_compare.CompareTests.test_legacy_cache_samples_are_attempts_without_proved_medians) ... ok
+test_timeout_cannot_receive_a_proved_replay_median (test_compare.CompareTests.test_timeout_cannot_receive_a_proved_replay_median) ... ok
+test_ram_words_are_shared_primary_inputs (test_eqy_contract.EqyContractTests.test_ram_words_are_shared_primary_inputs) ... ok
+test_writable_or_fixed_ram_cannot_be_lifted_as_input (test_eqy_contract.EqyContractTests.test_writable_or_fixed_ram_cannot_be_lifted_as_input) ... ok
+test_archival_proof_does_not_authorize_changed_live_semantics (test_evidence_archive.EvidenceArchiveTests.test_archival_proof_does_not_authorize_changed_live_semantics) ... ok
+test_sealed_evidence_survives_later_source_edits (test_evidence_archive.EvidenceArchiveTests.test_sealed_evidence_survives_later_source_edits) ... ok
+test_stale_evidence_is_rejected_before_archiving (test_evidence_archive.EvidenceArchiveTests.test_stale_evidence_is_rejected_before_archiving) ... ok
+test_attached_task2_interface (test_experiment.ExperimentTests.test_attached_task2_interface)
+Catches scalar/matrix or signed-width drift in the compiler input. ... ok
+test_axiom_audit_rejects_equivalence_assumption (test_experiment.ExperimentTests.test_axiom_audit_rejects_equivalence_assumption)
+Catches accepting a solver verdict or desired equivalence as an axiom. ... ok
+test_cycle_import_rejects_other_clock (test_experiment.ExperimentTests.test_cycle_import_rejects_other_clock)
+Catches applying single-clock formalff normalization without checking its assumption. ... ok
+test_hardware_trace_correspondence (test_experiment.ExperimentTests.test_hardware_trace_correspondence)
+Catches cycle shifts, wrong payloads, and two equally stalled traces. ... ok
+test_memory_clock_lifting_checks_source_clock (test_experiment.ExperimentTests.test_memory_clock_lifting_checks_source_clock)
+Allows implicit cycle writes only for previously checked positive global-clock ports. ... ok
+test_mismatched_artifact_cannot_reuse_verdict (test_experiment.ExperimentTests.test_mismatched_artifact_cannot_reuse_verdict)
+A previously proved status must not bypass a changed RTL identity. ... ok
+test_payload_event_selection (test_experiment.ExperimentTests.test_payload_event_selection)
+Catches treating the control token, reset output or stalled payload as a result. ... ok
+test_process_peak_memory_is_measured (test_experiment.ExperimentTests.test_process_peak_memory_is_measured)
+Catches absent or cumulative memory measurement in benchmark evidence. ... ok
+test_reference_rejects_changed_operation (test_experiment.ExperimentTests.test_reference_rejects_changed_operation)
+Catches an importer that silently treats any graph as a dot product. ... ok
+test_reference_word_parity (test_experiment.ExperimentTests.test_reference_word_parity)
+Catches signed conversion, missing modular reduction and skipped terms. ... ok
+test_runtime_hardware_controls (test_experiment.ExperimentTests.test_runtime_hardware_controls)
+Runs actual imported Lean hardware on negative/overflow inputs and the Task 2 vector. ... ok
+test_scalar_padding_preserves_initial_states (test_experiment.ExperimentTests.test_scalar_padding_preserves_initial_states)
+Checks original known bits and freedom of the unreachable extra word. ... ok
+test_solver_failure_is_not_counterexample (test_experiment.ExperimentTests.test_solver_failure_is_not_counterexample)
+Catches treating a tool error or success exit alone as a formal verdict. ... ok
+test_stale_reference_is_rejected (test_experiment.ExperimentTests.test_stale_reference_is_rejected)
+Catches reusing evidence after the referenced file changes. ... ok
+test_symbolic_ram_survives_reset (test_experiment.ExperimentTests.test_symbolic_ram_survives_reset)
+Checks real Lean preservation theorems and an initial-state witness, not a zero-RAM trace. ... ok
+test_timeout_is_inconclusive (test_experiment.ExperimentTests.test_timeout_is_inconclusive)
+Catches treating a stopped process as a proof. ... ok
+test_zero_write_ports_is_not_an_asynchronous_write (test_experiment.ExperimentTests.test_zero_write_ports_is_not_an_asynchronous_write)
+Catches falsely rejecting read-only input RAM, without permitting real async writes. ... ok
+test_timeout_terminates_detached_solver_descendant (test_process_timeout.ProcessTimeoutTests.test_timeout_terminates_detached_solver_descendant) ... ok
+test_public_theorem_cannot_be_weakened_to_true (test_public_claim.PublicClaimTests.test_public_theorem_cannot_be_weakened_to_true) ... ok
+test_first_reference_import_builds_missing_upstream_objects (test_reference_bootstrap.ReferenceBootstrapTests.test_first_reference_import_builds_missing_upstream_objects) ... ok
+test_boolean_or_infinite_duration_is_not_measured_effort (test_report.ReportTests.test_boolean_or_infinite_duration_is_not_measured_effort) ... ok
+test_instrumented_proof_phase_comparison_is_allowed (test_report.ReportTests.test_instrumented_proof_phase_comparison_is_allowed) ... ok
+test_measured_equal_or_greater_effort_is_a_negative_milestone (test_report.ReportTests.test_measured_equal_or_greater_effort_is_a_negative_milestone) ... ok
+test_missing_effort_prevents_less_work_claim (test_report.ReportTests.test_missing_effort_prevents_less_work_claim) ... ok
+test_provisioning_and_faster_replay_do_not_count_as_less_proof_work (test_report.ReportTests.test_provisioning_and_faster_replay_do_not_count_as_less_proof_work) ... ok
+test_interface_change_is_rejected (test_variant.VariantTests.test_interface_change_is_rejected) ... ok
+test_noop_or_renaming_is_not_a_pipeline_change (test_variant.VariantTests.test_noop_or_renaming_is_not_a_pipeline_change) ... ok
+test_removed_logic_is_substantive (test_variant.VariantTests.test_removed_logic_is_substantive) ... ok
+
+----------------------------------------------------------------------
+Ran 46 tests in 56.789s
+
+OK

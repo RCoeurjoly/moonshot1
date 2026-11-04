@@ -1,5 +1,10 @@
 # Task 2 equivalence experiment
 
+**For the new Python-export / Lean-import workflow, start with
+[LeanFlow/Main.lean](LeanFlow/Main.lean) and [its short guide](LeanFlow/README.md).**
+Both artifact parsers and interpreters are Lean code. The results below describe
+the retained original experiment and its proof library.
+
 **Both the frozen Task 2 hardware and an `opt -full` pipeline variant are proved equivalent to the imported int32 source computation.** `Task2.baseline_correct` and `Task2.candidate_correct` cover every pair of length-16 word vectors and every permitted initial hardware state. Both prove the first accepted result after 436 rising edges, including four reset edges.
 
 The source is the original `MatmulModule` and adapter in `/home/roland/LLM2FPGA`, revision `b6dc8abcc023e241016a1fe19564b0d5af0c25b4`. Arithmetic is multiplication/addition modulo 2^32. The original repositories remain unchanged. This experiment verifies one transaction under the fixed startup/ready contract in `contract.json`; it does not yet cover backpressure, repeated transactions, TinyStories or quantization accuracy.

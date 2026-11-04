@@ -1,6 +1,6 @@
 # Lean Artifact Flow Implementation Plan
 
-> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
+> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [x]`) syntax for tracking.
 
 **Goal:** Python exports graph data; Lean parses/interprets graph and hardware SMT and proves the Task 2 transaction equivalent.
 
@@ -30,29 +30,29 @@
 
 **Files:** LeanFlow/Graph.lean, LeanFlow/Tests.lean, LeanFlow/export.py.
 **Interfaces:** Lean graph parse and eval over flat complete-word tensors; export emits JSON only.
-- [ ] RED: graph parse/eval controls and unsupported graph/type mutations.
-- [ ] Implement Lean parser using TorchLean validation and int32 node semantics; generic rank-one/matrix contraction using existing layout rules.
-- [ ] GREEN: controls and a theorem for the actual parsed Task2 graph against dot32.
+- [x] RED: graph parse/eval controls and unsupported graph/type mutations.
+- [x] Implement Lean parser using TorchLean validation and int32 node semantics; generic rank-one/matrix contraction using existing layout rules.
+- [x] GREEN: controls and a theorem for the actual parsed Task2 graph against dot32.
 
 ### Task 2: Lean SMT parser and evaluator
 
 **Files:** LeanFlow/SMT.lean and SMT tests.
 **Interfaces:** parse : String → Except String Program; eval : Program → inputs → state → Except String result.
-- [ ] RED: bitvector operations, signed shifts/comparisons, memory select/store, let bindings, invalid sorts/references and unsupported syntax.
-- [ ] Implement native S-expression parsing, strict typed lowering and explicit value semantics.
-- [ ] GREEN: parse and execute the actual full SMT artifact; compare complete transition/output controls with existing circuit model.
+- [x] RED: bitvector operations, signed shifts/comparisons, memory select/store, let bindings, invalid sorts/references and unsupported syntax.
+- [x] Implement native S-expression parsing, strict typed lowering and explicit value semantics.
+- [x] GREEN: parse and execute the actual full SMT artifact; compare complete transition/output controls with existing circuit model.
 
 ### Task 3: Universal refinement and observable equivalence
 
 **Files:** LeanFlow/Import.lean, LeanFlow/Equivalence.lean and generated Lean-only proof certificates if needed.
 **Interfaces:** parsed graph/SMT constants; universal transfer refinement; final Implements theorem.
-- [ ] RED: missing refinement/final theorem and corrupted-operator rejection.
-- [ ] Prove semantic agreement with the existing circuit for arbitrary inputs/state, then transport its reset/first-result proof and graph interpretation theorem.
-- [ ] GREEN: actual full Task2 theorem type/axiom audit; negative-control proof rejected.
+- [x] RED: missing refinement/final theorem and corrupted-operator rejection.
+- [x] Prove semantic agreement with the existing circuit for arbitrary inputs/state, then transport its reset/first-result proof and graph interpretation theorem.
+- [x] GREEN: actual full Task2 theorem type/axiom audit; negative-control proof rejected.
 
 ### Task 4: Small entry point and validation
 
 **Files:** LeanFlow/Main.lean, LeanFlow/README.md; minimal Lake wiring.
-- [ ] One clear export/read/prove command sequence; actual artifact paths visible in Lean.
-- [ ] Run native tests and final proof audits; retain concise evidence.
+- [x] One clear export/read/prove command sequence; actual artifact paths visible in Lean.
+- [x] Run native tests and final proof audits; retain concise evidence.
 - [ ] Fresh final review and one TDD fix pass; preserve branch without publishing.

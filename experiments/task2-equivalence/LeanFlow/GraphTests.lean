@@ -10,7 +10,7 @@ private def failed {α : Type} : Except String α → Bool
   | .ok _ => false
 
 def main : IO Unit := do
-  let text ← IO.FS.readFile "build/reference/reference.json"
+  let text ← IO.FS.readFile "build/lean-flow/pytorch.json"
   let graph ← IO.ofExcept (Graph.parse text)
   let one : Graph.Tensor := ⟨[16], Array.replicate 16 (1#32)⟩
   let two : Graph.Tensor := ⟨[16], Array.replicate 16 (2#32)⟩
