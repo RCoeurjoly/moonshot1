@@ -234,5 +234,5 @@ This plan stops at a single Task 2 transaction and one pipeline transformation. 
 
 Execute the tasks sequentially because their artifact identities, semantics and proof interfaces depend on each other. The main uncertainty is how much invariant discovery the actual Handshake controller requires; report its cost rather than replacing the implementation with a handwritten dot-product circuit.
 
-Planning review: each acceptance condition maps to Tasks 1–6; all five Review Focus conditions have named checks; shared CLI, module and theorem names are consistent. The original source repositories were inspected but the experiment has not been implemented.
+Planning review: each acceptance condition maps to Tasks 1–6; all five Review Focus conditions have named checks; shared CLI, module and theorem names are consistent. The original source repositories were inspected during planning. Execution evidence is retained under experiments/task2-equivalence/reports; completed task checkboxes below describe the implemented result.
 

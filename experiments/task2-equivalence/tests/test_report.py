@@ -30,3 +30,18 @@ class ReportTests(unittest.TestCase):
         result=self.module().effort_verdict(self.effort(300,30))
         self.assertTrue(result["less_work"])
         self.assertEqual(result["result"],"less_work")
+
+    def test_boolean_or_infinite_duration_is_not_measured_effort(self):
+        for baseline,candidate in [(True,False),(float('inf'),30)]:
+            with self.subTest(baseline=baseline,candidate=candidate):
+                result=self.module().effort_verdict(self.effort(baseline,candidate))
+                self.assertFalse(result['less_work'])
+                self.assertEqual(result['result'],'inconclusive')
+
+    def test_measured_equal_or_greater_effort_is_a_negative_milestone(self):
+        report=self.module()
+        for baseline,candidate in [(100,100),(100,200)]:
+            with self.subTest(candidate=candidate):
+                verdict=report.milestone_verdict(True,report.effort_verdict(self.effort(baseline,candidate)))
+                self.assertFalse(verdict['achieved'])
+                self.assertEqual(verdict['result'],'failed')

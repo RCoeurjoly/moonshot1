@@ -1,11 +1,13 @@
 """Publish checked results without turning missing effort data into success."""
 import json
+import math
 from pathlib import Path
 
 
 def effort_verdict(effort):
     phases=[effort.get(key,{}) for key in ['baseline_proof','candidate_proof']]
-    complete=all(p.get('actor') and isinstance(p.get('active_seconds'),(float,int)) and
+    complete=all(p.get('actor') and type(p.get('active_seconds')) in (float,int) and
+                 math.isfinite(p['active_seconds']) and
                  p['active_seconds']>=0 and isinstance(p.get('interventions'),list) and
                  isinstance(p.get('changed_obligations'),list) for p in phases)
     if not complete:
@@ -14,6 +16,13 @@ def effort_verdict(effort):
     return {'less_work':smaller,'result':'less_work' if smaller else 'not_less_work',
             'baseline_active_seconds':phases[0]['active_seconds'],'candidate_active_seconds':phases[1]['active_seconds'],
             'excludes':'dependency provisioning, source/import setup, and proof-replay time'}
+
+
+def milestone_verdict(technical,effort):
+    return {'achieved':technical and effort['less_work'],
+            'result':('failed' if not technical or effort['result']=='not_less_work' else
+                      ('success' if effort['less_work'] else 'inconclusive')),
+            'technical_equivalence_and_change_demonstrated':technical,'effort':effort}
 
 
 def build_report(out):
@@ -37,9 +46,7 @@ def build_report(out):
     effort_path=ROOT/'reports/effort.json'
     effort=json.loads(effort_path.read_text());verdict=effort_verdict(effort)
     technical=proofs and same_contract and identities and changed
-    milestone={'achieved':technical and verdict['less_work'],
-               'result':'success' if technical and verdict['less_work'] else ('inconclusive' if technical else 'failed'),
-               'technical_equivalence_and_change_demonstrated':technical,'effort':verdict}
+    milestone=milestone_verdict(technical,verdict)
     report={'status':'prepared','scope':'single Task2 int32 transaction and one opt -full transformation',
             'milestone':milestone,'baseline':{k:baseline[k] for k in ['claim','completion_bound_edges','axioms','elapsed_seconds','obligations']},
             'candidate':{k:candidate[k] for k in ['claim','completion_bound_edges','axioms','elapsed_seconds','obligations']},
