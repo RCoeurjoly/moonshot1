@@ -203,15 +203,15 @@ Expected: successful proof compilation followed by the declared axiom audit, wit
 
 **Produces:** Compiler-generated candidate RTL, structural change evidence, candidate_correct, and an EQY comparison result.
 
-- [ ] Add test_variant_noop_is_not_success. A transformed serialization with identical normalized logic/state must produce no_change, not an optimization or proof-reuse success.
-- [ ] Define the shared normalization checkpoint before the treatment. Generate the candidate by applying Yosys opt -full at that checkpoint and writing RTL2; record pass arguments and compare normalized cell/state/connectivity structure with generated names removed.
-- [ ] Require a substantive change. If opt -full is a no-op, retain that experiment result and revise the selected single transformation before claiming this milestone; do not manufacture a source change or count renaming as success.
-- [ ] Run the same hardware import on RTL2 and verify the unchanged external contract. Reuse WordDot, Source, Hardware and design-independent invariant lemmas unchanged; place candidate-specific facts and the final theorem in Candidate.
-- [ ] Prove candidate_correct against sourceEval. Factor an imported-hardware refinement lemma if that is simpler, but prove it in Lean before composing with baseline_correct. Record which definitions, invariant clauses and proofs needed edits.
-- [ ] Configure EQY with baseline as gold and candidate as gate, the same startup/input-memory contract, and defined accepted observations. Verify shared symbolic payloads are neither unconstrained independently nor tied to the sample vector. Use a supported memory-capable strategy and record its engine. Preserve unknown-state semantics; no arbitrary setundef-to-zero workaround.
+- [x] Add test_variant_noop_is_not_success. A transformed serialization with identical normalized logic/state must produce no_change, not an optimization or proof-reuse success.
+- [x] Define the shared normalization checkpoint before the treatment. Generate the candidate by applying Yosys opt -full at that checkpoint and writing RTL2; record pass arguments and compare normalized cell/state/connectivity structure with generated names removed.
+- [x] Require a substantive change. If opt -full is a no-op, retain that experiment result and revise the selected single transformation before claiming this milestone; do not manufacture a source change or count renaming as success.
+- [x] Run the same hardware import on RTL2 and verify the unchanged external contract. Reuse WordDot, Source, Hardware and design-independent invariant lemmas unchanged; place candidate-specific facts and the final theorem in Candidate.
+- [x] Prove candidate_correct against sourceEval. Factor an imported-hardware refinement lemma if that is simpler, but prove it in Lean before composing with baseline_correct. Record which definitions, invariant clauses and proofs needed edits.
+- [x] Configure EQY with baseline as gold and candidate as gate, the same startup/input-memory contract, and defined accepted observations. Verify shared symbolic payloads are neither unconstrained independently nor tied to the sample vector. Use a supported memory-capable strategy and record its engine. Preserve unknown-state semantics; no arbitrary setundef-to-zero workaround.
 
   The comparison harness must connect both designs to the same symbolic initial RAM words and preserve their source-defined initial bits. Retain its relation to the Device.initial contract. If the selected EQY flow cannot express that contract, classify the comparison as unsupported and keep Lean as the primary result; a default comparison of independently unknown RAMs cannot substitute for it.
-- [ ] Check the candidate proof and dependency audit. Run EQY and retain its evidence/status, and verify the corrupted-payload control produces a concrete mismatch. Commit the transformation, proofs and exact comparison setup.
+- [x] Check the candidate proof and dependency audit. Run EQY and retain its evidence/status, and verify the corrupted-payload control produces a concrete mismatch. Commit the transformation, proofs and exact comparison setup.
 
 ### Task 6: Measure reuse and publish the reproducible result
 
@@ -221,12 +221,12 @@ Expected: successful proof compilation followed by the declared axiom audit, wit
 
 **Produces:** Reproduction instructions, a machine-readable comparison and a scoped milestone verdict.
 
-- [ ] Add test_timeout_is_inconclusive, test_solver_failure_is_not_counterexample and test_missing_effort_prevents_less_work_claim. Assert the result schema retains artifact identities and trust scope.
-- [ ] Implement compare with three warm repetitions and a 600-second per-run limit, recording median wall time, peak RSS, cache state and backend. Measure Lean replay for each design and EQY separately; retain first-run/setup costs outside warm medians.
-- [ ] Record engineering events by actor (human/agent), phase, active duration, intervention and changed obligations. Keep unavailable token/cost data null. Compare baseline proof construction with incremental candidate proof work, with one-time provisioning excluded from that comparison.
-- [ ] Implement report so success requires both Lean proofs, non-vacuous initialization, derived completion, fixed artifact identities, an actual implementation change, and measured lower incremental proof work. If effort does not decrease, report that result without changing the criterion. EQY supports an additional refinement conclusion only when it proves the configured claim.
-- [ ] Run the complete CLI sequence and unittest suite from the frozen experiment environment. Replay the proofs from retained generated definitions with search artifacts removed. Verify an exact manifest match for every published verdict.
-- [ ] Write the result and reproduction instructions, including the current trust boundaries and the separate integer-semantic extension. Commit only this experiment's files and the measured report.
+- [x] Add test_timeout_is_inconclusive, test_solver_failure_is_not_counterexample and test_missing_effort_prevents_less_work_claim. Assert the result schema retains artifact identities and trust scope.
+- [x] Implement compare with three warm repetitions and a 600-second per-run limit, recording median wall time, peak RSS, cache state and backend. Measure Lean replay for each design and EQY separately; retain first-run/setup costs outside warm medians.
+- [x] Record engineering events by actor (human/agent), phase, active duration, intervention and changed obligations. Keep unavailable token/cost data null. Compare baseline proof construction with incremental candidate proof work, with one-time provisioning excluded from that comparison.
+- [x] Implement report so success requires both Lean proofs, non-vacuous initialization, derived completion, fixed artifact identities, an actual implementation change, and measured lower incremental proof work. If effort does not decrease, report that result without changing the criterion. EQY supports an additional refinement conclusion only when it proves the configured claim.
+- [x] Run the complete CLI sequence and unittest suite from the frozen experiment environment. Replay the proofs from retained generated definitions with search artifacts removed. Verify an exact manifest match for every published verdict.
+- [x] Write the result and reproduction instructions, including the current trust boundaries and the separate integer-semantic extension. Commit only this experiment's files and the measured report.
 
 ## Handoff and Later Work
 
