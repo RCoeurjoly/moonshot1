@@ -43,7 +43,12 @@
     '';
   in {
     packages.${system} = { inherit model; default = model; };
+    checks.${system}.statix = pkgs.runCommand "statix-check" {} ''
+      ${pkgs.statix}/bin/statix check ${./flake.nix}
+      touch "$out"
+    '';
     devShells.${system}.default = pkgs.mkShell {
+      packages = [ pkgs.statix ];
       inputsFrom = [ model exporter ];
       MATHLIB_CACHE_DIR = ".lake/cache";
     };
