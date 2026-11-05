@@ -14,4 +14,4 @@ Lake generates the local manifest; it is ignored.
 Update the exporter hash when updating TorchLean.
 The unchanged Lean 4.35.0 compiler uses leantar 0.1.20 to read the Mathlib cache.
 Count tracked lines: `git ls-files -z -- . | xargs -0 wc -l`.
-Lint: `nix develop --command statix check flake.nix` or `nix flake check .`.
+Format with `nix fmt`; verify formatting with `nix flake check .`.
