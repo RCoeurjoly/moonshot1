@@ -1,53 +1,52 @@
 {
-  description = "Import the Task 2 PyTorch graph into TorchLean";
+  inputs.nixpkgs.url = "github:NixOS/nixpkgs/1d060086d60cb76a40cf37109f979d88a5bd6396";
 
-  inputs.nixpkgs.url = "github:NixOS/nixpkgs/6fd329b2adfecb86ae49c1cba89689bd0f229e04";
-
-  outputs = { self, nixpkgs }: let
+  outputs = { nixpkgs, ... }: let
     system = "x86_64-linux";
     pkgs = import nixpkgs { inherit system; config.cudaSupport = false; };
     python = pkgs.python3.withPackages (ps: [ ps.torch ps.numpy ]);
-    lean = pkgs.lean4;
-    tools = [ lean python pkgs.bash pkgs.coreutils pkgs.gitMinimal pkgs.curl pkgs.gnutar pkgs.gzip
-      pkgs.zstd pkgs.unzip pkgs.stdenv.cc ];
-    environment = {
-      PYTHONNOUSERSITE = "1";
-      SSL_CERT_FILE = "${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt";
-      GIT_SSL_CAINFO = "${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt";
-      CURL_CA_BUNDLE = "${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt";
-      CC = "${pkgs.stdenv.cc}/bin/cc";
-      CXX = "${pkgs.stdenv.cc}/bin/c++";
+    leantar = pkgs.fetchzip {
+      url = "https://github.com/digama0/leangz/releases/download/v0.1.20/leantar-v0.1.20-x86_64-unknown-linux-musl.tar.gz";
+      hash = "sha256-dT9RPFD0MeJgkhf9q+KyHuiQimQ3XKzZiaDYyo7xgNY=";
+      postFetch = ''mkdir -p "$out/bin"; mv "$out/leantar" "$out/bin/"'';
     };
-    source = pkgs.lib.cleanSourceWith {
-      src = self;
-      filter = path: _: !builtins.elem (baseNameOf path)
-        [ ".lake" "build" "__pycache__" ".git" "result" ];
-    };
-    dependencyKey = builtins.substring 0 16 (builtins.hashString "sha256"
-      (builtins.readFile ./lake-manifest.json + builtins.readFile ./lean-toolchain + toString lean));
-    runner = pkgs.writeShellApplication {
-      name = "pytorch-import";
-      runtimeInputs = tools;
-      runtimeEnv = environment;
-      text = ''
-        cache_root="''${XDG_CACHE_HOME:-$HOME/.cache}"
-        work="$cache_root/pytorch-import/${dependencyKey}"
-        mkdir -p "$work"
-        cp -rf ${source}/. "$work/"
-        chmod u+w "$work"/*
-        printf 'Working directory: %s\n' "$work"
-        bash "$work/run.sh"
+    lean = pkgs.symlinkJoin {
+      name = "lean4";
+      paths = [ pkgs.lean4 ];
+      postBuild = ''
+        cp --remove-destination ${pkgs.lean4}/bin/.lean-wrapped "$out/bin/lean"
+        cp --remove-destination ${pkgs.lean4}/bin/lake "$out/bin/lake"
+        ln -sf ${leantar}/bin/leantar "$out/bin/leantar"
       '';
     };
+    exporter = pkgs.runCommandCC "torchlean_export.py" {
+      nativeBuildInputs = [ lean ] ++ (with pkgs; [ gitMinimal curl cacert ]);
+      LEAN_NUM_THREADS = "2";
+      outputHashMode = "flat";
+      outputHash = "sha256-C4yjzI2IKpLeBe0dx1DsvW70bSSXghruMDmroQdNRWU=";
+    } ''
+      cp ${./lakefile.lean} lakefile.lean
+      cp ${./lake-manifest.json} lake-manifest.json
+      cp ${./lean-toolchain} lean-toolchain
+      export MATHLIB_CACHE_DIR="$TMPDIR/mathlib-cache"
+      lake exe cache get
+      lake --old build NN.Runtime.PyTorch.Export.TorchExport
+      cat > Emit.lean <<'LEAN'
+      import NN.Runtime.PyTorch.Export.TorchExport
+      def main : IO Unit := IO.print (Export.PyTorch.TorchExport.script {})
+      LEAN
+      lake env lean --run Emit.lean > "$out"
+    '';
+    model = pkgs.runCommand "model.json" { nativeBuildInputs = [ python ]; } ''
+      cp ${./model.py} model.py
+      cp ${exporter} torchlean_export.py
+      python model.py "$out"
+    '';
   in {
-    packages.${system} = { inherit lean python; default = runner; };
-    apps.${system}.default = {
-      type = "app";
-      program = "${runner}/bin/pytorch-import";
-      meta.description = "Export a PyTorch graph and import it into TorchLean";
+    packages.${system} = { inherit model; default = model; };
+    devShells.${system}.default = pkgs.mkShell {
+      inputsFrom = [ model exporter ];
+      MATHLIB_CACHE_DIR = ".lake/cache";
     };
-    devShells.${system}.default = pkgs.mkShellNoCC (environment // {
-      packages = tools;
-    });
   };
 }
