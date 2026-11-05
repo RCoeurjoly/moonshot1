@@ -26,7 +26,6 @@
       outputHash = "sha256-C4yjzI2IKpLeBe0dx1DsvW70bSSXghruMDmroQdNRWU=";
     } ''
       cp ${./lakefile.lean} lakefile.lean
-      cp ${./lake-manifest.json} lake-manifest.json
       cp ${./lean-toolchain} lean-toolchain
       export MATHLIB_CACHE_DIR="$TMPDIR/mathlib-cache"
       lake exe cache get
