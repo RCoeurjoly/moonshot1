@@ -1,0 +1,3428 @@
+{
+  "status": "proved",
+  "elapsed_seconds": 286.902381,
+  "state_fields_checked": 441,
+  "outputs_checked": 5,
+  "completion_edges": 436,
+  "public_theorem": "SparkleOptProof.Main.observable_equivalence",
+  "first_result_theorem": "SparkleOptProof.Main.first_result",
+  "axioms": {
+    "SparkleOptProof.Main.observable_equivalence": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "SparkleOptProof.Main.first_result": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "controls": {
+    "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/build/result.json",
+    "sha256": "a0b95715bdcdac3f5c6e316327321bcf012d5c2ac1a62d30c2fd4ccfbd05a645"
+  },
+  "native_model": {
+    "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/build/native/Task2RTL.lean",
+    "sha256": "009e079d72f0947c4627a54eccf5aedbfb66e77f8f96419a8a9d0e424824fddf"
+  },
+  "checks": [
+    {
+      "command": [
+        "/nix/store/wzr0jh4q335z1d4rcdq0xw9i26ahxvg3-lean-4.35.0/bin/lean",
+        "--root=/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof",
+        "-o",
+        "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/SharedMath.olean",
+        "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/SharedMath.lean"
+      ],
+      "returncode": 0,
+      "status": "completed",
+      "seconds": 0.766791,
+      "log": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/SharedMath.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "resources": {
+        "seconds": 0.75,
+        "peak_process_rss_kib": 1589636
+      },
+      "module": "SharedMath",
+      "source": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/SharedMath.lean",
+        "sha256": "099614ead59d5065fa4064800d96ce82ebc1519d59b4549e2e24cfbda1d0e561"
+      },
+      "object": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/SharedMath.olean",
+        "sha256": "5f2955221ab38259c0160e09a76016a0ee890b6117f70c375bed852f83231b0b"
+      },
+      "axioms": {}
+    },
+    {
+      "command": [
+        "/nix/store/wzr0jh4q335z1d4rcdq0xw9i26ahxvg3-lean-4.35.0/bin/lean",
+        "--root=/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof",
+        "-o",
+        "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptReferenceAdapter.olean",
+        "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/OptReferenceAdapter.lean"
+      ],
+      "returncode": 0,
+      "status": "completed",
+      "seconds": 0.867975,
+      "log": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptReferenceAdapter.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "resources": {
+        "seconds": 0.85,
+        "peak_process_rss_kib": 1603304
+      },
+      "module": "OptReferenceAdapter",
+      "source": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/OptReferenceAdapter.lean",
+        "sha256": "a36b676bd7ef1ccd7ce522282c8443a5746d9aa27dc2386cfbbb83c21cd096ae"
+      },
+      "object": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptReferenceAdapter.olean",
+        "sha256": "871f71ad6750602796c59f320040d7c443712f2a6bfe81a9f172db2cb281e9ff"
+      },
+      "axioms": {}
+    },
+    {
+      "command": [
+        "/nix/store/wzr0jh4q335z1d4rcdq0xw9i26ahxvg3-lean-4.35.0/bin/lean",
+        "--root=/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof",
+        "-o",
+        "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptModel.olean",
+        "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/OptModel.lean"
+      ],
+      "returncode": 0,
+      "status": "completed",
+      "seconds": 8.091148,
+      "log": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptModel.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "resources": {
+        "seconds": 8.08,
+        "peak_process_rss_kib": 1940408
+      },
+      "module": "OptModel",
+      "source": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/OptModel.lean",
+        "sha256": "577d5489bfb13f2eb89d1de87d1ec300a47dfc15b7b5638529d46e6747d35999"
+      },
+      "object": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptModel.olean",
+        "sha256": "d96c1c1f7fb4cd9a8566875e86a0dec482c9ffc106361ee36f8080edca52f40d"
+      },
+      "axioms": {}
+    },
+    {
+      "command": [
+        "/nix/store/wzr0jh4q335z1d4rcdq0xw9i26ahxvg3-lean-4.35.0/bin/lean",
+        "--root=/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof",
+        "-o",
+        "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptHelpers.olean",
+        "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/OptHelpers.lean"
+      ],
+      "returncode": 0,
+      "status": "completed",
+      "seconds": 0.917249,
+      "log": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptHelpers.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "resources": {
+        "seconds": 0.89,
+        "peak_process_rss_kib": 1607740
+      },
+      "module": "OptHelpers",
+      "source": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/OptHelpers.lean",
+        "sha256": "2bb9490b87e8bbfc25491d75bb06c18bb83d0fa89a7c7bc56c460755a2be4ff6"
+      },
+      "object": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptHelpers.olean",
+        "sha256": "f95437ad1dc8bdf469f49888c959fb27c1254a3c0b68ac07dd784b661fe44a67"
+      },
+      "axioms": {}
+    },
+    {
+      "command": [
+        "/nix/store/wzr0jh4q335z1d4rcdq0xw9i26ahxvg3-lean-4.35.0/bin/lean",
+        "--root=/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/generated",
+        "-o",
+        "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptFields2.olean",
+        "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/generated/OptFields2.lean"
+      ],
+      "returncode": 0,
+      "status": "completed",
+      "seconds": 6.638791,
+      "log": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptFields2.log",
+        "sha256": "48d583cda14cf82cbfa45abf1804d5bbeb3aca4f3aeb060f51e5d4ed794ad284"
+      },
+      "resources": {
+        "seconds": 6.6,
+        "peak_process_rss_kib": 1605468
+      },
+      "module": "OptFields2",
+      "source": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/generated/OptFields2.lean",
+        "sha256": "205182d50028ee84d2ea8f0219c0de4b8e49f1cb822d65fb3899b4798e66987b"
+      },
+      "object": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptFields2.olean",
+        "sha256": "ce3037f60a8bc23251c700db888b0fcd53a4d0798ae320b8a8f91776038df107"
+      },
+      "axioms": {
+        "SparkleOptProof.agrees_s32": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s33": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s34": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s35": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s36": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s37": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s38": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s39": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s40": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s41": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s42": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s43": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s44": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s45": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s46": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s47": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      }
+    },
+    {
+      "command": [
+        "/nix/store/wzr0jh4q335z1d4rcdq0xw9i26ahxvg3-lean-4.35.0/bin/lean",
+        "--root=/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/generated",
+        "-o",
+        "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptFields0.olean",
+        "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/generated/OptFields0.lean"
+      ],
+      "returncode": 0,
+      "status": "completed",
+      "seconds": 7.743232,
+      "log": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptFields0.log",
+        "sha256": "45b6e51be709efed3d67f0cb9863bd5b3e1ca25b3b3a8f9c0112ce7413b94464"
+      },
+      "resources": {
+        "seconds": 7.71,
+        "peak_process_rss_kib": 1645292
+      },
+      "module": "OptFields0",
+      "source": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/generated/OptFields0.lean",
+        "sha256": "14c5f2f05787296f5e231d662477bb9a3f72167d4ecd24c17f446c4b1d1adeac"
+      },
+      "object": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptFields0.olean",
+        "sha256": "9dc33df57b5d5e8f824fe2286891ead7a87cc67cac68090f1e79d26999b3ab95"
+      },
+      "axioms": {
+        "SparkleOptProof.agrees_s0": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s1": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s2": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s3": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s4": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s5": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s6": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s7": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s8": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s9": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s10": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s11": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s12": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s13": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s14": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s15": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      }
+    },
+    {
+      "command": [
+        "/nix/store/wzr0jh4q335z1d4rcdq0xw9i26ahxvg3-lean-4.35.0/bin/lean",
+        "--root=/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/generated",
+        "-o",
+        "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptFields1.olean",
+        "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/generated/OptFields1.lean"
+      ],
+      "returncode": 0,
+      "status": "completed",
+      "seconds": 8.39468,
+      "log": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptFields1.log",
+        "sha256": "6c902b8293258007a0970559eec57379159a40d7df7f4f5d18b656f33df16a01"
+      },
+      "resources": {
+        "seconds": 8.35,
+        "peak_process_rss_kib": 1594548
+      },
+      "module": "OptFields1",
+      "source": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/generated/OptFields1.lean",
+        "sha256": "c4b749bdd9acce1133ed0797f786b65edc92b8c596656c88d81102f4ef2d8c11"
+      },
+      "object": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptFields1.olean",
+        "sha256": "34bb7755bcee1df373e92e1e4faed1f90e5ae80b67cba15ca83181e5ef5fe635"
+      },
+      "axioms": {
+        "SparkleOptProof.agrees_s16": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s17": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s18": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s19": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s20": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s21": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s22": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s23": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s24": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s25": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s26": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s27": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s28": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s29": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s30": [
+          "propext",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s31": [
+          "propext",
+          "Quot.sound"
+        ]
+      }
+    },
+    {
+      "command": [
+        "/nix/store/wzr0jh4q335z1d4rcdq0xw9i26ahxvg3-lean-4.35.0/bin/lean",
+        "--root=/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/generated",
+        "-o",
+        "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptFields4.olean",
+        "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/generated/OptFields4.lean"
+      ],
+      "returncode": 0,
+      "status": "completed",
+      "seconds": 9.395435,
+      "log": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptFields4.log",
+        "sha256": "9b72f3dc2254db27e1ee890b2f3e154e3db6158345502ece382f4ca6273fbef9"
+      },
+      "resources": {
+        "seconds": 9.36,
+        "peak_process_rss_kib": 1644388
+      },
+      "module": "OptFields4",
+      "source": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/generated/OptFields4.lean",
+        "sha256": "2e2cb9470f9d3b78679c425633238e0cb122d3f92a36a515b0a27f419ba11981"
+      },
+      "object": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptFields4.olean",
+        "sha256": "56759aa59c2690aa3ae85a7447db6e58bf929ac19d26e2e2fb169b8b55a650ea"
+      },
+      "axioms": {
+        "SparkleOptProof.agrees_s64": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s65": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s66": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s67": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s68": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s69": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s70": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s71": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s72": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s73": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s74": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s75": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s76": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s77": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s78": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s79": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      }
+    },
+    {
+      "command": [
+        "/nix/store/wzr0jh4q335z1d4rcdq0xw9i26ahxvg3-lean-4.35.0/bin/lean",
+        "--root=/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/generated",
+        "-o",
+        "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptFields5.olean",
+        "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/generated/OptFields5.lean"
+      ],
+      "returncode": 0,
+      "status": "completed",
+      "seconds": 9.647464,
+      "log": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptFields5.log",
+        "sha256": "02fdcbae56c6be1c707e855891f1c0142d147a588beb29ad97c38a208dec347a"
+      },
+      "resources": {
+        "seconds": 9.63,
+        "peak_process_rss_kib": 1661028
+      },
+      "module": "OptFields5",
+      "source": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/generated/OptFields5.lean",
+        "sha256": "792445c43b4fde6a46bcb47d43bd6eb5cea162d495df855748490aa6f8cbb230"
+      },
+      "object": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptFields5.olean",
+        "sha256": "6146a42d354ab0fa007759de5cfc0f10862f3b4989acb4fba29694511910bdb2"
+      },
+      "axioms": {
+        "SparkleOptProof.agrees_s80": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s81": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s82": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s83": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s84": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s85": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s86": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s87": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s88": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s89": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s90": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s91": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s92": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s93": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s94": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s95": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      }
+    },
+    {
+      "command": [
+        "/nix/store/wzr0jh4q335z1d4rcdq0xw9i26ahxvg3-lean-4.35.0/bin/lean",
+        "--root=/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/generated",
+        "-o",
+        "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptFields6.olean",
+        "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/generated/OptFields6.lean"
+      ],
+      "returncode": 0,
+      "status": "completed",
+      "seconds": 10.10114,
+      "log": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptFields6.log",
+        "sha256": "9455443253543e27b184fd1529ae785927085b8ebed71bc297639774d3272277"
+      },
+      "resources": {
+        "seconds": 10.07,
+        "peak_process_rss_kib": 1644624
+      },
+      "module": "OptFields6",
+      "source": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/generated/OptFields6.lean",
+        "sha256": "3983cd2bba2329c88c3d8f1f1e7bff60c33f6bb590d7bfdd151a1e9bf6759017"
+      },
+      "object": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptFields6.olean",
+        "sha256": "ea8be6d809b9d6fd76c78e897e9552764e255537f25a5822f1f82c2b69d0d4ad"
+      },
+      "axioms": {
+        "SparkleOptProof.agrees_s96": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s97": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s98": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s99": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s100": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s101": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s102": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s103": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s104": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s105": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s106": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s107": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s108": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s109": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s110": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s111": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      }
+    },
+    {
+      "command": [
+        "/nix/store/wzr0jh4q335z1d4rcdq0xw9i26ahxvg3-lean-4.35.0/bin/lean",
+        "--root=/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/generated",
+        "-o",
+        "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptFields7.olean",
+        "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/generated/OptFields7.lean"
+      ],
+      "returncode": 0,
+      "status": "completed",
+      "seconds": 9.801413,
+      "log": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptFields7.log",
+        "sha256": "4e73a3f6ecb89cac36906591837c38b2615b7b2b0cb356340fba559e94cd3b67"
+      },
+      "resources": {
+        "seconds": 9.75,
+        "peak_process_rss_kib": 1643956
+      },
+      "module": "OptFields7",
+      "source": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/generated/OptFields7.lean",
+        "sha256": "76e7377cb33b3ac4ff47a66a93a77ef2af6062092d773c48a26748455efb4023"
+      },
+      "object": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptFields7.olean",
+        "sha256": "a0957c11120f51c3bb56a54dba6819e4d4d4ca52bef66e6ac696b4c6b2bcdfbb"
+      },
+      "axioms": {
+        "SparkleOptProof.agrees_s112": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s113": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s114": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s115": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s116": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s117": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s118": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s119": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s120": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s121": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s122": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s123": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s124": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s125": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s126": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s127": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      }
+    },
+    {
+      "command": [
+        "/nix/store/wzr0jh4q335z1d4rcdq0xw9i26ahxvg3-lean-4.35.0/bin/lean",
+        "--root=/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/generated",
+        "-o",
+        "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptFields8.olean",
+        "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/generated/OptFields8.lean"
+      ],
+      "returncode": 0,
+      "status": "completed",
+      "seconds": 9.950794,
+      "log": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptFields8.log",
+        "sha256": "f80c515b7594325f2183faedd6e82d603dd75de9adccf85c0cb90356cb9b699e"
+      },
+      "resources": {
+        "seconds": 9.94,
+        "peak_process_rss_kib": 1656352
+      },
+      "module": "OptFields8",
+      "source": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/generated/OptFields8.lean",
+        "sha256": "c35e25bfc93a6cc90ad529023f1559ccb88e8188590136e25cae807ff354bb6b"
+      },
+      "object": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptFields8.olean",
+        "sha256": "97a889a1f412c1edff1978a7e692ca5e1b477e547596e2c1b0c3afd3d0005f20"
+      },
+      "axioms": {
+        "SparkleOptProof.agrees_s128": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s129": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s130": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s131": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s132": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s133": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s134": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s135": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s136": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s137": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s138": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s139": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s140": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s141": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s142": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s143": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      }
+    },
+    {
+      "command": [
+        "/nix/store/wzr0jh4q335z1d4rcdq0xw9i26ahxvg3-lean-4.35.0/bin/lean",
+        "--root=/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/generated",
+        "-o",
+        "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptFields9.olean",
+        "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/generated/OptFields9.lean"
+      ],
+      "returncode": 0,
+      "status": "completed",
+      "seconds": 9.801782,
+      "log": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptFields9.log",
+        "sha256": "4d3f49a2890bf657389af0d6ebf0a07a9588272fa42a4a9e060f06d2d72884ed"
+      },
+      "resources": {
+        "seconds": 9.79,
+        "peak_process_rss_kib": 1647980
+      },
+      "module": "OptFields9",
+      "source": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/generated/OptFields9.lean",
+        "sha256": "4ad2b743771c010f4c9e49aabe372b001c139831be5d8ad7461325209b1ad91e"
+      },
+      "object": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptFields9.olean",
+        "sha256": "d81dca95b5e96a92d7d7ceb9eaefff841d8864a7e65f8a2754b0225c12728b8a"
+      },
+      "axioms": {
+        "SparkleOptProof.agrees_s144": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s145": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s146": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s147": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s148": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s149": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s150": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s151": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s152": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s153": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s154": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s155": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s156": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s157": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s158": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s159": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      }
+    },
+    {
+      "command": [
+        "/nix/store/wzr0jh4q335z1d4rcdq0xw9i26ahxvg3-lean-4.35.0/bin/lean",
+        "--root=/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/generated",
+        "-o",
+        "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptFields10.olean",
+        "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/generated/OptFields10.lean"
+      ],
+      "returncode": 0,
+      "status": "completed",
+      "seconds": 9.948439,
+      "log": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptFields10.log",
+        "sha256": "2429677ffb69a9bc5ad5dc98332a361f3cd44de6068a3848ad9719ca87e8563d"
+      },
+      "resources": {
+        "seconds": 9.9,
+        "peak_process_rss_kib": 1643848
+      },
+      "module": "OptFields10",
+      "source": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/generated/OptFields10.lean",
+        "sha256": "5b6f2d70a69507342890f5d68abe6e6b2b642bdd46a1b13208cfbccada634d59"
+      },
+      "object": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptFields10.olean",
+        "sha256": "7fafc4417ad718c4d2b8cec00b54e00e247a86405c8307012f2203e5f450acd9"
+      },
+      "axioms": {
+        "SparkleOptProof.agrees_s160": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s161": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s162": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s163": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s164": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s165": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s166": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s167": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s168": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s169": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s170": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s171": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s172": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s173": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s174": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s175": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      }
+    },
+    {
+      "command": [
+        "/nix/store/wzr0jh4q335z1d4rcdq0xw9i26ahxvg3-lean-4.35.0/bin/lean",
+        "--root=/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/generated",
+        "-o",
+        "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptFields11.olean",
+        "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/generated/OptFields11.lean"
+      ],
+      "returncode": 0,
+      "status": "completed",
+      "seconds": 10.201074,
+      "log": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptFields11.log",
+        "sha256": "106e0a678baaff54ffec61a2f0e18430142f37bb23085fb65b47008c3e75b213"
+      },
+      "resources": {
+        "seconds": 10.16,
+        "peak_process_rss_kib": 1642536
+      },
+      "module": "OptFields11",
+      "source": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/generated/OptFields11.lean",
+        "sha256": "207d684af82e84b72fb72dea713dce53d9fa177ed06b04395d7fd16ed39ab332"
+      },
+      "object": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptFields11.olean",
+        "sha256": "6a471572857ca33aa57b79c7d1532ead4fd7a9d38c7bb8c2bcd12bcf1660d840"
+      },
+      "axioms": {
+        "SparkleOptProof.agrees_s176": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s177": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s178": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s179": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s180": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s181": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s182": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s183": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s184": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s185": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s186": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s187": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s188": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s189": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s190": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s191": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      }
+    },
+    {
+      "command": [
+        "/nix/store/wzr0jh4q335z1d4rcdq0xw9i26ahxvg3-lean-4.35.0/bin/lean",
+        "--root=/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/generated",
+        "-o",
+        "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptFields12.olean",
+        "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/generated/OptFields12.lean"
+      ],
+      "returncode": 0,
+      "status": "completed",
+      "seconds": 11.65433,
+      "log": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptFields12.log",
+        "sha256": "bd8086b1ef3cc4a6dba7e290cb68685d04c94c76650e51b32b2c2662bdb68bc9"
+      },
+      "resources": {
+        "seconds": 11.63,
+        "peak_process_rss_kib": 1646788
+      },
+      "module": "OptFields12",
+      "source": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/generated/OptFields12.lean",
+        "sha256": "59f8e34a3d5df3f9989738042364f88fd7abfd210ad01abc2d8030868c9feefe"
+      },
+      "object": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptFields12.olean",
+        "sha256": "741738c5a5d90fd4009e40217993b6e4585b4f7d830ea739f78256d1ae4bceed"
+      },
+      "axioms": {
+        "SparkleOptProof.agrees_s192": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s193": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s194": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s195": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s196": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s197": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s198": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s199": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s200": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s201": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s202": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s203": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s204": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s205": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s206": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s207": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      }
+    },
+    {
+      "command": [
+        "/nix/store/wzr0jh4q335z1d4rcdq0xw9i26ahxvg3-lean-4.35.0/bin/lean",
+        "--root=/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/generated",
+        "-o",
+        "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptFields13.olean",
+        "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/generated/OptFields13.lean"
+      ],
+      "returncode": 0,
+      "status": "completed",
+      "seconds": 10.051656,
+      "log": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptFields13.log",
+        "sha256": "d8c7854e7c442d530ef4eafac43577935e5417e487810ce249687351aa66d71a"
+      },
+      "resources": {
+        "seconds": 10.02,
+        "peak_process_rss_kib": 1642736
+      },
+      "module": "OptFields13",
+      "source": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/generated/OptFields13.lean",
+        "sha256": "48ed4c58f17c402cf761c4d7b222952cfbaa9a6f248a29007151bb21415459f1"
+      },
+      "object": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptFields13.olean",
+        "sha256": "a38306a2e5a481b668367c5dd2c6bf996f9a3905c0a7d1e88ad478afa8138021"
+      },
+      "axioms": {
+        "SparkleOptProof.agrees_s208": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s209": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s210": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s211": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s212": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s213": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s214": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s215": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s216": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s217": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s218": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s219": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s220": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s221": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s222": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s223": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      }
+    },
+    {
+      "command": [
+        "/nix/store/wzr0jh4q335z1d4rcdq0xw9i26ahxvg3-lean-4.35.0/bin/lean",
+        "--root=/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/generated",
+        "-o",
+        "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptFields14.olean",
+        "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/generated/OptFields14.lean"
+      ],
+      "returncode": 0,
+      "status": "completed",
+      "seconds": 10.051941,
+      "log": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptFields14.log",
+        "sha256": "5ef85aa19103fc92ede0f07bae0cdc516cb9185a9942036101dc107d5fdb37e9"
+      },
+      "resources": {
+        "seconds": 10.01,
+        "peak_process_rss_kib": 1644144
+      },
+      "module": "OptFields14",
+      "source": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/generated/OptFields14.lean",
+        "sha256": "1f0b4e13d0cc147ed1e5639d5ac5ff3e8671e87bbcdd9f12aeb0434bfa677873"
+      },
+      "object": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptFields14.olean",
+        "sha256": "66ba69fe3487660b5a108a35754c6d01cf6fbcd5b9f191d1cb48d9a0743d354e"
+      },
+      "axioms": {
+        "SparkleOptProof.agrees_s224": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s225": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s226": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s227": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s228": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s229": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s230": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s231": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s232": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s233": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s234": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s235": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s236": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s237": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s238": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s239": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      }
+    },
+    {
+      "command": [
+        "/nix/store/wzr0jh4q335z1d4rcdq0xw9i26ahxvg3-lean-4.35.0/bin/lean",
+        "--root=/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/generated",
+        "-o",
+        "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptFields15.olean",
+        "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/generated/OptFields15.lean"
+      ],
+      "returncode": 0,
+      "status": "completed",
+      "seconds": 10.003407,
+      "log": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptFields15.log",
+        "sha256": "837f0550233c1c0050bb916a785df190a3a3f8074af39dd2348d03f8315c1808"
+      },
+      "resources": {
+        "seconds": 9.98,
+        "peak_process_rss_kib": 1654088
+      },
+      "module": "OptFields15",
+      "source": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/generated/OptFields15.lean",
+        "sha256": "aa77e0eace7fe8526e5116bd5fdf02c4dbad5bbcd0d01e5963c385dd6892ef2e"
+      },
+      "object": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptFields15.olean",
+        "sha256": "abd47140b8fcbca00e2f5f04f8be33f56107d424d406faae99da815af0f59f01"
+      },
+      "axioms": {
+        "SparkleOptProof.agrees_s240": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s241": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s242": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s243": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s244": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s245": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s246": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s247": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s248": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s249": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s250": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s251": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s252": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s253": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s254": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s255": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      }
+    },
+    {
+      "command": [
+        "/nix/store/wzr0jh4q335z1d4rcdq0xw9i26ahxvg3-lean-4.35.0/bin/lean",
+        "--root=/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/generated",
+        "-o",
+        "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptFields16.olean",
+        "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/generated/OptFields16.lean"
+      ],
+      "returncode": 0,
+      "status": "completed",
+      "seconds": 10.404249,
+      "log": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptFields16.log",
+        "sha256": "20f558a6b3f1b513d8c81c5ffdb5876ca3c952bfa4c6704e60f8319164c599cc"
+      },
+      "resources": {
+        "seconds": 10.38,
+        "peak_process_rss_kib": 1650056
+      },
+      "module": "OptFields16",
+      "source": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/generated/OptFields16.lean",
+        "sha256": "94ad6b57f28e082a504336723e0863030396bff7542a43485aaf775b1ac19bed"
+      },
+      "object": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptFields16.olean",
+        "sha256": "555258500f7e84a6f95b7b88a1f632b931f37693c9472cdc742dce2e6f985b9d"
+      },
+      "axioms": {
+        "SparkleOptProof.agrees_s256": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s257": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s258": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s259": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s260": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s261": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s262": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s263": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s264": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s265": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s266": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s267": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s268": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s269": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s270": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s271": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      }
+    },
+    {
+      "command": [
+        "/nix/store/wzr0jh4q335z1d4rcdq0xw9i26ahxvg3-lean-4.35.0/bin/lean",
+        "--root=/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/generated",
+        "-o",
+        "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptFields17.olean",
+        "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/generated/OptFields17.lean"
+      ],
+      "returncode": 0,
+      "status": "completed",
+      "seconds": 10.506185,
+      "log": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptFields17.log",
+        "sha256": "e07682987b28fa784b7870f3c0f85fa909dba6fbd3b59c402b2247c4b6d47971"
+      },
+      "resources": {
+        "seconds": 10.49,
+        "peak_process_rss_kib": 1653716
+      },
+      "module": "OptFields17",
+      "source": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/generated/OptFields17.lean",
+        "sha256": "276c4d4f35f84d7d2c9590d5fe1dc1bbc60dc555c11db4a2f971d27aecb0ea36"
+      },
+      "object": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptFields17.olean",
+        "sha256": "6484326c41a507bbec70856394ee2c2ccd24beeb7d6cea2d5991022353574acc"
+      },
+      "axioms": {
+        "SparkleOptProof.agrees_s272": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s273": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s274": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s275": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s276": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s277": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s278": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s279": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s280": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s281": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s282": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s283": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s284": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s285": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s286": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s287": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      }
+    },
+    {
+      "command": [
+        "/nix/store/wzr0jh4q335z1d4rcdq0xw9i26ahxvg3-lean-4.35.0/bin/lean",
+        "--root=/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/generated",
+        "-o",
+        "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptFields19.olean",
+        "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/generated/OptFields19.lean"
+      ],
+      "returncode": 0,
+      "status": "completed",
+      "seconds": 10.302777,
+      "log": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptFields19.log",
+        "sha256": "36027fb2ee0422b179d6e4a351c47f88ca0c83c260b248abf550adecf373071f"
+      },
+      "resources": {
+        "seconds": 10.25,
+        "peak_process_rss_kib": 1654088
+      },
+      "module": "OptFields19",
+      "source": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/generated/OptFields19.lean",
+        "sha256": "6cc0fcb243ab2088f755c97bf76584105820397dfdca7183c61f72ad6bb66f4f"
+      },
+      "object": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptFields19.olean",
+        "sha256": "393b07ff36fdd0ce955e14907276a09b8c948474fb082f0e27d16eda9c41fbad"
+      },
+      "axioms": {
+        "SparkleOptProof.agrees_s304": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s305": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s306": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s307": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s308": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s309": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s310": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s311": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s312": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s313": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s314": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s315": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s316": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s317": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s318": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s319": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      }
+    },
+    {
+      "command": [
+        "/nix/store/wzr0jh4q335z1d4rcdq0xw9i26ahxvg3-lean-4.35.0/bin/lean",
+        "--root=/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/generated",
+        "-o",
+        "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptFields20.olean",
+        "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/generated/OptFields20.lean"
+      ],
+      "returncode": 0,
+      "status": "completed",
+      "seconds": 9.598029,
+      "log": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptFields20.log",
+        "sha256": "bf90db72b98898e7338f8ae46ec38a68d59fc124a60e9db3b3e1b004948b8302"
+      },
+      "resources": {
+        "seconds": 9.56,
+        "peak_process_rss_kib": 1651968
+      },
+      "module": "OptFields20",
+      "source": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/generated/OptFields20.lean",
+        "sha256": "8cb2eab13eb0e551665476101a752d23fb58cdef5831d478a55187334816b581"
+      },
+      "object": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptFields20.olean",
+        "sha256": "4d46a39dc8f27125de018f4bb282e4c6e14d29b0b08b97659552162c52901665"
+      },
+      "axioms": {
+        "SparkleOptProof.agrees_s320": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s321": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s322": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s323": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s324": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s325": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s326": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s327": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s328": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s329": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s330": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s331": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s332": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s333": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s334": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s335": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      }
+    },
+    {
+      "command": [
+        "/nix/store/wzr0jh4q335z1d4rcdq0xw9i26ahxvg3-lean-4.35.0/bin/lean",
+        "--root=/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/generated",
+        "-o",
+        "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptFields21.olean",
+        "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/generated/OptFields21.lean"
+      ],
+      "returncode": 0,
+      "status": "completed",
+      "seconds": 10.103575,
+      "log": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptFields21.log",
+        "sha256": "48580c8e7248ca2186c9f960fd680ff7e6246bd93438fe3221d8f9d7f16294fd"
+      },
+      "resources": {
+        "seconds": 10.07,
+        "peak_process_rss_kib": 1648284
+      },
+      "module": "OptFields21",
+      "source": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/generated/OptFields21.lean",
+        "sha256": "7f395e838c2769780f0912f075963939b073f72aebcb7150a57d0558456d442b"
+      },
+      "object": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptFields21.olean",
+        "sha256": "cb1bd798cdefbc19dc08fa306ad5796df6d79c0c83b76609759c203f14051317"
+      },
+      "axioms": {
+        "SparkleOptProof.agrees_s336": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s337": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s338": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s339": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s340": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s341": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s342": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s343": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s344": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s345": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s346": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s347": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s348": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s349": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s350": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s351": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      }
+    },
+    {
+      "command": [
+        "/nix/store/wzr0jh4q335z1d4rcdq0xw9i26ahxvg3-lean-4.35.0/bin/lean",
+        "--root=/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/generated",
+        "-o",
+        "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptFields22.olean",
+        "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/generated/OptFields22.lean"
+      ],
+      "returncode": 0,
+      "status": "completed",
+      "seconds": 10.402108,
+      "log": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptFields22.log",
+        "sha256": "1ae7b335a513941dc9f83aaf5ff96e7e2cfe26bccf3a979883e9a929d5645d72"
+      },
+      "resources": {
+        "seconds": 10.36,
+        "peak_process_rss_kib": 1643960
+      },
+      "module": "OptFields22",
+      "source": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/generated/OptFields22.lean",
+        "sha256": "0d75964f5250708893592e4d44ca5ede1598f5629e9424adf3036c055956ae79"
+      },
+      "object": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptFields22.olean",
+        "sha256": "13663a48ec43d5906a7f9c1de6a63e2f8ef606f963cf333743c07143ce852197"
+      },
+      "axioms": {
+        "SparkleOptProof.agrees_s352": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s353": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s354": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s355": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s356": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s357": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s358": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s359": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s360": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s361": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s362": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s363": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s364": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s365": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s366": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s367": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      }
+    },
+    {
+      "command": [
+        "/nix/store/wzr0jh4q335z1d4rcdq0xw9i26ahxvg3-lean-4.35.0/bin/lean",
+        "--root=/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/generated",
+        "-o",
+        "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptFields23.olean",
+        "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/generated/OptFields23.lean"
+      ],
+      "returncode": 0,
+      "status": "completed",
+      "seconds": 10.503532,
+      "log": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptFields23.log",
+        "sha256": "fd34ceae424fab7a86fd6b212ee559a8ff6a302150fc84ac6f16e58b2e268f5b"
+      },
+      "resources": {
+        "seconds": 10.45,
+        "peak_process_rss_kib": 1640716
+      },
+      "module": "OptFields23",
+      "source": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/generated/OptFields23.lean",
+        "sha256": "0d7af0792aba04a3d9a1ab38c37085f2ee3ed486d259a993e02ee771927260ef"
+      },
+      "object": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptFields23.olean",
+        "sha256": "1971e043858f5bf6f732d178ee8a4b036d024fe94f23687fa4d3c06499836e09"
+      },
+      "axioms": {
+        "SparkleOptProof.agrees_s368": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s369": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s370": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s371": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s372": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s373": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s374": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s375": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s376": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s377": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s378": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s379": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s380": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s381": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s382": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s383": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      }
+    },
+    {
+      "command": [
+        "/nix/store/wzr0jh4q335z1d4rcdq0xw9i26ahxvg3-lean-4.35.0/bin/lean",
+        "--root=/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/generated",
+        "-o",
+        "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptFields24.olean",
+        "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/generated/OptFields24.lean"
+      ],
+      "returncode": 0,
+      "status": "completed",
+      "seconds": 9.553055,
+      "log": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptFields24.log",
+        "sha256": "c47b1a93714cdd8dedaf7611a77ede671022cc4935181ffbae92961e1d0e8f40"
+      },
+      "resources": {
+        "seconds": 9.53,
+        "peak_process_rss_kib": 1660720
+      },
+      "module": "OptFields24",
+      "source": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/generated/OptFields24.lean",
+        "sha256": "e7f48d13b7fa871a9d886e4257793e32ec137e67455336dd2e72ee0a445b8bdf"
+      },
+      "object": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptFields24.olean",
+        "sha256": "16f0942c7a49d5a37dbb3aa8f84e86d0d7757a9a554b6aa1d1fc7e9288d35e3f"
+      },
+      "axioms": {
+        "SparkleOptProof.agrees_s384": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s385": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s386": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s387": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s388": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s389": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s390": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s391": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s392": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s393": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s394": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s395": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s396": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s397": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s398": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s399": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      }
+    },
+    {
+      "command": [
+        "/nix/store/wzr0jh4q335z1d4rcdq0xw9i26ahxvg3-lean-4.35.0/bin/lean",
+        "--root=/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/generated",
+        "-o",
+        "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptFields25.olean",
+        "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/generated/OptFields25.lean"
+      ],
+      "returncode": 0,
+      "status": "completed",
+      "seconds": 9.551119,
+      "log": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptFields25.log",
+        "sha256": "2f9584b262f0adcaa12df88d29a66f1dcb81733186ee7682ff3cc87ba8c0037f"
+      },
+      "resources": {
+        "seconds": 9.52,
+        "peak_process_rss_kib": 1654528
+      },
+      "module": "OptFields25",
+      "source": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/generated/OptFields25.lean",
+        "sha256": "b2b1efed2dcc6a9039b11bfc8be91e1199b87d995143f8667abbde7678468534"
+      },
+      "object": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptFields25.olean",
+        "sha256": "3e20e26b95c9867cc4e2409a8b925930b2dfed8feacdbd04bcf21fcb64f90637"
+      },
+      "axioms": {
+        "SparkleOptProof.agrees_s400": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s401": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s402": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s403": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s404": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s405": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s406": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s407": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s408": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s409": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s410": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s411": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s412": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s413": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s414": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s415": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      }
+    },
+    {
+      "command": [
+        "/nix/store/wzr0jh4q335z1d4rcdq0xw9i26ahxvg3-lean-4.35.0/bin/lean",
+        "--root=/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/generated",
+        "-o",
+        "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptFields26.olean",
+        "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/generated/OptFields26.lean"
+      ],
+      "returncode": 0,
+      "status": "completed",
+      "seconds": 10.353321,
+      "log": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptFields26.log",
+        "sha256": "10b56b45b163bda5aca7a37a0623ad43a2280ffed7ecc3ad9abaa2d46dc4dda9"
+      },
+      "resources": {
+        "seconds": 10.31,
+        "peak_process_rss_kib": 1654372
+      },
+      "module": "OptFields26",
+      "source": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/generated/OptFields26.lean",
+        "sha256": "aa26f8d3b9deb52a9a40889491ebbf6508c8cc4ae255502726ef16fd4d0fb594"
+      },
+      "object": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptFields26.olean",
+        "sha256": "1ccdb08a8fb3cfe945f081ba0b39fa3585df97c2d9891c5dcf0ecb50f78a32da"
+      },
+      "axioms": {
+        "SparkleOptProof.agrees_s416": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s417": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s418": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s419": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s420": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s421": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s422": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s423": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s424": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s425": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s426": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s427": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s428": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s429": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s430": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s431": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      }
+    },
+    {
+      "command": [
+        "/nix/store/wzr0jh4q335z1d4rcdq0xw9i26ahxvg3-lean-4.35.0/bin/lean",
+        "--root=/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/generated",
+        "-o",
+        "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptFields27.olean",
+        "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/generated/OptFields27.lean"
+      ],
+      "returncode": 0,
+      "status": "completed",
+      "seconds": 7.090309,
+      "log": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptFields27.log",
+        "sha256": "c28221ee11e6e55476bed57dab01e0eff16c7e5a0a55a015b52b4bbb674f0b8f"
+      },
+      "resources": {
+        "seconds": 7.07,
+        "peak_process_rss_kib": 1638556
+      },
+      "module": "OptFields27",
+      "source": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/generated/OptFields27.lean",
+        "sha256": "1f1a04c27016c98bdebf8226054b5b0ea3fe6b4c0d216e991a54d348d9ab0297"
+      },
+      "object": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptFields27.olean",
+        "sha256": "a5aaf22b1228cead673d402959b9539c9fbf4f7a5e12e7d0ef0c4a0099f80965"
+      },
+      "axioms": {
+        "SparkleOptProof.agrees_s432": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s433": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s434": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s435": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s436": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s437": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s438": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s439": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s440": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_o0": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_o1": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_o2": [
+          "propext",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_o3": [
+          "propext",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_o4": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      }
+    },
+    {
+      "command": [
+        "/nix/store/wzr0jh4q335z1d4rcdq0xw9i26ahxvg3-lean-4.35.0/bin/lean",
+        "--root=/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/generated",
+        "-o",
+        "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptFields18.olean",
+        "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/generated/OptFields18.lean"
+      ],
+      "returncode": 0,
+      "status": "completed",
+      "seconds": 85.540843,
+      "log": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptFields18.log",
+        "sha256": "279a821d40afec9a36d67cb46f8bd05eec7e62c9724b6355cd2c6e909c82bc8d"
+      },
+      "resources": {
+        "seconds": 85.53,
+        "peak_process_rss_kib": 1665416
+      },
+      "module": "OptFields18",
+      "source": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/generated/OptFields18.lean",
+        "sha256": "adad0a542ea64b6cf96bcad87479df1e6717761bd02cc7d617a719bc35405d3e"
+      },
+      "object": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptFields18.olean",
+        "sha256": "2e302533f791c747f0a8c90e4d0efd3458c2286158a52ec070af1b8b652b7468"
+      },
+      "axioms": {
+        "SparkleOptProof.agrees_s288": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s289": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s290": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s291": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s292": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s293": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s294": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s295": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s296": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s297": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s298": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s299": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s300": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s301": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s302": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s303": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      }
+    },
+    {
+      "command": [
+        "/nix/store/wzr0jh4q335z1d4rcdq0xw9i26ahxvg3-lean-4.35.0/bin/lean",
+        "--root=/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/generated",
+        "-o",
+        "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptFields3.olean",
+        "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/generated/OptFields3.lean"
+      ],
+      "returncode": 0,
+      "status": "completed",
+      "seconds": 189.781463,
+      "log": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptFields3.log",
+        "sha256": "adbc0a83ea4fdc520fd6dde7d2a2d0596972743478c289c0b1c7509dfc4e5d8b"
+      },
+      "resources": {
+        "seconds": 189.76,
+        "peak_process_rss_kib": 1639504
+      },
+      "module": "OptFields3",
+      "source": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/generated/OptFields3.lean",
+        "sha256": "b48893601d2e13dacf394b0129e2dd9211b76e33de7e5fa1c5c8e6937422fc72"
+      },
+      "object": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptFields3.olean",
+        "sha256": "cb165f17ed794917613d1ec4fa5057f6661268c3598a7014a10455707e91ca51"
+      },
+      "axioms": {
+        "SparkleOptProof.agrees_s48": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s49": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s50": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s51": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s52": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s53": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s54": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s55": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s56": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s57": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s58": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s59": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s60": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s61": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s62": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.agrees_s63": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      }
+    },
+    {
+      "command": [
+        "/nix/store/wzr0jh4q335z1d4rcdq0xw9i26ahxvg3-lean-4.35.0/bin/lean",
+        "--root=/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/generated",
+        "-o",
+        "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptAssemble.olean",
+        "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/generated/OptAssemble.lean"
+      ],
+      "returncode": 0,
+      "status": "completed",
+      "seconds": 61.482376,
+      "log": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptAssemble.log",
+        "sha256": "22c30748a777d34209ca243fdb1bb611dfa4453220e36f94bcff9513c3052d20"
+      },
+      "resources": {
+        "seconds": 61.42,
+        "peak_process_rss_kib": 4087260
+      },
+      "module": "OptAssemble",
+      "source": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/generated/OptAssemble.lean",
+        "sha256": "3d9994a6455d0f9a5db09d503c4ba57893b3c8ef3936210efd0d2d656180427f"
+      },
+      "object": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptAssemble.olean",
+        "sha256": "ea06eef94597aec5c05e009cf4296494d471262d6d0d3211c9af4a1d2be2c9c4"
+      },
+      "axioms": {
+        "SparkleOptProof.transfer_agrees": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      }
+    },
+    {
+      "command": [
+        "/nix/store/wzr0jh4q335z1d4rcdq0xw9i26ahxvg3-lean-4.35.0/bin/lean",
+        "--root=/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof",
+        "-o",
+        "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptEquivalence.olean",
+        "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/OptEquivalence.lean"
+      ],
+      "returncode": 0,
+      "status": "completed",
+      "seconds": 1.820597,
+      "log": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptEquivalence.log",
+        "sha256": "a5a036060969fdc4ba3b8e03a1f47f2d67d44bd165ffd47edd637126c74f4650"
+      },
+      "resources": {
+        "seconds": 1.8,
+        "peak_process_rss_kib": 3610696
+      },
+      "module": "OptEquivalence",
+      "source": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/OptEquivalence.lean",
+        "sha256": "16c4346c8af54a9d1a14ae1b313b152f23e2013892a5b3f97089d65e51ea7eb6"
+      },
+      "object": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptEquivalence.olean",
+        "sha256": "0d154e8c713199f19abefe298cd3dabd02665aa056b8901d34b4c356c9f8a2af"
+      },
+      "axioms": {
+        "SparkleOptProof.universal_equivalence": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.first_result": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      }
+    },
+    {
+      "command": [
+        "/nix/store/wzr0jh4q335z1d4rcdq0xw9i26ahxvg3-lean-4.35.0/bin/lean",
+        "--root=/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof",
+        "-o",
+        "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptMain.olean",
+        "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/OptMain.lean"
+      ],
+      "returncode": 0,
+      "status": "completed",
+      "seconds": 9.803263,
+      "log": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptMain.log",
+        "sha256": "09c18ec1efb47ea623790d9f87086b788741e96a3b3d63abd0b9ef47d0ef0ef8"
+      },
+      "resources": {
+        "seconds": 9.77,
+        "peak_process_rss_kib": 3963128
+      },
+      "module": "OptMain",
+      "source": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/OptMain.lean",
+        "sha256": "fceafe77454a003a23c2f3564663f3f46caeaa79e0042c6ebce6bb57be903ba6"
+      },
+      "object": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptMain.olean",
+        "sha256": "cae77965c2863d8fc146b270fe365332e1d5fb1563182383c8cbf7815557baaa"
+      },
+      "axioms": {
+        "SparkleOptProof.Main.observable_equivalence": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "SparkleOptProof.Main.first_result": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      }
+    }
+  ],
+  "mutation_rejected": {
+    "artifact": {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/build/native/MutatedTask2RTL.lean",
+      "sha256": "3b5f452665e3c865dfbde2c5cbcd86cc616d338d8b61cb7cefed5d6181a7bb88"
+    },
+    "log": {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/build/OptMutation.log",
+      "sha256": "23f7ed044eb05d323ec79715cf88d3412ebc74ab6521ace43d2718e6fbb22485"
+    }
+  },
+  "proof_reuse": "Complete new transition equality followed by the retained candidate temporal theorem",
+  "inputs": [
+    {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/DirectAudit.lean",
+      "sha256": "b346309ef495ebbe987ed9ea912aa62a750217e35ab2a497c364d8533ac55aef"
+    },
+    {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/DirectHelpers.lean",
+      "sha256": "021b5af20ac3c1be5af5bd33c40d670463b905127f5d17b392056af751951265"
+    },
+    {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/DirectModels.lean",
+      "sha256": "1c3d15430e7f53706e98f6c80cc1e99a15751a36a4648f3fd73e58224f502b58"
+    },
+    {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/DirectRuns.lean",
+      "sha256": "abaea8a1d473c7a631da4de5d93cf76638da66b8677ae20b2ac9ac3e72e92b13"
+    },
+    {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/OptEquivalence.lean",
+      "sha256": "16c4346c8af54a9d1a14ae1b313b152f23e2013892a5b3f97089d65e51ea7eb6"
+    },
+    {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/OptHelpers.lean",
+      "sha256": "2bb9490b87e8bbfc25491d75bb06c18bb83d0fa89a7c7bc56c460755a2be4ff6"
+    },
+    {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/OptMain.lean",
+      "sha256": "fceafe77454a003a23c2f3564663f3f46caeaa79e0042c6ebce6bb57be903ba6"
+    },
+    {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/OptModel.lean",
+      "sha256": "577d5489bfb13f2eb89d1de87d1ec300a47dfc15b7b5638529d46e6747d35999"
+    },
+    {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/OptReferenceAdapter.lean",
+      "sha256": "a36b676bd7ef1ccd7ce522282c8443a5746d9aa27dc2386cfbbb83c21cd096ae"
+    },
+    {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/Proof/SharedMath.lean",
+      "sha256": "099614ead59d5065fa4064800d96ce82ebc1519d59b4549e2e24cfbda1d0e561"
+    },
+    {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/prove.py",
+      "sha256": "22e791485c2c43c893feb292a5c535d86c50ce08f767c7d8642a762c947863ca"
+    },
+    {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/prepare.py",
+      "sha256": "cf2154aebf02de67a0e7dc87f63d423b346287c29a958d76ae019152471ab9e3"
+    },
+    {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/build/bindings.json",
+      "sha256": "9e791aba0be2a8052dc2e065f33ecab4f72940592b5f356c91e728bcfadb4c73"
+    }
+  ]
+}

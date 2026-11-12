@@ -1,0 +1,18 @@
+test_direct_modules_load_without_reference_circuit_models (test_audit.DependencyAuditTests.test_direct_modules_load_without_reference_circuit_models) ... ok
+test_pure_math_dependencies_are_accepted (test_audit.DependencyAuditTests.test_pure_math_dependencies_are_accepted) ... ok
+test_reference_theorem_dependency_is_rejected (test_audit.DependencyAuditTests.test_reference_theorem_dependency_is_rejected) ... ok
+test_relation_keeps_copies_expands_bits_and_records_removed_state (test_direct.DirectMappingTests.test_relation_keeps_copies_expands_bits_and_records_removed_state) ... ok
+test_timeout_is_reported_and_recorded (test_execution.ExecutionTests.test_timeout_is_reported_and_recorded) ... ok
+test_register_alias_uses_identical_yosys_bits (test_prepare.AliasTests.test_register_alias_uses_identical_yosys_bits) ... ok
+test_partial_internal_writes_are_split_at_driver_boundaries (test_prepare.PartialWireTests.test_partial_internal_writes_are_split_at_driver_boundaries) ... ok
+test_candidate_schema_is_complete_and_bijective (test_prepare.PreparationTests.test_candidate_schema_is_complete_and_bijective) ... ok
+test_changed_candidate_is_rejected (test_prepare.PreparationTests.test_changed_candidate_is_rejected) ... ok
+test_mismatched_register_width_is_rejected (test_prepare.PreparationTests.test_mismatched_register_width_is_rejected) ... ok
+test_pinned_candidate_and_checkpoint_are_verified (test_prepare.PreparationTests.test_pinned_candidate_and_checkpoint_are_verified) ... ok
+test_yosys_reduction_lowering_removes_implicit_width_comparisons (test_prepare.ReductionTests.test_yosys_reduction_lowering_removes_implicit_width_comparisons) ... ok
+test_changed_recorded_c_trace_is_rejected_before_proof (test_provenance.ProvenanceTests.test_changed_recorded_c_trace_is_rejected_before_proof) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 15.156s
+
+OK

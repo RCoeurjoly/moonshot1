@@ -1,0 +1,693 @@
+{
+  "status": "passed_controls",
+  "universal_equivalence_proved": false,
+  "sparkle": {
+    "url": "https://github.com/Verilean/sparkle",
+    "revision": "1614cee83ac586ca9a0626cd4af13bfef7347c3a"
+  },
+  "lean": "4.32.1",
+  "cases": [
+    {
+      "case": 0,
+      "lean": {
+        "edges": 436,
+        "payload": 0
+      },
+      "c": {
+        "edges": 436,
+        "payload": 0
+      }
+    },
+    {
+      "case": 1,
+      "lean": {
+        "edges": 436,
+        "payload": 4294967290
+      },
+      "c": {
+        "edges": 436,
+        "payload": 4294967290
+      }
+    },
+    {
+      "case": 2,
+      "lean": {
+        "edges": 436,
+        "payload": 2147483648
+      },
+      "c": {
+        "edges": 436,
+        "payload": 2147483648
+      }
+    },
+    {
+      "case": 3,
+      "lean": {
+        "edges": 436,
+        "payload": 4294967294
+      },
+      "c": {
+        "edges": 436,
+        "payload": 4294967294
+      }
+    },
+    {
+      "case": 4,
+      "lean": {
+        "edges": 436,
+        "payload": 2147483648
+      },
+      "c": {
+        "edges": 436,
+        "payload": 2147483648
+      }
+    },
+    {
+      "case": 5,
+      "lean": {
+        "edges": 436,
+        "payload": 0
+      },
+      "c": {
+        "edges": 436,
+        "payload": 0
+      }
+    },
+    {
+      "case": 6,
+      "lean": {
+        "edges": 436,
+        "payload": 816
+      },
+      "c": {
+        "edges": 436,
+        "payload": 816
+      }
+    }
+  ],
+  "model_semantics": "upstream Tools.SVParser.VerifyEmit.denote",
+  "native_model": {
+    "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/native/Task2RTL.lean",
+    "sha256": "bbfbb438516f5444ae1ae84a97cecc6958d464f2c31e09dfc2e491ce1e3a1b67"
+  },
+  "mutation_rejected": "accepted payload mismatch at cycle 435",
+  "runs": [
+    {
+      "command": [
+        "/nix/store/0j9h5572kfzlqpbds1y9dja1p159ihfk-yosys-with-plugins-0.66/bin/yosys",
+        "-Q",
+        "-T",
+        "-m",
+        "slang",
+        "-s",
+        "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/frontend.ys"
+      ],
+      "returncode": 0,
+      "seconds": 0.265071,
+      "log": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/frontend.log",
+        "sha256": "9131e13f123398e921039b36ec54fae64b36f7b6bfb86a25c34b3150315a7f16"
+      }
+    },
+    {
+      "command": [
+        "/nix/store/0j9h5572kfzlqpbds1y9dja1p159ihfk-yosys-with-plugins-0.66/bin/yosys",
+        "-Q",
+        "-T",
+        "-s",
+        "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/normalize.ys"
+      ],
+      "returncode": 0,
+      "seconds": 0.365167,
+      "log": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/normalize.log",
+        "sha256": "00d9880396bfb8cdf8078af972d7cf51510f0d92a63c74110bdb1f78c8f3e4fa"
+      }
+    },
+    {
+      "command": [
+        "lake",
+        "build",
+        "sparkle-import",
+        "native-smoke",
+        "NativeExport"
+      ],
+      "returncode": 0,
+      "seconds": 2.923597,
+      "log": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/lake-build.log",
+        "sha256": "48e768779ecbe59f9c19a0f03c81d18d2fe186cafaae983c3196e0f20e3bd780"
+      }
+    },
+    {
+      "command": [
+        "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/.lake/build/bin/native-smoke"
+      ],
+      "returncode": 0,
+      "seconds": 0.032482,
+      "log": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/native-smoke.log",
+        "sha256": "994097233c9570075258dc89228bb7af8820a2ee93bdc9eeaf9201baa1f01acc"
+      }
+    },
+    {
+      "command": [
+        "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/.lake/build/bin/sparkle-import",
+        "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/task2.sv",
+        "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build"
+      ],
+      "returncode": 0,
+      "seconds": 0.365781,
+      "log": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/sparkle-import.log",
+        "sha256": "5a7c4999b3adde237a1045dcab625d7af1beff489297a47ab18684975d0fa5e2"
+      }
+    },
+    {
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "ExportTask2.lean"
+      ],
+      "returncode": 0,
+      "seconds": 8.240533,
+      "log": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/native-export.log",
+        "sha256": "243a6a663464ccdbb2c33bc499c19de36d34013f779254d5d7d955775ba92c5d"
+      }
+    },
+    {
+      "command": [
+        "lake",
+        "build",
+        "native-traces"
+      ],
+      "returncode": 0,
+      "seconds": 0.516728,
+      "log": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/native-build.log",
+        "sha256": "a582e478e194b77121d30065392318daae65ee7006c9488ce3a7cd4fbdf3b3d9"
+      }
+    },
+    {
+      "command": [
+        "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/.lake/build/bin/native-traces",
+        "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/controls.json",
+        "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build"
+      ],
+      "returncode": 0,
+      "seconds": 0.165279,
+      "log": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/native-traces.log",
+        "sha256": "3b6c0abaf9503f6bb7386eec48cbba77a34891599ca45e58a57961e58b5e795d"
+      }
+    },
+    {
+      "command": [
+        "/nix/store/rdc1jnyw74mwr2gszqc5zwi433zxs089-gcc-wrapper-13.2.0/bin/cc",
+        "-O2",
+        "-std=c11",
+        "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/task2-sim.c",
+        "-o",
+        "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/sparkle-sim"
+      ],
+      "returncode": 0,
+      "seconds": 2.422082,
+      "log": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/c-build.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "command": [
+        "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/sparkle-sim",
+        "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build"
+      ],
+      "returncode": 0,
+      "seconds": 0.016415,
+      "log": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/c-run.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "command": [
+        "/nix/store/7mil9l34vfbvmh0cm6wvbdapwv77bz9v-verilator-5.022/bin/verilator",
+        "--binary",
+        "--timing",
+        "--language",
+        "1800-2017",
+        "-Wno-fatal",
+        "-top",
+        "tb_control",
+        "-Mdir",
+        "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/obj_dir",
+        "-o",
+        "sim_control",
+        "-f",
+        "/nix/store/3i2xv5f7qx512h5psdjb87y9nsc94sla-matmul-sv/sources.f",
+        "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/control_tb.sv"
+      ],
+      "returncode": 0,
+      "seconds": 0.115707,
+      "log": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/verilator-build.log",
+        "sha256": "7e84016697d4508eb394dcbae05147cef1a6f173a6f224de16e9bd770487048d"
+      }
+    },
+    {
+      "command": [
+        "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/obj_dir/sim_control",
+        "+A=/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/case-0-a.hex",
+        "+B=/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/case-0-b.hex",
+        "+TRACE=/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/case-0-rtl.csv",
+        "+EXPECTED=00000000"
+      ],
+      "returncode": 0,
+      "seconds": 0.008907,
+      "log": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/case-0-rtl.log",
+        "sha256": "69d160118903f1a11916b9e2dc846650f218fcffcf33fdaaeb09493815e1cadb"
+      }
+    },
+    {
+      "command": [
+        "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/obj_dir/sim_control",
+        "+A=/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/case-1-a.hex",
+        "+B=/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/case-1-b.hex",
+        "+TRACE=/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/case-1-rtl.csv",
+        "+EXPECTED=fffffffa"
+      ],
+      "returncode": 0,
+      "seconds": 0.007961,
+      "log": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/case-1-rtl.log",
+        "sha256": "3141c66df9397b7579442fdb670d63cf7ab59b32e28e3ab180b3053ee1ba8f7b"
+      }
+    },
+    {
+      "command": [
+        "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/obj_dir/sim_control",
+        "+A=/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/case-2-a.hex",
+        "+B=/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/case-2-b.hex",
+        "+TRACE=/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/case-2-rtl.csv",
+        "+EXPECTED=80000000"
+      ],
+      "returncode": 0,
+      "seconds": 0.007742,
+      "log": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/case-2-rtl.log",
+        "sha256": "4717de7391b7db98460379ea81935b5866367ab7eea187c9fb8388efec15924c"
+      }
+    },
+    {
+      "command": [
+        "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/obj_dir/sim_control",
+        "+A=/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/case-3-a.hex",
+        "+B=/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/case-3-b.hex",
+        "+TRACE=/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/case-3-rtl.csv",
+        "+EXPECTED=fffffffe"
+      ],
+      "returncode": 0,
+      "seconds": 0.007632,
+      "log": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/case-3-rtl.log",
+        "sha256": "bcd14b49b42b4fea58b98b9a47511efc82250b6358988464c5771f1fb824a4ba"
+      }
+    },
+    {
+      "command": [
+        "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/obj_dir/sim_control",
+        "+A=/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/case-4-a.hex",
+        "+B=/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/case-4-b.hex",
+        "+TRACE=/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/case-4-rtl.csv",
+        "+EXPECTED=80000000"
+      ],
+      "returncode": 0,
+      "seconds": 0.00762,
+      "log": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/case-4-rtl.log",
+        "sha256": "4717de7391b7db98460379ea81935b5866367ab7eea187c9fb8388efec15924c"
+      }
+    },
+    {
+      "command": [
+        "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/obj_dir/sim_control",
+        "+A=/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/case-5-a.hex",
+        "+B=/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/case-5-b.hex",
+        "+TRACE=/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/case-5-rtl.csv",
+        "+EXPECTED=00000000"
+      ],
+      "returncode": 0,
+      "seconds": 0.007613,
+      "log": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/case-5-rtl.log",
+        "sha256": "69d160118903f1a11916b9e2dc846650f218fcffcf33fdaaeb09493815e1cadb"
+      }
+    },
+    {
+      "command": [
+        "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/obj_dir/sim_control",
+        "+A=/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/case-6-a.hex",
+        "+B=/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/case-6-b.hex",
+        "+TRACE=/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/case-6-rtl.csv",
+        "+EXPECTED=00000330"
+      ],
+      "returncode": 0,
+      "seconds": 0.00764,
+      "log": {
+        "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/case-6-rtl.log",
+        "sha256": "c5f89c7fb1179ea8afefe4546816ad9d8d0da703c854111d77c0cca822a6776e"
+      }
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/frontend.ys",
+      "sha256": "d0b593c4087419af090891281fa76a9ca0d983f5103eb86054b835102f558504"
+    },
+    {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/frontend.log",
+      "sha256": "9131e13f123398e921039b36ec54fae64b36f7b6bfb86a25c34b3150315a7f16"
+    },
+    {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/premap.json",
+      "sha256": "64fe6c8b55c2b8df762b3f4910057155364d8aae8c196181e5fb702669a4fe29"
+    },
+    {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/normalize.ys",
+      "sha256": "0fc85756d7a9d27dcf6f6bef6da33cc2725631db8b5ba9588b29c2e4e6768a0c"
+    },
+    {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/normalize.log",
+      "sha256": "00d9880396bfb8cdf8078af972d7cf51510f0d92a63c74110bdb1f78c8f3e4fa"
+    },
+    {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/normalized.json",
+      "sha256": "c59bd2065d48ef7ad00fde131f5f11ff8d3b210185d3b6eb59c91fd195320068"
+    },
+    {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/yosys-task2.v",
+      "sha256": "2ed22153bcb2550c01a028204f288a2094412259f98201f03b8f2a2acc477389"
+    },
+    {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/task2.sv",
+      "sha256": "5191db4b95bba83c298d58b5ddb5f156bd5103dde83af439a30c8578bbac454b"
+    },
+    {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/sparkle-ir.txt",
+      "sha256": "52a44dac0ab52985f74395d5846bb866996f5846405d6fcd72333123ca4e224f"
+    },
+    {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/native/Task2RTL.lean",
+      "sha256": "bbfbb438516f5444ae1ae84a97cecc6958d464f2c31e09dfc2e491ce1e3a1b67"
+    },
+    {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/native/Task2RTL.json",
+      "sha256": "65132323a3a7dccfd6aecb7bfec15604ed32a6eb2cdb04012dfe29f42999ee5a"
+    },
+    {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/sparkle.c",
+      "sha256": "a59b86508375f3bec8fa7f965f69047fdce5632e8195712a57048990f635bfab"
+    },
+    {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/roundtrip.sv",
+      "sha256": "ab7b8638f052fbc846bd391205f00ff21f7e2648c2b0d641ff0ec580de494374"
+    },
+    {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/lake-build.log",
+      "sha256": "48e768779ecbe59f9c19a0f03c81d18d2fe186cafaae983c3196e0f20e3bd780"
+    },
+    {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/native-smoke.log",
+      "sha256": "994097233c9570075258dc89228bb7af8820a2ee93bdc9eeaf9201baa1f01acc"
+    },
+    {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/native-export.log",
+      "sha256": "243a6a663464ccdbb2c33bc499c19de36d34013f779254d5d7d955775ba92c5d"
+    },
+    {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/native-build.log",
+      "sha256": "a582e478e194b77121d30065392318daae65ee7006c9488ce3a7cd4fbdf3b3d9"
+    },
+    {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/native-traces.log",
+      "sha256": "3b6c0abaf9503f6bb7386eec48cbba77a34891599ca45e58a57961e58b5e795d"
+    },
+    {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/sparkle-import.log",
+      "sha256": "5a7c4999b3adde237a1045dcab625d7af1beff489297a47ab18684975d0fa5e2"
+    },
+    {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/task2-sim.c",
+      "sha256": "3e18c2249cb4df93984a6960e3f859b06f22a219223533ef33c6e0fd8da89310"
+    },
+    {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/c-build.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/c-run.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/sparkle-sim",
+      "sha256": "f82cf2748170637df6047e5db4bb74f32a06e1791e7e4607288874fe1e6c0362"
+    },
+    {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/verilator-build.log",
+      "sha256": "7e84016697d4508eb394dcbae05147cef1a6f173a6f224de16e9bd770487048d"
+    },
+    {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/obj_dir/sim_control",
+      "sha256": "879e193b32716bc7a67b925b37bc772c08bd59e64bcf0630e0ead1b1de59932a"
+    },
+    {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/case-0-a.hex",
+      "sha256": "ce0933176c74a7f70051794bdb7ba975c92dde4183bc3cc40d092469df2c5c62"
+    },
+    {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/case-0-b.hex",
+      "sha256": "ce0933176c74a7f70051794bdb7ba975c92dde4183bc3cc40d092469df2c5c62"
+    },
+    {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/case-0-rtl.csv",
+      "sha256": "9bbaef47e87ab0945edf65ad563b73c0ad0930d0e4a29f58a9e622615f1c304b"
+    },
+    {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/case-0-lean.csv",
+      "sha256": "9bbaef47e87ab0945edf65ad563b73c0ad0930d0e4a29f58a9e622615f1c304b"
+    },
+    {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/case-0-c.csv",
+      "sha256": "9bbaef47e87ab0945edf65ad563b73c0ad0930d0e4a29f58a9e622615f1c304b"
+    },
+    {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/case-0-rtl.log",
+      "sha256": "69d160118903f1a11916b9e2dc846650f218fcffcf33fdaaeb09493815e1cadb"
+    },
+    {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/case-1-a.hex",
+      "sha256": "d617e54324e776027d65bb2a9d3bc6bb52bedac758ff7316f588bf323084dcce"
+    },
+    {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/case-1-b.hex",
+      "sha256": "0f770e1ff66461f50b7c0f8c8c0d032961aa40aba860a5b3dabe45618d891c9c"
+    },
+    {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/case-1-rtl.csv",
+      "sha256": "ef7f2a9f9d2efcc03909dc6070c3b5c4785d29329f91e5d5b0dc663eec40b073"
+    },
+    {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/case-1-lean.csv",
+      "sha256": "ef7f2a9f9d2efcc03909dc6070c3b5c4785d29329f91e5d5b0dc663eec40b073"
+    },
+    {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/case-1-c.csv",
+      "sha256": "ef7f2a9f9d2efcc03909dc6070c3b5c4785d29329f91e5d5b0dc663eec40b073"
+    },
+    {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/case-1-rtl.log",
+      "sha256": "3141c66df9397b7579442fdb670d63cf7ab59b32e28e3ab180b3053ee1ba8f7b"
+    },
+    {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/case-2-a.hex",
+      "sha256": "4b847816b08c05c4b5d995b00d76d0ff102510249e8e18b934aebc8e3b36f659"
+    },
+    {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/case-2-b.hex",
+      "sha256": "da7f7fcfc3262743483ba746754000635112f99e1d4eb46d32a6eda458426013"
+    },
+    {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/case-2-rtl.csv",
+      "sha256": "4c6a9ae0e3dfc665e70646bdeb196858306cfef01e5c072a2ed0a0a4d72c21a8"
+    },
+    {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/case-2-lean.csv",
+      "sha256": "4c6a9ae0e3dfc665e70646bdeb196858306cfef01e5c072a2ed0a0a4d72c21a8"
+    },
+    {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/case-2-c.csv",
+      "sha256": "4c6a9ae0e3dfc665e70646bdeb196858306cfef01e5c072a2ed0a0a4d72c21a8"
+    },
+    {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/case-2-rtl.log",
+      "sha256": "4717de7391b7db98460379ea81935b5866367ab7eea187c9fb8388efec15924c"
+    },
+    {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/case-3-a.hex",
+      "sha256": "3a0f27497b0f25c4e3cae6771dcd2cd5ffda311c1ef0fc02ec296c7a1356820f"
+    },
+    {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/case-3-b.hex",
+      "sha256": "6cc43e45ddc351d3e2e4abed3ed34b67105c21c0305a05f45fdb50459b204f6e"
+    },
+    {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/case-3-rtl.csv",
+      "sha256": "9ebeb5445f7f171489d939078708ed2818925478948eaa03c68c39874d92181e"
+    },
+    {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/case-3-lean.csv",
+      "sha256": "9ebeb5445f7f171489d939078708ed2818925478948eaa03c68c39874d92181e"
+    },
+    {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/case-3-c.csv",
+      "sha256": "9ebeb5445f7f171489d939078708ed2818925478948eaa03c68c39874d92181e"
+    },
+    {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/case-3-rtl.log",
+      "sha256": "bcd14b49b42b4fea58b98b9a47511efc82250b6358988464c5771f1fb824a4ba"
+    },
+    {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/case-4-a.hex",
+      "sha256": "0e1d9fcb5da5f333233b8eb5d4ec93f6e49a2172c09d50fde070cb494bc1bc8a"
+    },
+    {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/case-4-b.hex",
+      "sha256": "854dac0d68aec4376bbe62093a8a64a8b3d9bf4b50c2326e5d9a421ca6fd0afb"
+    },
+    {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/case-4-rtl.csv",
+      "sha256": "a89d39e749d2ee2a1a4d8901d54efb90403626a6905f86492a2fdb4f26cb04bc"
+    },
+    {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/case-4-lean.csv",
+      "sha256": "a89d39e749d2ee2a1a4d8901d54efb90403626a6905f86492a2fdb4f26cb04bc"
+    },
+    {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/case-4-c.csv",
+      "sha256": "a89d39e749d2ee2a1a4d8901d54efb90403626a6905f86492a2fdb4f26cb04bc"
+    },
+    {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/case-4-rtl.log",
+      "sha256": "4717de7391b7db98460379ea81935b5866367ab7eea187c9fb8388efec15924c"
+    },
+    {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/case-5-a.hex",
+      "sha256": "c8cfddd18b39173d17faeb200452cfbdba8624169f100efc2b6d290237e3405a"
+    },
+    {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/case-5-b.hex",
+      "sha256": "854dac0d68aec4376bbe62093a8a64a8b3d9bf4b50c2326e5d9a421ca6fd0afb"
+    },
+    {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/case-5-rtl.csv",
+      "sha256": "04be06a4a765dbf16cf5f8f11594227146d2fa147cc080d47f5660a240404a68"
+    },
+    {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/case-5-lean.csv",
+      "sha256": "04be06a4a765dbf16cf5f8f11594227146d2fa147cc080d47f5660a240404a68"
+    },
+    {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/case-5-c.csv",
+      "sha256": "04be06a4a765dbf16cf5f8f11594227146d2fa147cc080d47f5660a240404a68"
+    },
+    {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/case-5-rtl.log",
+      "sha256": "69d160118903f1a11916b9e2dc846650f218fcffcf33fdaaeb09493815e1cadb"
+    },
+    {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/case-6-a.hex",
+      "sha256": "b6291312c576bc05b062e3d8bb6cf79988be79003cc91a9c038bb8ea409a6c30"
+    },
+    {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/case-6-b.hex",
+      "sha256": "6ca627bd61b8d291176faf5df0223ef981640ca652fd6a31e4aad3f5598c8fc7"
+    },
+    {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/case-6-rtl.csv",
+      "sha256": "0cdcf28259fee8da8a12bc11ae72471e8009562d0f13bb399af1da003f942459"
+    },
+    {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/case-6-lean.csv",
+      "sha256": "0cdcf28259fee8da8a12bc11ae72471e8009562d0f13bb399af1da003f942459"
+    },
+    {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/case-6-c.csv",
+      "sha256": "0cdcf28259fee8da8a12bc11ae72471e8009562d0f13bb399af1da003f942459"
+    },
+    {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/case-6-rtl.log",
+      "sha256": "c5f89c7fb1179ea8afefe4546816ad9d8d0da703c854111d77c0cca822a6776e"
+    }
+  ],
+  "inputs": [
+    {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/pins.json",
+      "sha256": "d2dc578914865429decaeafa9b67de4b20627737f87c6ebe48b4b3698eb295a8"
+    },
+    {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/controls.json",
+      "sha256": "da654f769c352a0a294dc704b9c6317890ccb4dcaf8dfaeb2199aad4aa6e75e1"
+    },
+    {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/run.py",
+      "sha256": "5f063d43ffe99ae7114b1c9df17cf6fc89737a6dba6c3a8cef430c6f3cfd8016"
+    },
+    {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/Import.lean",
+      "sha256": "4580f0a14bc96548312e69811c7d8e1bc3ea46b67dcd52c38a771528da2fed07"
+    },
+    {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/NativeExport.lean",
+      "sha256": "5226a88fa0ce7d10a840fb1d84dc243dc208f9303d97cc10d5adee4c33df8b1a"
+    },
+    {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/control_tb.sv",
+      "sha256": "1f2a32ca67a26c49f204a84bfa68398ec3174d759a85729a4a16dc5b78fea47f"
+    },
+    {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/lean-toolchain",
+      "sha256": "8e3538e0ab5f81a3ee04927d8838c8c674e0e112838b4b3ce87ec218143276af"
+    },
+    {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/lakefile.lean",
+      "sha256": "09b6bfa580203afa350d1ee24da62ed2956693702f5d298efeb91e44a435fad4"
+    },
+    {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/lake-manifest.json",
+      "sha256": "8a931c714b2dfe783ef5d4989a790165b539821fd025d012d056249dcf5f5942"
+    },
+    {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/NativeSmoke.lean",
+      "sha256": "7a5f97192706b45fb44a9aab39dc50cadc69c38f81c1250f2ceb2d3c2c37d703"
+    },
+    {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/NativeTraces.lean",
+      "sha256": "8a47df572caa2d10d5ed3f033c01f34d0e7c111e1c500f0559cae7ca559b8e84"
+    },
+    {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/ExportTask2.lean",
+      "sha256": "1a034a1ab2d532b845890c77286051a9501bd40705870a49158786edd7269f87"
+    },
+    {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/tests/fixtures/native_counter.sv",
+      "sha256": "87809df6239c9177bcee47a4e005c7e050ff048587502a49be41ec302f8526a5"
+    },
+    {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/tests/fixtures/wide_registers.sv",
+      "sha256": "abc4b1d050e6f696471197a3836fdffa46f330ef7f8e50747552e7b122c72d9a"
+    }
+  ]
+}

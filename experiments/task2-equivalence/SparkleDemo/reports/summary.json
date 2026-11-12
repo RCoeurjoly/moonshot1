@@ -1,0 +1,42 @@
+{
+  "status": "proved",
+  "validated_at_utc": "2026-11-05T23:30:01.846177+00:00",
+  "public_theorem": "SparkleProof.Main.observable_equivalence",
+  "first_result_theorem": "SparkleProof.Main.first_result",
+  "universal_equivalence_proved": true,
+  "completion_edges": 436,
+  "state_fields_checked": 453,
+  "outputs_checked": 5,
+  "trace_cases": 7,
+  "original_tests_passed": 46,
+  "demo_tests_passed": 12,
+  "existing_tracked_files_unchanged": 150,
+  "axioms": {
+    "SparkleProof.Main.observable_equivalence": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "SparkleProof.Main.first_result": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "mutated_import_rejected": true,
+  "proof_reuse": "The unchanged temporal theorem is composed only after the new complete transition equivalence proof.",
+  "trust_boundaries": [
+    "Slang/Yosys elaboration and normalization",
+    "input-memory lift",
+    "Sparkle SV parser/lowering/export",
+    "typed Lean expression importer"
+  ],
+  "evidence": {
+    "evidence.json.gz": "478e09f7d16eacd5cbde42febca85daf9dd558ceca8fa5507cb74ab1c9162686",
+    "control-result.json": "59b47bb093da42f0eb640b34bdddbbf915f4f51b8758eb26e91a3a9b42e47dec",
+    "universal-result.json": "5c8eb7881bd9a2227da7ec6e097d8eef21a818746d327012138a3d439c0f3185",
+    "original-tests.log": "fcf80d6205a4b3d85444a898de092244774f2c7315c23e9535847a6a4540cb0e",
+    "demo-tests.log": "7a00a8a8b2dd5915d5c08ef10a35196298cc59d4457cc603fb237bd5a20db755",
+    "preservation.json": "97987d79c763a989987f31b081e60e35864a1836375f8a59e478965a0a5c1cbf"
+  }
+}

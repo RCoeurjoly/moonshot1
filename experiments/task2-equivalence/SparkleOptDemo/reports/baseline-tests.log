@@ -1,0 +1,25 @@
+test_changed_pinned_source_is_rejected (test_boundaries.BoundaryTests.test_changed_pinned_source_is_rejected) ... ok
+test_compiler_is_selected_from_the_simulation_environment (test_boundaries.BoundaryTests.test_compiler_is_selected_from_the_simulation_environment) ... ok
+test_duplicate_completion_and_nonconsecutive_cycles_are_rejected (test_boundaries.BoundaryTests.test_duplicate_completion_and_nonconsecutive_cycles_are_rejected) ... ok
+test_failed_rerun_clears_previous_universal_verdict (test_boundaries.BoundaryTests.test_failed_rerun_clears_previous_universal_verdict) ... ok
+test_fresh_frontend_exposes_all_input_words (test_boundaries.BoundaryTests.test_fresh_frontend_exposes_all_input_words) ... ok
+test_handshake_mismatch_is_rejected_even_if_payload_agrees (test_boundaries.BoundaryTests.test_handshake_mismatch_is_rejected_even_if_payload_agrees) ... ok
+test_identical_complete_traces_pass (test_boundaries.BoundaryTests.test_identical_complete_traces_pass) ... ok
+test_mutated_accepted_payload_is_rejected (test_boundaries.BoundaryTests.test_mutated_accepted_payload_is_rejected) ... ok
+test_only_readonly_complete_input_memories_can_be_lifted (test_boundaries.BoundaryTests.test_only_readonly_complete_input_memories_can_be_lifted) ... ok
+test_truncated_trace_and_missing_completion_are_rejected (test_boundaries.BoundaryTests.test_truncated_trace_and_missing_completion_are_rejected) ... ok
+test_wrong_memory_shape_is_rejected (test_boundaries.BoundaryTests.test_wrong_memory_shape_is_rejected) ... ok
+test_yosys_port_syntax_becomes_ansi_without_changing_body (test_boundaries.BoundaryTests.test_yosys_port_syntax_becomes_ansi_without_changing_body) ... ok
+test_changed_native_function_does_not_inherit_equality (test_native.NativeTests.test_changed_native_function_does_not_inherit_equality) ... ok
+test_commands_and_declaration_modifiers_are_rejected (test_native.NativeTests.test_commands_and_declaration_modifiers_are_rejected) ... ok
+test_deriving_and_termination_annotations_are_rejected (test_native.NativeTests.test_deriving_and_termination_annotations_are_rejected) ... ok
+test_native_metadata_mutation_is_rejected_before_proof (test_native.NativeTests.test_native_metadata_mutation_is_rejected_before_proof) ... ok
+test_native_semantics_and_grouped_state_execute (test_native.NativeTests.test_native_semantics_and_grouped_state_execute) ... ok
+test_plain_native_model_loads (test_native.NativeTests.test_plain_native_model_loads) ... ok
+test_tactic_and_sorry_bodies_are_rejected_before_elaboration (test_native.NativeTests.test_tactic_and_sorry_bodies_are_rejected_before_elaboration) ... ok
+test_wrong_header_namespace_and_options_are_rejected (test_native.NativeTests.test_wrong_header_namespace_and_options_are_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 20 tests in 17.876s
+
+OK

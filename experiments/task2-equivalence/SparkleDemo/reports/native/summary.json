@@ -1,0 +1,45 @@
+{
+  "status": "passed",
+  "verified_at": "2026-11-06T09:13:45.010978+00:00",
+  "pipeline": "RTL -> upstream Sparkle parser/VerifyEmit.denote -> native Lean",
+  "same_native_model_for_controls_and_proof": true,
+  "private_operator_semantics_removed": true,
+  "universal_equivalence_proved": true,
+  "public_theorem": "SparkleProof.Main.observable_equivalence",
+  "first_result_theorem": "SparkleProof.Main.first_result",
+  "completion_edges": 436,
+  "next_state_obligations": 453,
+  "output_obligations": 5,
+  "three_way_controls": 7,
+  "original_example_result": 816,
+  "tests": {
+    "demo": 20,
+    "original": 46,
+    "total": 66
+  },
+  "original_tracked_files_unchanged": 150,
+  "public_axioms": {
+    "SparkleProof.Main.observable_equivalence": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "SparkleProof.Main.first_result": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "native_output_mutation_rejected": true,
+  "entry_point": {
+    "command": "bash SparkleDemo/run.sh",
+    "returncode": 0
+  },
+  "review": "No remaining important issues; see review.md",
+  "initial_sources": "../initial-sources.json.gz",
+  "retained_text_artifacts": 172,
+  "evidence": {
+    "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/reports/native/evidence.json.gz",
+    "sha256": "235edf5c80d48910c60bceebbc4f56a953c468274aa09d0b68fe96ce6477e892"
+  }
+}

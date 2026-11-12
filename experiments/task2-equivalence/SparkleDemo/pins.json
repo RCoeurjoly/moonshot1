@@ -1,0 +1,57 @@
+{
+  "sparkle": {
+    "url": "https://github.com/Verilean/sparkle",
+    "revision": "1614cee83ac586ca9a0626cd4af13bfef7347c3a"
+  },
+  "lean": "4.32.1",
+  "rtl": {
+    "path": "/nix/store/3i2xv5f7qx512h5psdjb87y9nsc94sla-matmul-sv",
+    "files": {
+      "sources.f": "838111b15821d6d2a1653bbced97047fbdd6c63645402f09f5261e8965836c4f",
+      "sv/arith_addi_in_ui32_ui32_out_ui32.sv": "50420cbcc931e33975a6c5c3c180e52a38a6f35f82b3f23effe269a5f8292d41",
+      "sv/arith_addi_in_ui64_ui64_out_ui64.sv": "80e94068fd4bbcf332b33db145912061e076ddd6a866cb2053193ca26fec255b",
+      "sv/arith_cmpi_in_ui64_ui64_out_ui1_slt.sv": "e556fd534a2fd4538fec4c0c1d152798b2d68c8a32c966b236956282bf213bad",
+      "sv/arith_index_cast_in_ui64_out_ui0.sv": "8cb896423ba1e8dedd2e7611d8e6c101d2dd75e87d96b334e0f6745a5586b972",
+      "sv/arith_muli_in_ui32_ui32_out_ui32.sv": "e063b688dfddb5d36020fd233c748a7c5ccff1a016daaf5da1353aabf4cce3be",
+      "sv/filelist.f": "18eb87625926d210ffe2d2edabd4c0ff425bacb16fc178e42c2eadd301dfa389",
+      "sv/handshake_buffer_in_none_out_none_2slots_seq_1ins_1outs_ctrl.sv": "0f6bd7f6bf73e511c62d240764a58828f094ac67c3481e96f415bad1fc8832e2",
+      "sv/handshake_buffer_in_ui1_out_ui1_1slots_seq_init_0.sv": "9df6a9724957f24d41bea54cca03653bfb5c967a62b416f1ec3b561142d921b0",
+      "sv/handshake_buffer_in_ui1_out_ui1_2slots_seq.sv": "efd018f381498b3806e94b9627b4a5e631543b9796818ff9535685018c29a01f",
+      "sv/handshake_buffer_in_ui32_out_ui32_2slots_seq.sv": "566e40bc496bb1836c99d1e611ab509d20c53f79f6e45921a041bb2b26740b68",
+      "sv/handshake_buffer_in_ui64_out_ui64_2slots_seq.sv": "884b6eadf00363b75a8b1bdaab0cdcf819e3ae332430f5cbf8a27964d328cd41",
+      "sv/handshake_cond_br_in_ui1_none_out_none_none_2ins_2outs_ctrl.sv": "7d7b21cdbecd34512923e422d9b7df1c24805d72d5468c39e4b00bc4e692f180",
+      "sv/handshake_cond_br_in_ui1_ui64_out_ui64_ui64.sv": "fd5da6d138983d1c62bb42c58d814ba8c853c72a13027dbe3e00b46d8c8c4d0b",
+      "sv/handshake_constant_c0_in_none_out_ui32.sv": "33beb114b78b0817c01eeffdbe3cc6f5b9280a94902df6348747c5dd48fd3d53",
+      "sv/handshake_constant_c0_in_none_out_ui64.sv": "67751efaf31aafca60d057bbfd7fccfd725a8391d70da455f18cf81a23dfc0a0",
+      "sv/handshake_constant_c16_in_none_out_ui64.sv": "fac07d44a92fd950e06e00c9227f47a7ff1e6d11611c3bfcd8cbe52671cd4095",
+      "sv/handshake_constant_c1_in_none_out_ui64.sv": "8b373a63b15fb165f257b830d3dded3475f97ff2d24041f0ea2611633bc6a716",
+      "sv/handshake_fork_in_none_out_none_none_1ins_2outs_ctrl.sv": "f5e0bc60a409642e3ec830903f8be6dcf691cee63beb119cb496a64362387043",
+      "sv/handshake_fork_in_none_out_none_none_none_1ins_3outs_ctrl.sv": "25beb89ec8da9e7153df39683ea6422666ad3f5c9a11bcf417bb176ca05976b0",
+      "sv/handshake_fork_in_none_out_none_none_none_none_none_1ins_5outs_ctrl.sv": "8d36c8d382a4e488e1de4a0b61a6f71b2b965f0d430b8be10e5f1d1b7eea751a",
+      "sv/handshake_fork_in_none_out_none_none_none_none_none_none_1ins_6outs_ctrl.sv": "46405526119892d7b601a96ac86bc7be0215be6666cde2894ae059825ac01976",
+      "sv/handshake_fork_in_ui1_out_ui1_ui1_ui1_ui1_ui1.sv": "ff8c71552815d09c91bd1a47c31024f3fa7640d92379cb4a79d939f87cf7f5dc",
+      "sv/handshake_fork_in_ui1_out_ui1_ui1_ui1_ui1_ui1_ui1.sv": "628507889070d9c6a6dbe51cf4405291d0cde1bc170ac4351842e71efd260abe",
+      "sv/handshake_fork_in_ui64_out_ui64_ui64.sv": "39c3f792da0d3edf88048ea96567f192391df6188b24c9f0d13dc81fb7ac91d9",
+      "sv/handshake_fork_in_ui64_out_ui64_ui64_ui64.sv": "8ec9835fbc00b948e9ab63dfc96c086ba853744cefa55c9fa1a4971c471b691b",
+      "sv/handshake_join_in_none_none_none_none_none_out_none_5ins_1outs_ctrl.sv": "f9296c3a83ceff9da329df5df07acd4401192b969319c5cdaf0f5bc1299420b4",
+      "sv/handshake_join_in_none_none_none_out_none_3ins_1outs_ctrl.sv": "cfb6ffc93c07bd275a13690a640430a1c4f6c31643b4324f28fa0b715c2c1e7b",
+      "sv/handshake_join_in_none_none_out_none_2ins_1outs_ctrl.sv": "7ef4c2c83ee65edba40ffe2f7ef93c9dc53d8529b233005e81cf418ed2da3d87",
+      "sv/handshake_load_in_ui64_ui32_none_out_ui32_ui64.sv": "6d03944235e8c67d81b5b6d4fa5fc362248f8fbf2a3508160cdcba1efb35b61d",
+      "sv/handshake_memory_out_ui32_id3.sv": "ef747fcc9b07ea3dc13dbf7dee2c3e3e88a233fd33ea03745ab91cc739d7ff82",
+      "sv/handshake_memory_out_ui32_id4.sv": "b6bfb4f3fe1f6d27a64232ed06964a75de84730aeaa1ed7858454541f3bf7194",
+      "sv/handshake_memory_out_ui32_id5.sv": "60ef20e5e59b86e3e336d466313ae4867816b25553cd9ae26d6025abbb98aade",
+      "sv/handshake_mux_in_ui1_none_none_out_none_3ins_1outs_ctrl.sv": "8aacc7a2fd03ff0c45a0ab7d71f288aa170d1b65fb0760a05183d47599907d03",
+      "sv/handshake_mux_in_ui1_ui64_ui64_out_ui64.sv": "d59d7c8ff528b86f4a8adce1451dca5277feea786e0763e229f7c7c93eb56b57",
+      "sv/handshake_sink_in_ui64.sv": "f66d23e713e373fdcf8ead3746fe397d45fb3fd2954b2c334d1558b2300a4a02",
+      "sv/handshake_store_in_ui64_ui32_none_out_ui32_ui64.sv": "47d5280b2a45edda9bd0b3e7738be6ceab73dbdb9f8ad0131c52f53cac6459a1",
+      "sv/hw_struct_create_in_ui0_ui32_out_struct_address_ui0_data_ui32.sv": "5a8a773b4d475510e46447bf82a31f05c745d6a272a9cf03a9ac9d371b0b70d3",
+      "sv/main.sv": "1b3f61b74df8dcfdc0e21e19354f357ac75ec8b930d6aa695df3185474350e72"
+    }
+  },
+  "yosys": "/nix/store/0j9h5572kfzlqpbds1y9dja1p159ihfk-yosys-with-plugins-0.66/bin/yosys",
+  "simulation_build_inputs": [
+    "/nix/store/7mil9l34vfbvmh0cm6wvbdapwv77bz9v-verilator-5.022",
+    "/nix/store/rdc1jnyw74mwr2gszqc5zwi433zxs089-gcc-wrapper-13.2.0",
+    "/nix/store/vqgpb0anqqfnhb5ww3y8rf1jaxpphqwg-gnumake-4.4.1"
+  ]
+}

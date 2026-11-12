@@ -1,0 +1,86 @@
+{
+  "status": "passed",
+  "verified_at": "2026-11-06T13:09:15.154985+00:00",
+  "entry_command": "bash SparkleOptDemo/run.sh",
+  "entry_returncode": 0,
+  "optimized_correctness": true,
+  "completion_edges": 436,
+  "reference_fields": 441,
+  "reference_outputs": 5,
+  "direct_native_refinement": true,
+  "direct_state_fields": 451,
+  "direct_outputs": 5,
+  "direct_scope": "All cycles and arbitrary lifted input streams, starting from states related by embed",
+  "direct_relation": {
+    "copy": 431,
+    "expand_bit": 8,
+    "zero": 12
+  },
+  "retained_circuit_dependencies_in_direct_proof": false,
+  "three_way_controls": 7,
+  "sample_result": 816,
+  "tests": {
+    "original": 46,
+    "sparkle_baseline": 20,
+    "optimized": 13,
+    "total": 79
+  },
+  "pre_existing_files_unchanged": 202,
+  "final_code_files_held_fixed": 30,
+  "all_native_output_mutations_rejected": true,
+  "public_axioms": {
+    "reference": {
+      "SparkleOptProof.Main.observable_equivalence": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "SparkleOptProof.Main.first_result": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "direct": {
+      "SparkleDirect.Main.transition_equivalence": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "SparkleDirect.Main.observable_trace_equivalence": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "SparkleDirect.Main.initial_states_related": [
+        "propext",
+        "Quot.sound"
+      ]
+    }
+  },
+  "measurements": {
+    "baseline_bridge": {
+      "seconds": 168.02,
+      "peak_process_rss_kib": 4386908,
+      "state_fields": 453,
+      "outputs": 5
+    },
+    "optimized_bridge": {
+      "seconds": 286.94,
+      "peak_process_rss_kib": 4087260,
+      "state_fields": 441,
+      "outputs": 5
+    },
+    "direct_native_refinement": {
+      "seconds": 130.7,
+      "peak_process_rss_kib": 2485208,
+      "state_fields": 451,
+      "outputs": 5
+    }
+  },
+  "retained_text_artifacts": 280,
+  "evidence": {
+    "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleOptDemo/reports/evidence.json.gz",
+    "sha256": "8b76293f1b92953ffdf56ecbcbe57a9935aab7784812c1886210a294889558ae"
+  }
+}

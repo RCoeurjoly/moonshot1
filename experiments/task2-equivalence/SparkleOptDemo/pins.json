@@ -1,0 +1,103 @@
+{
+  "sparkle": {
+    "url": "https://github.com/Verilean/sparkle",
+    "revision": "1614cee83ac586ca9a0626cd4af13bfef7347c3a"
+  },
+  "lean": "4.32.1",
+  "yosys": "/nix/store/0j9h5572kfzlqpbds1y9dja1p159ihfk-yosys-with-plugins-0.66/bin/yosys",
+  "simulation_build_inputs": [
+    "/nix/store/7mil9l34vfbvmh0cm6wvbdapwv77bz9v-verilator-5.022",
+    "/nix/store/rdc1jnyw74mwr2gszqc5zwi433zxs089-gcc-wrapper-13.2.0",
+    "/nix/store/vqgpb0anqqfnhb5ww3y8rf1jaxpphqwg-gnumake-4.4.1"
+  ],
+  "inputs": {
+    "baseline_checkpoint": {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/build/evidence/variant/artifacts/2ecca0034a8828f64f04-2ecca0034a8828f64f04-canonical.il",
+      "sha256": "2ecca0034a8828f64f0446bba4a59ee98058d13922639360d5f21646efd82b4e"
+    },
+    "before": {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/build/evidence/variant/artifacts/c749427cbc15eb8c8cd3-before.json",
+      "sha256": "c749427cbc15eb8c8cd3575957e7222e2c06866fff25bef64269fc22958397eb"
+    },
+    "after": {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/build/evidence/variant/artifacts/a3b26943c14ccce21697-after.json",
+      "sha256": "a3b26943c14ccce216979f6881b441cbb5738e654a3c532fba17c5b247b6309f"
+    },
+    "script": {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/build/evidence/variant/artifacts/06db7e2cff8b2de44092-opt-full.ys",
+      "sha256": "06db7e2cff8b2de44092eae89b929f60af1b3ecf44451e9a8aa7ab756487f659"
+    },
+    "candidate": {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/build/evidence/variant/artifacts/05d2bda8f2fa6c1d60f8-rtl/main.sv",
+      "sha256": "b4225c7e747f0a01b5fec75be0371692448c0265f561e30197e9c927656917fa"
+    },
+    "reference_schema": {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/build/hardware/candidate/cycle-ir.json",
+      "sha256": "ab30241761d9bada9c646154537a3e04f41ec2ac345e2f93278651e2c869f0c5"
+    },
+    "shared_NativeExport.lean": {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/NativeExport.lean",
+      "sha256": "5226a88fa0ce7d10a840fb1d84dc243dc208f9303d97cc10d5adee4c33df8b1a"
+    },
+    "shared_Import.lean": {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/Import.lean",
+      "sha256": "4580f0a14bc96548312e69811c7d8e1bc3ea46b67dcd52c38a771528da2fed07"
+    },
+    "shared_NativeTraces.lean": {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/NativeTraces.lean",
+      "sha256": "8a47df572caa2d10d5ed3f033c01f34d0e7c111e1c500f0559cae7ca559b8e84"
+    },
+    "shared_run.py": {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/run.py",
+      "sha256": "5f063d43ffe99ae7114b1c9df17cf6fc89737a6dba6c3a8cef430c6f3cfd8016"
+    },
+    "baseline_native_source": {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/native/Task2RTL.lean",
+      "sha256": "bbfbb438516f5444ae1ae84a97cecc6958d464f2c31e09dfc2e491ce1e3a1b67"
+    },
+    "baseline_native_schema": {
+      "path": "/home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/native/Task2RTL.json",
+      "sha256": "65132323a3a7dccfd6aecb7bfec15604ed32a6eb2cdb04012dfe29f42999ee5a"
+    }
+  },
+  "physical_stats": {
+    "before": {
+      "cell_types": {
+        "$add": 2,
+        "$and": 735,
+        "$dff": 451,
+        "$eq": 1,
+        "$lt": 1,
+        "$mem_v2": 2,
+        "$mul": 1,
+        "$mux": 1193,
+        "$not": 597,
+        "$or": 185,
+        "$shl": 5
+      },
+      "cell_width_bits": 31573,
+      "state_bits": 6754
+    },
+    "after": {
+      "cell_types": {
+        "$add": 2,
+        "$and": 671,
+        "$dff": 1,
+        "$lt": 1,
+        "$mem_v2": 2,
+        "$mul": 1,
+        "$mux": 211,
+        "$not": 571,
+        "$or": 317,
+        "$reduce_bool": 1,
+        "$reduce_or": 58,
+        "$sdff": 186,
+        "$sdffce": 1,
+        "$sdffe": 251,
+        "$shl": 1
+      },
+      "cell_width_bits": 13637,
+      "state_bits": 5738
+    }
+  }
+}

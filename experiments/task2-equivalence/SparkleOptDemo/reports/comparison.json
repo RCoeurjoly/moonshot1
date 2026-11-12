@@ -1,0 +1,138 @@
+{
+  "scope": "One warm run per proof path, rechecking all newly generated fields; retained libraries/dependency caches reused",
+  "lean": "4.35.0",
+  "field_workers": 4,
+  "lean_threads_per_worker": 2,
+  "measurement": "GNU time wall seconds and maximum process RSS, not simultaneous tree memory",
+  "baseline_bridge": {
+    "seconds": 168.02,
+    "peak_process_rss_kib": 4386908,
+    "state_fields": 453,
+    "outputs": 5
+  },
+  "optimized_bridge": {
+    "seconds": 286.94,
+    "peak_process_rss_kib": 4087260,
+    "state_fields": 441,
+    "outputs": 5
+  },
+  "direct_native_refinement": {
+    "seconds": 130.7,
+    "peak_process_rss_kib": 2485208,
+    "state_fields": 451,
+    "outputs": 5
+  },
+  "physical_checkpoint": {
+    "status": "prepared",
+    "before": {
+      "cell_types": {
+        "$add": 2,
+        "$and": 735,
+        "$dff": 451,
+        "$eq": 1,
+        "$lt": 1,
+        "$mem_v2": 2,
+        "$mul": 1,
+        "$mux": 1193,
+        "$not": 597,
+        "$or": 185,
+        "$shl": 5
+      },
+      "state_bits": 6754,
+      "cell_width_bits": 31573
+    },
+    "after": {
+      "cell_types": {
+        "$add": 2,
+        "$and": 671,
+        "$dff": 1,
+        "$lt": 1,
+        "$mem_v2": 2,
+        "$mul": 1,
+        "$mux": 211,
+        "$not": 571,
+        "$or": 317,
+        "$reduce_bool": 1,
+        "$reduce_or": 58,
+        "$sdff": 186,
+        "$sdffce": 1,
+        "$sdffe": 251,
+        "$shl": 1
+      },
+      "state_bits": 5738,
+      "cell_width_bits": 13637
+    },
+    "criterion": "changed cell-type counts or total cell/state widths at the same physical checkpoint"
+  },
+  "generator_function_lines": {
+    "baseline": {
+      "generate_fields": 27,
+      "generate_assembly": 31
+    },
+    "optimized": {
+      "generate_fields": 19,
+      "generate_assembly": 24
+    },
+    "direct": {
+      "generate_fields": 20,
+      "generate_assembly": 28
+    }
+  },
+  "maintenance": {
+    "shared_exporter_modified": false,
+    "custom_operator_semantics_added": false,
+    "reference_bridge_new_math_lemmas": [
+      "concat_truth2",
+      "padded_bit4"
+    ],
+    "direct_new_math_lemmas": [
+      "append_ite_right",
+      "append_ite_left",
+      "merge_reset",
+      "one_mux",
+      "priority_mux_or"
+    ],
+    "new_normalization": [
+      "simplemap reduction/logical cells",
+      "splitnets -driver"
+    ],
+    "active_engineering_seconds": null,
+    "strict_less_proof_work": "inconclusive; active engineering time was not measured"
+  },
+  "comparison_limits": [
+    "These are single warm resource observations, not a statistical speed benchmark.",
+    "Baseline runner additionally checks its retained library with Lake; this setup differs from the optimized runner.",
+    "Full original temporal-proof construction is excluded from all new bridge timings.",
+    "Generated lines are not a proof-effort measurement."
+  ],
+  "public_axioms": {
+    "optimized": {
+      "SparkleOptProof.Main.observable_equivalence": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "SparkleOptProof.Main.first_result": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "direct": {
+      "SparkleDirect.Main.transition_equivalence": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "SparkleDirect.Main.observable_trace_equivalence": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "SparkleDirect.Main.initial_states_related": [
+        "propext",
+        "Quot.sound"
+      ]
+    }
+  }
+}

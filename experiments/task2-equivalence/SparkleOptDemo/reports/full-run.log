@@ -1,0 +1,91 @@
+[1/4] Exact frozen opt-full RTL and structural statistics reproduced
+[2/4] Candidate native model reflected and executed by Sparkle
+[3/4] Sparkle C and original optimized RTL built
+case 0: optimized RTL = Sparkle Lean = Sparkle C; payload=0; 436 edges
+case 1: optimized RTL = Sparkle Lean = Sparkle C; payload=4294967290; 436 edges
+case 2: optimized RTL = Sparkle Lean = Sparkle C; payload=2147483648; 436 edges
+case 3: optimized RTL = Sparkle Lean = Sparkle C; payload=4294967294; 436 edges
+case 4: optimized RTL = Sparkle Lean = Sparkle C; payload=2147483648; 436 edges
+case 5: optimized RTL = Sparkle Lean = Sparkle C; payload=0; 436 edges
+case 6: optimized RTL = Sparkle Lean = Sparkle C; payload=816; 436 edges
+[4/4] SPARKLE_OPT_CONTROLS_PASS
+[proof 1/4] Checking candidate model and shared kernel lemmas
+PROOF_CHECKED SharedMath
+PROOF_CHECKED OptReferenceAdapter
+PROOF_CHECKED OptModel
+PROOF_CHECKED OptHelpers
+[proof 2/4] Checking 441 next-state fields and 5 outputs
+PROOF_CHECKED OptFields2
+PROOF_CHECKED OptFields0
+PROOF_CHECKED OptFields1
+PROOF_CHECKED OptFields4
+PROOF_CHECKED OptFields5
+PROOF_CHECKED OptFields6
+PROOF_CHECKED OptFields7
+PROOF_CHECKED OptFields8
+PROOF_CHECKED OptFields9
+PROOF_CHECKED OptFields10
+PROOF_CHECKED OptFields11
+PROOF_CHECKED OptFields12
+PROOF_CHECKED OptFields13
+PROOF_CHECKED OptFields14
+PROOF_CHECKED OptFields15
+PROOF_CHECKED OptFields16
+PROOF_CHECKED OptFields17
+PROOF_CHECKED OptFields19
+PROOF_CHECKED OptFields20
+PROOF_CHECKED OptFields21
+PROOF_CHECKED OptFields22
+PROOF_CHECKED OptFields23
+PROOF_CHECKED OptFields24
+PROOF_CHECKED OptFields25
+PROOF_CHECKED OptFields26
+PROOF_CHECKED OptFields27
+PROOF_CHECKED OptFields18
+PROOF_CHECKED OptFields3
+[proof 3/4] Assembling complete equality and the candidate temporal theorem
+PROOF_CHECKED OptAssemble
+PROOF_CHECKED OptEquivalence
+PROOF_CHECKED OptMain
+[proof 4/4] Rejecting native output mutation
+OPT_NATIVE_MUTATION_REJECTED
+SPARKLE_OPT_UNIVERSAL_EQUIVALENCE_PROVED
+PROOF_CHECKED SharedMath
+PROOF_CHECKED DirectModels
+PROOF_CHECKED DirectHelpers
+PROOF_CHECKED DirectFields3
+PROOF_CHECKED DirectFields0
+PROOF_CHECKED DirectFields2
+PROOF_CHECKED DirectFields1
+PROOF_CHECKED DirectFields4
+PROOF_CHECKED DirectFields5
+PROOF_CHECKED DirectFields6
+PROOF_CHECKED DirectFields7
+PROOF_CHECKED DirectFields9
+PROOF_CHECKED DirectFields8
+PROOF_CHECKED DirectFields10
+PROOF_CHECKED DirectFields11
+PROOF_CHECKED DirectFields12
+PROOF_CHECKED DirectFields13
+PROOF_CHECKED DirectFields14
+PROOF_CHECKED DirectFields15
+PROOF_CHECKED DirectFields16
+PROOF_CHECKED DirectFields17
+PROOF_CHECKED DirectFields18
+PROOF_CHECKED DirectFields19
+PROOF_CHECKED DirectFields20
+PROOF_CHECKED DirectFields21
+PROOF_CHECKED DirectFields22
+PROOF_CHECKED DirectFields23
+PROOF_CHECKED DirectFields24
+PROOF_CHECKED DirectFields25
+PROOF_CHECKED DirectFields26
+PROOF_CHECKED DirectFields27
+PROOF_CHECKED DirectFields28
+PROOF_CHECKED DirectAssemble
+PROOF_CHECKED DirectRuns
+PROOF_CHECKED DirectAudit
+PROOF_CHECKED DirectMain
+DIRECT_MUTATION_REJECTED Baseline
+DIRECT_MUTATION_REJECTED Optimized
+SPARKLE_DIRECT_TRACE_EQUIVALENCE_PROVED

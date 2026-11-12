@@ -1,0 +1,57 @@
+[1/4] Fresh RTL frontend and read-only input-memory lift passed
+[2/4] Native Lean model emitted by upstream Sparkle reflection and executed
+[3/4] Sparkle C and original-RTL Verilator simulations built
+case 0: RTL = Sparkle Lean = Sparkle C; payload=0; 436 edges
+case 1: RTL = Sparkle Lean = Sparkle C; payload=4294967290; 436 edges
+case 2: RTL = Sparkle Lean = Sparkle C; payload=2147483648; 436 edges
+case 3: RTL = Sparkle Lean = Sparkle C; payload=4294967294; 436 edges
+case 4: RTL = Sparkle Lean = Sparkle C; payload=2147483648; 436 edges
+case 5: RTL = Sparkle Lean = Sparkle C; payload=0; 436 edges
+case 6: RTL = Sparkle Lean = Sparkle C; payload=816; 436 edges
+[4/4] SPARKLE_TASK2_CONTROLS_PASS: /home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/result.json
+[proof 1/4] Retained reference library checked; checking the native model and proof lemmas
+PROOF_CHECKED NativeArtifact
+PROOF_CHECKED ReferenceAdapter
+PROOF_CHECKED Model
+PROOF_CHECKED Memory
+PROOF_CHECKED WordWrites
+PROOF_CHECKED WordWritesMaskRight
+PROOF_CHECKED Helpers
+PROOF_CHECKED OutputWord
+[proof 2/4] Checking 453 next-state and 5 output obligations
+PROOF_CHECKED Fields1
+PROOF_CHECKED Fields2
+PROOF_CHECKED Fields3
+PROOF_CHECKED Fields0
+PROOF_CHECKED Fields4
+PROOF_CHECKED Fields5
+PROOF_CHECKED Fields6
+PROOF_CHECKED Fields7
+PROOF_CHECKED Fields8
+PROOF_CHECKED Fields10
+PROOF_CHECKED Fields9
+PROOF_CHECKED Fields11
+PROOF_CHECKED Fields14
+PROOF_CHECKED Fields12
+PROOF_CHECKED Fields13
+PROOF_CHECKED Fields15
+PROOF_CHECKED Fields16
+PROOF_CHECKED Fields17
+PROOF_CHECKED Fields19
+PROOF_CHECKED Fields18
+PROOF_CHECKED Fields20
+PROOF_CHECKED Fields21
+PROOF_CHECKED Fields22
+PROOF_CHECKED Fields23
+PROOF_CHECKED Fields24
+PROOF_CHECKED Fields25
+PROOF_CHECKED Fields26
+PROOF_CHECKED Fields27
+PROOF_CHECKED Fields28
+[proof 3/4] Composing full transition equality and the universal temporal theorem
+PROOF_CHECKED Assemble
+PROOF_CHECKED Equivalence
+PROOF_CHECKED Main
+[proof 4/4] Rejecting a mutation of the native output
+PROOF_MUTATION_REJECTED: imported output XOR 1
+SPARKLE_UNIVERSAL_EQUIVALENCE_PROVED: /home/roland/moonshot1/experiments/task2-equivalence/SparkleDemo/build/universal-result.json
